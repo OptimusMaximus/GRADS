@@ -1,0 +1,11 @@
+package edu.sc.csce740.model;
+
+public class ProgressSummary {
+
+	private StudentRecord record;
+	private RequirementCheck results;
+	
+	private RequirementCheck getResults(String userID){
+		return results;
+	}
+}

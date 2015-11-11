@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+package edu.sc.csce740.model;
+
+/**
+ * @author brandemr
+ *
+ */
+public class Milestone {
+	
+	private String milestone;
+	private Term term;
+	
+	public Milestone getMilestone(){
+		return this;
+	}
+	
+	public void setMilestone(String milestone, Term term){
+		this.milestone = milestone;
+		this.term = term;
+	}
+}

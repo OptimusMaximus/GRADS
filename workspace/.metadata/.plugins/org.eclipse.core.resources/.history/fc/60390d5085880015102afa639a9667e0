@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package edu.sc.csce740;
+
+/**
+ * @author brandemr
+ *
+ */
+public class Driver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		GRADS grads = null;
+		
+		try {
+			grads.loadUsers("/acct/brandemr/813/GRADS/workspace/GRADS/src/resources");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
