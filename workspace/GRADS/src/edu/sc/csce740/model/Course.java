@@ -9,21 +9,21 @@ package edu.sc.csce740.model;
  */
 public class Course {
 	private String name;
-	private String ID;
-	private double creditHours;
+	private String id;
+	private double numCredits;
 	
 	public Course getCourse(){
 		return this;
 	}
 	
 	public double getCreditHours(){
-		return creditHours;
+		return numCredits;
 	}
 	//TODO: change float to double in course diagram
 	public void setCourse(String ID, String name, double creditHours){
-		this.ID = ID;
+		this.id = ID;
 		this.name = name;
-		this.creditHours = creditHours;
+		this.numCredits = creditHours;
 	}
 	
 

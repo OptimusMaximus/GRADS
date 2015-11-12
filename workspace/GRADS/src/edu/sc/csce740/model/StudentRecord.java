@@ -5,7 +5,7 @@ import java.util.List;
 public class StudentRecord {
 
 	private User student;
-	private String dept;
+	private String department;
 	private Term termBegan;
 	private Degree degreeSought;
 	private Degree certificateSought;
@@ -73,7 +73,7 @@ public class StudentRecord {
 		this.tempEdit = tempEdit;
 	}
 	public String getDept() {
-		return dept;
+		return department;
 	}
 	public List<Degree> getPreviousDegrees() {
 		return previousDegrees;

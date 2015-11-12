@@ -9,11 +9,11 @@ package edu.sc.csce740.model;
  */
 public class Degree {
 
-	private String degreeName;
+	private String name;
 	private Term graduation;
 	
 	public String getDegreeName(){
-		return degreeName;
+		return name;
 	}
 	
 	public Term getGraduation(){

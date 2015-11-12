@@ -8,14 +8,14 @@ package edu.sc.csce740.model;
  *
  */
 public class User {
-	private String userID;
+	private String id;
 	private String firstName;
 	private String lastName;
 	private String role;
 	private String department;
 	
 	public String getUserID(){
-		return userID;
+		return id;
 	}
 	
 	public String getFirstName(){
@@ -34,16 +34,8 @@ public class User {
 		return department;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
 	public void setUserID(String userID) {
-		this.userID = userID;
+		this.id = userID;
 	}
 
 	public void setFirstName(String firstName) {
@@ -53,5 +45,13 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}	
 
 }
