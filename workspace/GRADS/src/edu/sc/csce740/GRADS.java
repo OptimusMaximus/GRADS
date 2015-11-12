@@ -5,7 +5,10 @@ package edu.sc.csce740;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,7 +23,7 @@ import edu.sc.csce740.model.User;
 
 /**
  * @author brandemr
- *
+ * 
  */
 public class GRADS implements GRADSIntf {
 	private String currentUser;
@@ -28,51 +31,71 @@ public class GRADS implements GRADSIntf {
 	private List<StudentRecord> allRecords;
 	private List<Degree> allDegrees;
 	private List<Course> allCourses;
-	
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#loadUsers(java.lang.String)
 	 */
 	public void loadUsers(String usersFile) throws Exception {
 		// TODO Auto-generated method stub
-		List<User> users = new Gson().fromJson( new FileReader( new File(usersFile)), new TypeToken<List<User>>(){}.getType());
-		//String representation = new GsonBuilder().setPrettyPrinting().create().toJson(users);
-		System.out.println(users.get(0).getFirstName().toString());
-		Gson gson = new Gson();
-		String json = gson.toJson(users.get(0));
-		System.out.println(json);
+		allUsers = new Gson().fromJson(new FileReader(new File(usersFile)),
+				new TypeToken<List<User>>() {
+				}.getType());
+		// String representation = new
+		// GsonBuilder().setPrettyPrinting().create().toJson(users);
+		System.out.println(allUsers.get(0).toString());
+		// Gson gson = new Gson();
+		// String json = gson.toJson(users.get(0));
+		// System.out.println(json);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#loadCourses(java.lang.String)
 	 */
 	public void loadCourses(String coursesFile) throws Exception {
 		// TODO Auto-generated method stub
-		List<Course> courses = new Gson().fromJson( new FileReader( new File(coursesFile)), new TypeToken<List<Course>>(){}.getType());
-		System.out.println(courses.size());
-		Gson gson = new Gson();
-		String json = gson.toJson(courses.get(0));
-		System.out.println(json);
+		allCourses = new Gson().fromJson(new FileReader(new File(coursesFile)),
+				new TypeToken<List<Course>>() {
+				}.getType());
+		// System.out.println(courses.size());
+		// Gson gson = new Gson();
+		// String json = gson.toJson(courses.get(0));
+		// System.out.println(json);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#loadRecords(java.lang.String)
 	 */
 	public void loadRecords(String recordsFile) throws Exception {
 		// TODO Auto-generated method stub
-		List<StudentRecord> studentRecords = new Gson().fromJson( new FileReader( new File(recordsFile)), new TypeToken<List<StudentRecord>>(){}.getType());
-		System.out.println(studentRecords.size());
+		allRecords = new Gson().fromJson(new FileReader(new File(recordsFile)),
+				new TypeToken<List<StudentRecord>>() {
+				}.getType());
+		// System.out.println(studentRecords.size());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#setUser(java.lang.String)
 	 */
 	public void setUser(String userId) throws Exception {
 		// TODO Auto-generated method stub
-		this.currentUser = userId;
+		if (validateUser(userId)) {
+			this.currentUser = userId;
+		} else {
+			// exception
+		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#clearSession()
 	 */
 	public void clearSession() throws Exception {
@@ -84,7 +107,9 @@ public class GRADS implements GRADSIntf {
 		this.allUsers = null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#getUser()
 	 */
 	public String getUser() {
@@ -92,24 +117,67 @@ public class GRADS implements GRADSIntf {
 		return this.currentUser;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
+	@SuppressWarnings("null")
 	public List<String> getStudentIDs() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		List<String> studentIDs = new ArrayList<String>();
+		for (int i = 0; i < allUsers.size(); i++) {
+			if ("STUDENT".equals(allUsers.get(i).getRole())
+					&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())){
+				studentIDs.add(allUsers.get(i).getUserID());
+			}
+		}
+		return studentIDs;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
+	 */
+	@SuppressWarnings("null")
+	public List<String> getGPCIDs() throws Exception {
+		// TODO Auto-generated method stub
+		List<String> studentIDs = new ArrayList<String>();
+		for (int i = 0; i < allUsers.size(); i++) {
+			if ("GRADUATE_PROGRAM_COORDINATOR".equals(allUsers.get(i).getRole())
+					&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())){
+				studentIDs.add(allUsers.get(i).getUserID());
+			}
+		}
+		return studentIDs;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#getTranscript(java.lang.String)
 	 */
 	public StudentRecord getTranscript(String userId) throws Exception {
-		// TODO Auto-generated method stub
+		if (getGPCIDs().contains(getUser())
+			|| getUser().equals(userId)){
+			for (int i=0; i< allRecords.size(); i++){
+				if (allRecords.get(i).getUser().getUserID().equals(userId)){
+					return allRecords.get(i);
+				}
+			}
+			//TODO 
+//			throw new invalidTranscriptException ("invlaid transcript lookup");
+		}
+				
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.GRADSIntf#updateTranscript(java.lang.String, edu.sc.csce740.model.StudentRecord, java.lang.Boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see edu.sc.csce740.GRADSIntf#updateTranscript(java.lang.String,
+	 * edu.sc.csce740.model.StudentRecord, java.lang.Boolean)
 	 */
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
@@ -117,8 +185,11 @@ public class GRADS implements GRADSIntf {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.GRADSIntf#addNote(java.lang.String, java.lang.String, java.lang.Boolean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see edu.sc.csce740.GRADSIntf#addNote(java.lang.String, java.lang.String,
+	 * java.lang.Boolean)
 	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
@@ -126,7 +197,9 @@ public class GRADS implements GRADSIntf {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.sc.csce740.GRADSIntf#generateProgressSummary(java.lang.String)
 	 */
 	public ProgressSummary generateProgressSummary(String userId)
@@ -135,23 +208,36 @@ public class GRADS implements GRADSIntf {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.GRADSIntf#simulateCourses(java.lang.String, java.util.List)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see edu.sc.csce740.GRADSIntf#simulateCourses(java.lang.String,
+	 * java.util.List)
 	 */
 	public ProgressSummary simulateCourses(String userId,
 			List<CourseTaken> courses) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	private void loadDegreeReqs(String degreesFile){
-		
-		
+
+	private void loadDegreeReqs(String degreesFile) {
+		// = new Gson().fromJson(new FileReader(new File(degreesFile)),
+//				new TypeToken<List<User>>() {
+//				}.getType());
 	}
-	
-	private int getRecordIndex(String userID){
-		
+
+	private int getRecordIndex(String userID) {
+
 		return -1;
 	}
 
+	private boolean validateUser(String id) {
+		for (int i = 0; i < allUsers.size(); i++) {
+			if (id.equals(allUsers.get(i).getUserID())
+				&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

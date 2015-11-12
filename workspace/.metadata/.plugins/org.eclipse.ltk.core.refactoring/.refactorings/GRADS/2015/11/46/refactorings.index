@@ -4,3 +4,5 @@
 1447257981195	Delete element
 1447348278666	Rename field 'userID'
 1447348729710	Rename field 'degreeName'
+1447355290414	Rename field 'termTaken'
+1447355300303	Rename field 'courseTaken'

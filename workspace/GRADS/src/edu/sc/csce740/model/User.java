@@ -53,5 +53,10 @@ public class User {
 	public void setDepartment(String department) {
 		this.department = department;
 	}	
+	
+	public String toString(){
+		return id + " " + firstName + " "  + lastName + " " + role + " " + department;
+		
+	}
 
 }

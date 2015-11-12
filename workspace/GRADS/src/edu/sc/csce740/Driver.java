@@ -11,9 +11,10 @@ public class Driver {
 
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
 	@SuppressWarnings("null")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		GRADS grads = null;
 		grads = new GRADS();
@@ -38,6 +39,10 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		grads.setUser("mmatthews");
+		//System.out.println(grads.getStudentIDs());
+		//System.out.println(grads.getGPCIDs());
+		System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
 
 	}
 

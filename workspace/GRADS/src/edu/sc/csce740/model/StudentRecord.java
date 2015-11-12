@@ -10,10 +10,10 @@ public class StudentRecord {
 	private Degree degreeSought;
 	private Degree certificateSought;
 	private List<Degree> previousDegrees;
-	private List<User> advisor;
+	private List<User> advisors;
 	private List<User> committee;
-	private List<Course> coursesTaken;
-	private List<Milestone> milestoneSet;
+	private List<CourseTaken> coursesTaken;
+	private List<Milestone> milestonesSet;
 	private List<String> notes;
 	private boolean tempEdit;
 	
@@ -49,15 +49,15 @@ public class StudentRecord {
 		this.certificateSought = certificateSought;
 	}
 	public List<User> getAdvisors() {
-		return advisor;
+		return advisors;
 	}
 	//TODO: remove "All" from setAllAdvisors
-	public void setAdvisors(List<User> advisor) {
-		this.advisor = advisor;
+	public void setAdvisor(List<User> advisor) {
+		this.advisors = advisor;
 	}
-	public void addAdvisor(User advisor){
-		this.advisor.add(advisor);
-	}
+//	public void setAdvisor(User advisor){
+//		this.advisor.add(advisor);
+//	}
 	
 	public List<User> getCommittee() {
 		return committee;
@@ -78,14 +78,18 @@ public class StudentRecord {
 	public List<Degree> getPreviousDegrees() {
 		return previousDegrees;
 	}
-	public List<Course> getCoursesTaken() {
+	
+	public void setCoursesTaken(CourseTaken course){
+		coursesTaken.add(course);
+	}
+	public List<CourseTaken> getCoursesTaken() {
 		return coursesTaken;
 	}
-	public List<Milestone> getMilestoneSet() {
-		return milestoneSet;
+	public List<Milestone> getMilestonesSet() {
+		return milestonesSet;
 	}
 	public void addMilestone(Milestone milestone){
-		this.milestoneSet.add(milestone);
+		this.milestonesSet.add(milestone);
 	}
 	public List<String> getNotes() {
 		return notes;

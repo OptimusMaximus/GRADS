@@ -1,0 +1,23 @@
+package edu.sc.csce740.model;
+
+public class CourseTaken {
+
+	private Term termTaken;
+	private double grade;
+	//TODO: add this to diagram
+	private Course courseTaken;
+	
+	public CourseTaken getCourseTaken(){
+		return this;
+	}
+	
+	public void setCourseTaken(double grade, Term term, Course course){
+		this.grade = grade;
+		this.termTaken = term;
+		this.courseTaken = course;
+	}
+	
+	public double getGrade(){
+		return grade;
+	}
+}
