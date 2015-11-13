@@ -8,8 +8,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -32,6 +30,14 @@ public class GRADS implements GRADSIntf {
 	private List<Degree> allDegrees;
 	private List<Course> allCourses;
 
+	
+	private File getFile(String fileName) {
+		//Get file from resources folder
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource(fileName).getFile());
+		return file;
+	 }
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -39,12 +45,13 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void loadUsers(String usersFile) throws Exception {
 		// TODO Auto-generated method stub
-		allUsers = new Gson().fromJson(new FileReader(new File(usersFile)),
+		
+		allUsers = new Gson().fromJson(new FileReader(getFile(usersFile)),
 				new TypeToken<List<User>>() {
 				}.getType());
 		// String representation = new
 		// GsonBuilder().setPrettyPrinting().create().toJson(users);
-		System.out.println(allUsers.get(0).toString());
+		//System.out.println(allUsers.get(0).toString());
 		// Gson gson = new Gson();
 		// String json = gson.toJson(users.get(0));
 		// System.out.println(json);
@@ -57,7 +64,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void loadCourses(String coursesFile) throws Exception {
 		// TODO Auto-generated method stub
-		allCourses = new Gson().fromJson(new FileReader(new File(coursesFile)),
+		allCourses = new Gson().fromJson(new FileReader(getFile(coursesFile)),
 				new TypeToken<List<Course>>() {
 				}.getType());
 		// System.out.println(courses.size());
@@ -73,7 +80,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void loadRecords(String recordsFile) throws Exception {
 		// TODO Auto-generated method stub
-		allRecords = new Gson().fromJson(new FileReader(new File(recordsFile)),
+		allRecords = new Gson().fromJson(new FileReader(getFile(recordsFile)),
 				new TypeToken<List<StudentRecord>>() {
 				}.getType());
 		// System.out.println(studentRecords.size());
@@ -122,7 +129,7 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
-	@SuppressWarnings("null")
+
 	public List<String> getStudentIDs() throws Exception {
 		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
@@ -140,7 +147,7 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
-	@SuppressWarnings("null")
+
 	public List<String> getGPCIDs() throws Exception {
 		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
@@ -221,7 +228,7 @@ public class GRADS implements GRADSIntf {
 	}
 
 	private void loadDegreeReqs(String degreesFile) {
-		// = new Gson().fromJson(new FileReader(new File(degreesFile)),
+		// = new Gson().fromJson(new FileReader(getFile(degreesFile)),
 //				new TypeToken<List<User>>() {
 //				}.getType());
 	}

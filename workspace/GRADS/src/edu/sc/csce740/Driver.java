@@ -13,28 +13,28 @@ public class Driver {
 	 * @param args
 	 * @throws Exception 
 	 */
-	@SuppressWarnings("null")
+
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		GRADS grads = null;
 		grads = new GRADS();
 		
 		try {
-			grads.loadUsers("/acct/brandemr/813/GRADS/workspace/GRADS/src/resources/users.txt");
+			grads.loadUsers("users.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			grads.loadRecords("/acct/brandemr/813/GRADS/workspace/GRADS/src/resources/students.txt");
+			grads.loadRecords("students.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			grads.loadCourses("/acct/brandemr/813/GRADS/workspace/GRADS/src/resources/courses.txt");
+			grads.loadCourses("courses.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class Driver {
 		grads.setUser("mmatthews");
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
-		System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
+//		System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
 
 	}
 
