@@ -2,8 +2,7 @@ package edu.sc.csce740.model;
 
 public class CourseTaken {
 
-	private Term term;
-	
+	private Term term;	
 
 	private String grade;
 	//TODO: add this to diagram

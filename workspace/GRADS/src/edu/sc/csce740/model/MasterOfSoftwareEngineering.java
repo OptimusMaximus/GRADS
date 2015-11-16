@@ -9,7 +9,7 @@ import java.util.List;
  * @author brandemr
  *
  */
-public class MasterOfSoftwareEngineering implements DegreeRequirements {
+public class MasterOfSoftwareEngineering extends DegreeRequirements {
 
 	private Course internship;
 	

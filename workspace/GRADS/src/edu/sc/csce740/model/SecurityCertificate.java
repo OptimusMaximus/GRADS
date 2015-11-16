@@ -9,7 +9,7 @@ import java.util.List;
  * @author brandemr
  *
  */
-public class SecurityCertificate implements DegreeRequirements {
+public class SecurityCertificate extends DegreeRequirements {
 
 	/* (non-Javadoc)
 	 * @see edu.sc.csce740.model.DegreeRequirements#getMinGPA()

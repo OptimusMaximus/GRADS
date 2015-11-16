@@ -15,6 +15,8 @@ import com.google.gson.reflect.TypeToken;
 import edu.sc.csce740.model.Course;
 import edu.sc.csce740.model.CourseTaken;
 import edu.sc.csce740.model.Degree;
+import edu.sc.csce740.model.DegreeRequirements;
+import edu.sc.csce740.model.DoctorOfPhilosophy;
 import edu.sc.csce740.model.ProgressSummary;
 import edu.sc.csce740.model.StudentRecord;
 import edu.sc.csce740.model.User;
@@ -29,8 +31,7 @@ public class GRADS implements GRADSIntf {
 	private List<StudentRecord> allRecords;
 	private List<Degree> allDegrees;
 	private List<Course> allCourses;
-
-	
+		
 	private File getFile(String fileName) {
 		//Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
@@ -85,7 +86,7 @@ public class GRADS implements GRADSIntf {
 				}.getType());
 		// System.out.println(studentRecords.size());
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -174,7 +175,7 @@ public class GRADS implements GRADSIntf {
 				}
 			}
 			//TODO 
-//			throw new invalidTranscriptException ("invlaid transcript lookup");
+//			throw new invalidTranscriptException ("invalid transcript lookup");
 		}
 				
 		return null;
@@ -212,7 +213,10 @@ public class GRADS implements GRADSIntf {
 	public ProgressSummary generateProgressSummary(String userId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		//return null;
+		ProgressSummary progessSummary = new ProgressSummary();
+		progessSummary.getResults(userId);
+		return progessSummary;
 	}
 
 	/*

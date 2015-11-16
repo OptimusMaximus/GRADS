@@ -2,7 +2,7 @@ package edu.sc.csce740.model;
 
 import java.util.List;
 
-public class MasterOfEngineering implements DegreeRequirements {
+public class MasterOfEngineering extends DegreeRequirements {
 
 	public double getMinGPA() {
 		// TODO Auto-generated method stub

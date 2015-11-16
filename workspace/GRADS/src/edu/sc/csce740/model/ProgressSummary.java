@@ -5,8 +5,10 @@ public class ProgressSummary {
 	private StudentRecord record;
 	private RequirementCheck results;
 	
-	private RequirementCheck getResults(String userID){
-		return results;
+	public RequirementCheck getResults(String userID){
+		results = new RequirementCheck();
+		DegreeRequirements degreeRequirements = results.getDegreeRequirements("PHD");
+		return null;
 	}
 	
 	

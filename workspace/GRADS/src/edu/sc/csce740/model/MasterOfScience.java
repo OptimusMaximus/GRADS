@@ -14,7 +14,7 @@ import edu.sc.csce740.model.Milestone;
  * @author brandemr
  *
  */
-public class MasterOfScience implements DegreeRequirements {
+public class MasterOfScience extends DegreeRequirements {
 
 	private List<Milestone> milestones;
 	

@@ -20,30 +20,33 @@ public class Driver {
 		grads = new GRADS();
 		
 		try {
-			grads.loadUsers("users.txt");
+			grads.loadUsers("resources/users.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			grads.loadRecords("students.txt");
+			grads.loadRecords("resources/students.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			grads.loadCourses("courses.txt");
+			grads.loadCourses("resources/courses.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		grads.setUser("mmatthews");
+		grads.setUser("mhunt");
+		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
-//		System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
-
+		//System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
+		
+		//Testing if degree reqs are being loaded
+		grads.generateProgressSummary("mhunt");
 	}
 
 }
