@@ -212,10 +212,10 @@ public class GRADS implements GRADSIntf {
 	 */
 	public ProgressSummary generateProgressSummary(String userId)
 			throws Exception {
-		// TODO Auto-generated method stub
-		//return null;
+		
 		ProgressSummary progessSummary = new ProgressSummary();
-		progessSummary.getResults(userId);
+		progessSummary.setRecord(this.getTranscript(userId));
+		progessSummary.getResults();
 		return progessSummary;
 	}
 

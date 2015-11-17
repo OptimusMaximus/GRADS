@@ -47,6 +47,7 @@ public class Driver {
 		
 		//Testing if degree reqs are being loaded
 		grads.generateProgressSummary("mhunt");
+		System.out.println(grads.generateProgressSummary("mhunt").getResults().getDegreeRequirements("PHD").getMilestones().get(0).getMilestone());
 	}
 
 }

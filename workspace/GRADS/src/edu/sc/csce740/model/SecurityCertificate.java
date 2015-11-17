@@ -11,92 +11,33 @@ import java.util.List;
  */
 public class SecurityCertificate extends DegreeRequirements {
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getMinGPA()
-	 */
-	public double getMinGPA() {
-		// TODO Auto-generated method stub
-		return 0;
+	@Override
+	public List<Milestone> getMilestones() {
+		return null;		
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getMaxDegreeTime()
-	 */
-	public int getMaxDegreeTime() {
+	@Override
+	public void addMilestone(Milestone milestone) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getDissertation()
-	 */
-	public boolean getDissertation() {
+	@Override
+	public boolean checkMilestone(Milestone milestone) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getThesis()
-	 */
-	public boolean getThesis() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getReport()
-	 */
-	public boolean getReport() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getExitExam()
-	 */
-	public boolean getExitExam() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getMinElectiveHours()
-	 */
-	public double getMinElectiveHours() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getRemainingCoreCourses()
-	 */
-	public List<Course> getRemainingCoreCourses() {
+	@Override
+	public Course getInternship() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#checkCoreCourses(edu.sc.csce740.model.Course)
-	 */
-	public boolean checkCoreCourses(Course course) {
+	@Override
+	public void setInternship(Course internship) {
 		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getCoreCourses()
-	 */
-	public List<Course> getCoreCourses() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getDegreeName()
-	 */
-	public String getDegreeName() {
-		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 }

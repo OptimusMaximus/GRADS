@@ -143,4 +143,13 @@ public abstract class DegreeRequirements {
 		return false;
 	}
 	
+	public abstract List<Milestone> getMilestones();
+	//public abstract setMilestones();
+	public abstract void addMilestone(Milestone milestone);
+
+	public abstract boolean checkMilestone(Milestone milestone);
+	
+	public abstract Course getInternship();
+	
+	public abstract void setInternship(Course internship);
 }

@@ -4,59 +4,33 @@ import java.util.List;
 
 public class MasterOfEngineering extends DegreeRequirements {
 
-	public double getMinGPA() {
-		// TODO Auto-generated method stub
-		return 0;
+	@Override
+	public List<Milestone> getMilestones() {
+		return null;		
 	}
 
-	public int getMaxDegreeTime() {
+	@Override
+	public void addMilestone(Milestone milestone) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
-	public boolean getDissertation() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean getThesis() {
+	@Override
+	public boolean checkMilestone(Milestone milestone) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean getReport() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean getExitExam() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public double getMinElectiveHours() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public List<Course> getRemainingCoreCourses() {
+	@Override
+	public Course getInternship() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean checkCoreCourses(Course course) {
+	@Override
+	public void setInternship(Course internship) {
 		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public List<Course> getCoreCourses() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getDegreeName() {
-		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 }

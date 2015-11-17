@@ -41,6 +41,7 @@ public class RequirementCheck {
 		return null;
 	}
 	
+	
 	public DegreeRequirements getDegreeRequirements(String degreeName){
 		List<DegreeRequirements> degreeRequirements = null;
 		try {
@@ -57,8 +58,8 @@ public class RequirementCheck {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(degreeRequirements.get(0).getCoreCourses().get(0).getName());
-		return degreeRequirements.get(0);
+		//System.out.println(degreeRequirements.get(3).getDegreeName());
+		return degreeRequirements.get(3);
 	}
 	
 	private double calculateGPA(StudentRecord record){
