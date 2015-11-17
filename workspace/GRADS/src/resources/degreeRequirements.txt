@@ -1,0 +1,264 @@
+[
+	{
+	"degreeName": "ME",
+	"coreCourses":[
+                  {
+                    "name": "Computer Architecture",
+                    "id": "csce513",
+                    "numCredits": "3"
+                  },
+                 
+                {
+                  
+                      "name": "Compiler Construction",
+                      "id": "csce531",
+                      "numCredits": "3"
+                 
+                },
+               {
+                  
+                       "name": "Analysis of Algorithms",
+                       "id": "csce750",
+                       "numCredits": "3"
+               
+                },
+                {
+                  
+                    "name": "Seminar in Advances in Computing",
+                    "id": "csce791",
+                    "numCredits": "1"
+                 
+                }
+               ],
+             "minGPA": 3.0,
+             "maxDegreeTime": 6,
+             "dissertation": false,
+             "thesis": false,
+             "report": false,
+             "exam": true,
+             "qualifyingExam": false,
+             "comprehensiveExam": false,
+             "minCSCEElectiveHours": 11
+             
+            },
+            {
+	"degreeName": "MSE",
+	"coreCourses":[
+                  {
+                    "name": "Software Engineering",
+                    "id": "csce740",
+                    "numCredits": "3"
+                  },
+                 
+                {
+                  
+                      "name": "Software Process",
+                      "id": "csce741",
+                      "numCredits": "3"
+                 
+                },
+                {
+                  
+                       "name": "Software Architecture",
+                       "id": "csce742",
+                       "numCredits": "3"
+                 
+                },
+                {
+                  
+                       "name": "Software Requirements",
+                       "id": "csce743",
+                       "numCredits": "3"
+               
+                },
+                {
+                  
+                    "name": "Software Testing",
+                    "id": "csce747",
+                    "numCredits": "3"
+                 
+                }
+               ],
+             "minGPA": 3.0,
+             "maxDegreeTime": 6,
+             "dissertation": false,
+             "thesis": false,
+             "report": true,
+             "exam": true,
+             "qualifyingExam": false,
+             "comprehensiveExam": false,
+             "minCSCEElectiveHours": 15,
+             "internship":{
+             		"name": "Internship in Software Engineering",
+             		"id": "csce793",
+             		"numCredits": "1"
+             		}
+             
+            },
+            {
+	"degreeName": "MS",
+	"coreCourses":[
+                  {
+                    "name": "Computer Architecture",
+                    "id": "csce513",
+                    "numCredits": "3"
+                  },
+                 
+                {
+                  
+                      "name": "Compiler Construction",
+                      "id": "csce531",
+                      "numCredits": "3"
+                 
+                },
+               {
+                  
+                       "name": "Analysis of Algorithms",
+                       "id": "csce750",
+                       "numCredits": "3"
+               
+                },
+                {
+                  
+                    "name": "Seminar in Advances in Computing",
+                    "id": "csce791",
+                    "numCredits": "1"
+                 
+                }
+               ],
+             "minGPA": 3.0,
+             "maxDegreeTime": 6,
+             "dissertation": false,
+             "thesis": true,
+             "report": false,
+             "exam": true,
+             "qualifyingExam": false,
+             "comprehensiveExam": false,
+             "minCSCEElectiveHours": 8,
+             "milestones": [
+                 {
+                 "milestone": "THESIS_ADVISOR_SELECTED"                 
+                 },
+                 {
+                 "milestone": "THESIS_COMMITTEE_FORMED"                 
+                 },
+                 {
+                 "milestone": "THESIS_SCHEDULED"                 
+                 },
+                 {
+                 "milestone": "THESIS_PROPOSAL_APPROVED"                 
+                 },
+                 {
+                 "milestone": "THESIS_DEFENDED"                 
+                 }
+               ]
+             
+            },
+             {
+	"degreeName": "PHD",
+	"coreCourses":[
+                  {
+                    "name": "Computer Architecture",
+                    "id": "csce513",
+                    "numCredits": "3"
+                  },
+                 
+                {
+                  
+                      "name": "Compiler Construction",
+                      "id": "csce531",
+                      "numCredits": "3"
+                 
+                },
+                 {
+                  
+                      "name": "Theory of Computation",
+                      "id": "csce551",
+                      "numCredits": "3"
+                 
+                },
+               {
+                  
+                       "name": "Analysis of Algorithms",
+                       "id": "csce750",
+                       "numCredits": "3"
+               
+                },
+                {
+                  
+                    "name": "Seminar in Advances in Computing",
+                    "id": "csce791",
+                    "numCredits": "1"
+                 
+                }
+               ],
+             "minGPA": 3.0,
+             "maxDegreeTime": 10,
+             "dissertation": true,
+             "thesis": false,
+             "report": false,
+             "exam": false,
+             "qualifyingExam": true,
+             "comprehensiveExam": true,
+             "minCSCEElectiveHours": 48,
+             "milestones": [
+                 {
+                 "milestone": "QUALIFICATION_EXAM_PASSED"                 
+                 },
+                 {
+                 "milestone": "DISSERTATION_ADVISOR_SELECTED"                 
+                 },
+                 {
+                 "milestone": "DISSERTATION_COMMITTEE_FORMED"                 
+                 },
+                 {
+                 "milestone": "DISSERTATION_SCHEDULED"                 
+                 },
+                 {
+                 "milestone": "DISSERTATION_PROPOSAL_APPROVED"                 
+                 },
+                 {
+                 "milestone": "DISSERTATION_DEFENDED"                 
+                 },
+                 {
+                 "milestone": "COMPREHENSIVE_EXAM_PASSED"                 
+                 }
+               ]
+             
+            },
+            {
+	"degreeName": "CC",
+	"coreCourses":[
+                  {
+                    "name": "Information Security Principles",
+                    "id": "csce522",
+                    "numCredits": "3"
+                  },
+                 
+                {
+                  
+                      "name": "Network Systems Security",
+                      "id": "csce715",
+                      "numCredits": "3"
+                 
+                },
+               {
+                  
+                       "name": "Information Warfare",
+                       "id": "csce727",
+                       "numCredits": "3"
+               
+                }
+               ],
+             "minGPA": 3.0,
+             "maxDegreeTime": 6,
+             "dissertation": false,
+             "thesis": false,
+             "report": false,
+             "exam": true,
+             "qualifyingExam": false,
+             "comprehensiveExam": false,
+             "minCSCEElectiveHours": 9
+             
+            }
+]
