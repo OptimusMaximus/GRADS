@@ -3,6 +3,8 @@
  */
 package edu.sc.csce740;
 
+import com.google.gson.GsonBuilder;
+
 /**
  * @author brandemr
  * test
@@ -46,8 +48,15 @@ public class Driver {
 		//System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
 		
 		//Testing if degree reqs are being loaded
+		grads.addNote("mhunt", "I'm a note!!!", true);
 		grads.generateProgressSummary("mhunt");
-		System.out.println(grads.generateProgressSummary("mhunt").getResults().getDegreeRequirements("PHD").getMilestones().get(0).getMilestone());
+		grads.getTranscript("mhunt").setLastName("xxxxxxx");
+		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
+		
+		//For testing...don't delete!
+//		String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
+//		writeToFile("records.txt", representation );
+		
 	}
 
 }

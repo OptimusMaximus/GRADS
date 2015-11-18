@@ -25,24 +25,8 @@ public class ProgressSummary {
 	public RequirementCheck getResults() {
 		String degreeName = record.getDegreeSought().getDegreeName();
 		results = new RequirementCheck();
-		
-		switch(degreeName){
-			case "PHD": 
-						break;
-			case "MS":
-						break;
-			case "MSE":	
-						break;
-			case "ME":
-						break;
-			case "CC":
-						break;
-			default:
-						break;
-						
-		}
-			
-		DegreeRequirements degreeRequirements = results.getDegreeRequirements(degreeName);
+		System.out.println(results.generateResults(record).getNotes());
+		//DegreeRequirements degreeRequirements = results.getDegreeRequirements(degreeName);
 		return results;
 	}
 

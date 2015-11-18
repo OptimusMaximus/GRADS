@@ -26,7 +26,7 @@ public class DoctorOfPhilosophy extends DegreeRequirements {
 	//TODO: add checkMilestone to this class for class diagram
 	@Override
 	public boolean checkMilestone(Milestone milestone){
-		return false;
+		return milestones.contains(milestone);
 	}
 
 	@Override

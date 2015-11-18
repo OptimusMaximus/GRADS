@@ -4,7 +4,11 @@
 package edu.sc.csce740;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +42,14 @@ public class GRADS implements GRADSIntf {
 		File file = new File(classLoader.getResource(fileName).getFile());
 		return file;
 	 }
+	
+	public void writeToFile(String fileName, String text) throws IOException{
+		File file = new File(fileName);
+		FileWriter fileWriter = new FileWriter(file);
+		fileWriter.write(text);
+		fileWriter.flush();
+		fileWriter.close();
+	}
 	
 	/*
 	 * (non-Javadoc)
@@ -189,8 +201,23 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
-		// TODO Auto-generated method stub
-
+		
+		StudentRecord record = getTranscript(userId);	
+		if(permanent){
+			int index = -1;
+			record = transcript;
+			for (int i=0; i< allRecords.size(); i++){
+				if (allRecords.get(i).getUser().getUserID().equals(userId)){
+					index = i;
+				}
+			}
+			allRecords.remove(index);
+			allRecords.add(transcript);
+			
+		} else {
+			//TODO: still need to work on this
+		}
+		
 	}
 
 	/*
@@ -201,7 +228,18 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
-		// TODO Auto-generated method stub
+		StudentRecord record;
+		StudentRecord tempRecord;
+		
+		record = getTranscript(userId);
+		tempRecord = record;
+		
+		if(permanent){
+			record.addNote(note);
+		} else {
+			//TODO: still need to work on this
+			tempRecord.addNote(note);
+		}
 
 	}
 
@@ -229,12 +267,6 @@ public class GRADS implements GRADSIntf {
 			List<CourseTaken> courses) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	private void loadDegreeReqs(String degreesFile) {
-		// = new Gson().fromJson(new FileReader(getFile(degreesFile)),
-//				new TypeToken<List<User>>() {
-//				}.getType());
 	}
 
 	private int getRecordIndex(String userID) {

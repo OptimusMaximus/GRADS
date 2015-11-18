@@ -30,7 +30,7 @@ public class MasterOfScience extends DegreeRequirements {
 
 	@Override
 	public boolean checkMilestone(Milestone milestone){
-		return false;
+		return milestones.contains(milestone);
 	}
 
 	@Override
