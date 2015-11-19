@@ -143,7 +143,7 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
 
-	public List<String> getCSCEStudentIDs() throws Exception {
+	public List<String> getStudentIDs() throws Exception {
 		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -161,7 +161,7 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
 
-	public List<String> getCSCEGPCIDs() throws Exception {
+	public List<String> getGPCIDs() throws Exception {
 		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -179,7 +179,7 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getTranscript(java.lang.String)
 	 */
 	public StudentRecord getTranscript(String userId) throws Exception {
-		if (getCSCEGPCIDs().contains(getUser())
+		if (getGPCIDs().contains(getUser())
 			|| getUser().equals(userId)){
 			for (int i=0; i< allRecords.size(); i++){
 				if (allRecords.get(i).getUser().getUserID().equals(userId)){
@@ -209,7 +209,6 @@ public class GRADS implements GRADSIntf {
 			for (int i=0; i< allRecords.size(); i++){
 				if (allRecords.get(i).getUser().getUserID().equals(userId)){
 					index = i;
-					break;
 				}
 			}
 			allRecords.remove(index);

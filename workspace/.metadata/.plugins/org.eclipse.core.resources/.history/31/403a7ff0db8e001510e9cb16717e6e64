@@ -202,6 +202,12 @@ public class GRADS implements GRADSIntf {
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
 		
+		if (getCSCEGPCIDs().contains(userId)){
+			// user is gpc
+		} else if (getCSCEStudentIDs().contains(userId) && userId.equals(getUser())){
+			// user is a student trying to edit is own record
+		}
+		
 		StudentRecord record = getTranscript(userId);	
 		if(permanent){
 			int index = -1;
