@@ -284,7 +284,7 @@ public class GRADS implements GRADSIntf {
 		{
 			throw new Exception ("Session Initation Failed: Department mismatch");
 		}
-		if (!(getStudentIDs().contains(userId)))
+		if (!(getStudentIDs().contains(userId)) && !(getGPCIDs().contains(userId)))
 		{
 			throw new Exception ("Session Initiation Failed: Not qualified to access GRADS");
 		} 
@@ -296,7 +296,7 @@ public class GRADS implements GRADSIntf {
 		{
 			throw new Exception ("No Access: Department mismatch");
 		}
-		if (!(getGPCIDs().contains(getUser()))|| !(getStudentIDs().contains(userId) && getUser().equals(userId)))
+		if (!(getGPCIDs().contains(getUser())) && !(getStudentIDs().contains(userId) || getUser().equals(userId)))
 		{
 			throw new Exception ("No Access: Unauthorized record access");
 		} 

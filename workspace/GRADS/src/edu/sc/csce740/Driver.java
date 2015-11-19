@@ -42,7 +42,7 @@ public class Driver {
 			e.printStackTrace();
 		}
 	
-		grads.setUser("mmatthews");
+		grads.setUser("ggay");
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
