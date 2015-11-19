@@ -2,6 +2,8 @@ package edu.sc.csce740.model;
 
 import java.util.List;
 
+import edu.sc.csce740.GRADS;
+
 public class StudentRecord {
 
 	private User student;
@@ -17,7 +19,7 @@ public class StudentRecord {
 	private List<String> notes;
 	private boolean tempEdit;
 	
-	public User getUser(){
+	public User getUser(){	
 		return student;
 	}
 	public String getFirstName(){
@@ -69,7 +71,7 @@ public class StudentRecord {
 		return tempEdit;
 	}
 	//TODO: why setTempEdit private on class diagram
-	public void setTempEdit(boolean tempEdit) {
+	private void setTempEdit(boolean tempEdit) {
 		this.tempEdit = tempEdit;
 	}
 	public String getDept() {
@@ -105,4 +107,5 @@ public class StudentRecord {
 	public void setLastName(String lastName){
 		this.student.setLastName(lastName);
 	}
+	
 }

@@ -169,8 +169,6 @@ public class RequirementCheck {
 				qualityPoints = qualityPoints + numOfCredits * 4;
 			} else if (grade.toUpperCase().equals("B")){
 				qualityPoints = qualityPoints + numOfCredits * 3;
-			} else if (grade.toUpperCase().equals("B+")){
-				qualityPoints = qualityPoints + numOfCredits * 3.5;
 			} else if (grade.toUpperCase().equals("C")){
 				qualityPoints = qualityPoints + numOfCredits * 2;
 			} else if (grade.toUpperCase().equals("D")){

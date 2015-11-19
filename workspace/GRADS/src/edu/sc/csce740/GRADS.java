@@ -202,6 +202,7 @@ public class GRADS implements GRADSIntf {
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
 		
+		
 		StudentRecord record = getTranscript(userId);	
 		if(permanent){
 			int index = -1;
@@ -283,5 +284,17 @@ public class GRADS implements GRADSIntf {
 			}
 		}
 		return false;
+	}
+	
+	public void validateAccess(String userID) throws Exception 
+	{
+		if (getGPCIDs().contains(getUser())){
+			//;
+		} else if (getStudentIDs().contains(userID) && getUser().equals(userID)){
+			//return true;
+		} else{
+			throw new Exception("Illegal record access!");
+		}
+		
 	}
 }

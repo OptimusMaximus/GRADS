@@ -52,7 +52,7 @@ public class Driver {
 		grads.generateProgressSummary("mhunt");
 		grads.getTranscript("mhunt").setLastName("xxxxxxx");
 		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-		
+		grads.validateAccess("ggay");	
 		//For testing...don't delete!
 //		String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
 //		writeToFile("records.txt", representation );
