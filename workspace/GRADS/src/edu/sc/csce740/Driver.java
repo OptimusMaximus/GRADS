@@ -41,7 +41,8 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		grads.setUser("mhunt");
+	
+		grads.setUser("mmatthews");
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
@@ -52,7 +53,8 @@ public class Driver {
 		grads.generateProgressSummary("mhunt");
 		grads.getTranscript("mhunt").setLastName("xxxxxxx");
 		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-		grads.validateAccess("ggay");	
+		grads.validateAccess("ggay");
+		
 		//For testing...don't delete!
 //		String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
 //		writeToFile("records.txt", representation );

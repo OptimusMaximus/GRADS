@@ -104,13 +104,11 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#setUser(java.lang.String)
 	 */
-	public void setUser(String userId) throws Exception {
+	public void setUser(String userId) throws Exception 
+	{
 		// TODO Auto-generated method stub
-		if (validateUser(userId)) {
-			this.currentUser = userId;
-		} else {
-			// exception
-		}
+		validateSession(userId);
+		this.currentUser = userId;	
 	}
 
 	/*
@@ -275,25 +273,46 @@ public class GRADS implements GRADSIntf {
 		return -1;
 	}
 
-	private boolean validateUser(String id) {
-		for (int i = 0; i < allUsers.size(); i++) {
-			if (id.equals(allUsers.get(i).getUserID())
-				&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())) {
-				return true;
-			}
+	public void validateSession(String userId) throws Exception
+	{
+		User user = lookupUser(userId);
+		if (!(userId.equals(user.getUserID()))) 
+		{
+			throw new Exception ("Session Initation Failed: Not in user database");
 		}
-		return false;
+		if(!("COMPUTER_SCIENCE".equals(user.getDepartment())))
+		{
+			throw new Exception ("Session Initation Failed: Department mismatch");
+		}
+		if (!(getStudentIDs().contains(userId)))
+		{
+			throw new Exception ("Session Initiation Failed: Not qualified to access GRADS");
+		} 
+	}
+	public void validateAccess(String userId) throws Exception
+	{
+		User user = lookupUser(userId);
+		if (!(userId.equals(user.getUserID()) || "COMPUTER_SCIENCE".equals(user.getDepartment()))) 
+		{
+			throw new Exception ("No Access: Department mismatch");
+		}
+		if (!(getGPCIDs().contains(getUser()))|| !(getStudentIDs().contains(userId) && getUser().equals(userId)))
+		{
+			throw new Exception ("No Access: Unauthorized record access");
+		} 
 	}
 	
-	public void validateAccess(String userID) throws Exception 
+	public User lookupUser(String userId)
 	{
-		if (getGPCIDs().contains(getUser())){
-			//;
-		} else if (getStudentIDs().contains(userID) && getUser().equals(userID)){
-			//return true;
-		} else{
-			throw new Exception("Illegal record access!");
+		User user = null;
+		for (int i = 0; i < allUsers.size(); i++) 
+		{
+			if (userId.equals(allUsers.get(i).getUserID()))
+			{
+				user = allUsers.get(i);
+				break;	
+			}
 		}
-		
+		return user; 
 	}
 }
