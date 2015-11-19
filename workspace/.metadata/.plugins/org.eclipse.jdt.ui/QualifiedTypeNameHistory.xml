@@ -10,4 +10,8 @@
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="edu.sc.csce740.model.invalidUserException"/>
+<fullyQualifiedTypeName name="edu.sc.csce740.exception.DataCanNotBeWrittenException"/>
+<fullyQualifiedTypeName name="edu.sc.csce740.exception.ProgressSummaryNotGeneratedException"/>
+<fullyQualifiedTypeName name="edu.sc.csce740.exception.CoursesInvalidException"/>
 </qualifiedTypeNameHistroy>

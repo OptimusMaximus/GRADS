@@ -14,6 +14,8 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import edu.sc.csce740.model.Course;
@@ -24,6 +26,11 @@ import edu.sc.csce740.model.DoctorOfPhilosophy;
 import edu.sc.csce740.model.ProgressSummary;
 import edu.sc.csce740.model.StudentRecord;
 import edu.sc.csce740.model.User;
+import edu.sc.csce740.exception.CoursesInvalidException;
+import edu.sc.csce740.exception.DataCanNotBeWrittenException;
+import edu.sc.csce740.exception.InvalidUserException;
+import edu.sc.csce740.exception.DataNotRetrievedException;
+import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
 
 /**
  * @author brandemr
@@ -43,12 +50,16 @@ public class GRADS implements GRADSIntf {
 		return file;
 	 }
 	
-	public void writeToFile(String fileName, String text) throws IOException{
-		File file = new File(fileName);
-		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.write(text);
-		fileWriter.flush();
-		fileWriter.close();
+	public void writeToFile(String fileName, String text) throws DataCanNotBeWrittenException{
+		try{
+			File file = new File(fileName);
+			FileWriter fileWriter = new FileWriter(file);
+			fileWriter.write(text);
+			fileWriter.flush();
+			fileWriter.close();
+		}  catch (Exception e){
+			throw new DataCanNotBeWrittenException("Can not write data to file");
+		}
 	}
 	
 	/*
@@ -56,18 +67,14 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#loadUsers(java.lang.String)
 	 */
-	public void loadUsers(String usersFile) throws Exception {
-		// TODO Auto-generated method stub
-		
-		allUsers = new Gson().fromJson(new FileReader(getFile(usersFile)),
+	public void loadUsers(String usersFile) throws DataNotRetrievedException {
+		try{
+			allUsers = new Gson().fromJson(new FileReader(getFile(usersFile)),
 				new TypeToken<List<User>>() {
 				}.getType());
-		// String representation = new
-		// GsonBuilder().setPrettyPrinting().create().toJson(users);
-		//System.out.println(allUsers.get(0).toString());
-		// Gson gson = new Gson();
-		// String json = gson.toJson(users.get(0));
-		// System.out.println(json);
+		} catch (Exception e){
+			throw new DataNotRetrievedException("Can not load user file");
+		}
 	}
 
 	/*
@@ -75,15 +82,14 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#loadCourses(java.lang.String)
 	 */
-	public void loadCourses(String coursesFile) throws Exception {
-		// TODO Auto-generated method stub
-		allCourses = new Gson().fromJson(new FileReader(getFile(coursesFile)),
+	public void loadCourses(String coursesFile) throws DataNotRetrievedException  {
+		try{
+			allCourses = new Gson().fromJson(new FileReader(getFile(coursesFile)),
 				new TypeToken<List<Course>>() {
 				}.getType());
-		// System.out.println(courses.size());
-		// Gson gson = new Gson();
-		// String json = gson.toJson(courses.get(0));
-		// System.out.println(json);
+		} catch (Exception e){
+			throw new DataNotRetrievedException("Can not load courses file");
+		}
 	}
 
 	/*
@@ -91,12 +97,14 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#loadRecords(java.lang.String)
 	 */
-	public void loadRecords(String recordsFile) throws Exception {
-		// TODO Auto-generated method stub
-		allRecords = new Gson().fromJson(new FileReader(getFile(recordsFile)),
+	public void loadRecords(String recordsFile) throws DataNotRetrievedException  {
+		try{
+			allRecords = new Gson().fromJson(new FileReader(getFile(recordsFile)),
 				new TypeToken<List<StudentRecord>>() {
 				}.getType());
-		// System.out.println(studentRecords.size());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
 	}
 	
 	/*
@@ -104,12 +112,12 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#setUser(java.lang.String)
 	 */
-	public void setUser(String userId) throws Exception {
+	public void setUser(String userId)  throws InvalidUserException {
 		// TODO Auto-generated method stub
 		if (validateUser(userId)) {
 			this.currentUser = userId;
 		} else {
-			// exception
+			throw new InvalidUserException("Invalid user");
 		}
 	}
 
@@ -143,7 +151,7 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
 
-	public List<String> getCSCEStudentIDs() throws Exception {
+	public List<String> getCSCEStudentIDs() {
 		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -161,7 +169,7 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
 
-	public List<String> getCSCEGPCIDs() throws Exception {
+	public List<String> getCSCEGPCIDs() {
 		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -203,10 +211,10 @@ public class GRADS implements GRADSIntf {
 			Boolean permanent) throws Exception {
 		
 		
-		StudentRecord record = getTranscript(userId);	
+		StudentRecord originalRecord = getTranscript(userId);	
 		if(permanent){
 			int index = -1;
-			record = transcript;
+			originalRecord = transcript;
 			for (int i=0; i< allRecords.size(); i++){
 				if (allRecords.get(i).getUser().getUserID().equals(userId)){
 					index = i;
@@ -218,6 +226,7 @@ public class GRADS implements GRADSIntf {
 			
 		} else {
 			//TODO: still need to work on this
+			
 		}
 		
 	}
@@ -251,12 +260,15 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#generateProgressSummary(java.lang.String)
 	 */
 	public ProgressSummary generateProgressSummary(String userId)
-			throws Exception {
-		
-		ProgressSummary progessSummary = new ProgressSummary();
-		progessSummary.setRecord(this.getTranscript(userId));
-		progessSummary.getResults();
-		return progessSummary;
+			throws ProgressSummaryNotGeneratedException {
+		try{
+			ProgressSummary progessSummary = new ProgressSummary();
+			progessSummary.setRecord(this.getTranscript(userId));
+			progessSummary.getResults();
+			return progessSummary;
+		} catch (Exception e){
+			throw new ProgressSummaryNotGeneratedException("Can not generate progress summary");
+		}
 	}
 
 	/*
@@ -266,9 +278,16 @@ public class GRADS implements GRADSIntf {
 	 * java.util.List)
 	 */
 	public ProgressSummary simulateCourses(String userId,
-			List<CourseTaken> courses) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+			List<CourseTaken> courses) throws CoursesInvalidException, Exception {
+		//Check to see if the courses passed in are valid courses
+		for(int i = 0; i < courses.size(); i++){
+			if(!allCourses.contains(courses.get(i).getCourse())){
+				throw new CoursesInvalidException("Invalid course given " + courses.get(i).getCourse());
+			}
+		}
+		StudentRecord record = getTranscript(userId);
+		updateTranscript(userId, record, false);
+		return generateProgressSummary(userId);
 	}
 
 	private int getRecordIndex(String userID) {
@@ -288,9 +307,9 @@ public class GRADS implements GRADSIntf {
 	
 	public void validateAccess(String userID) throws Exception 
 	{
-		if (getGPCIDs().contains(getUser())){
+		if (getCSCEGPCIDs().contains(getUser())){
 			//;
-		} else if (getStudentIDs().contains(userID) && getUser().equals(userID)){
+		} else if (getCSCEStudentIDs().contains(userID) && getUser().equals(userID)){
 			//return true;
 		} else{
 			throw new Exception("Illegal record access!");
