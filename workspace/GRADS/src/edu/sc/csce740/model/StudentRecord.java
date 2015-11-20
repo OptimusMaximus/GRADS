@@ -83,7 +83,11 @@ public class StudentRecord {
 		return previousDegrees;
 	}
 	
-	public void setCoursesTaken(CourseTaken course){
+	public void setCoursesTaken(CourseTaken course, User editor){
+		if (editor.getRole().equals("STUDENT"))
+		{
+			setTempEdit(true);
+		}
 		coursesTaken.add(course);
 	}
 	public List<CourseTaken> getCoursesTaken() {

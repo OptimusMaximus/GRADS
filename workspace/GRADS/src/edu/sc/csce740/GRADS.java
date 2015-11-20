@@ -214,14 +214,14 @@ public class GRADS implements GRADSIntf {
 			int index = getRecordIndex(userId);
 			if (index == -1)
 			{
-				System.out.println("Previous record not found. Adding new record to database");
+				System.out.println("Previous record not found. Adding new record to database...");
 				allRecords.add(transcript);
 				if (permanent){/*write out in Json, overwriting recordFile*/}	
 			}
 			else	
 				allRecords.remove(index);
 				allRecords.add(transcript);
-				if (permanent) {/*overwrite Json file, overwriting recordFile*/ }
+				if (permanent) {/*write out Json file, overwriting recordFile*/ }
 		} 
 	}
 
@@ -275,13 +275,13 @@ public class GRADS implements GRADSIntf {
 		transcript = getTranscript(userId);
 		for (int i = 0; i<courses.size(); i++)
 		{
-			transcript.setCoursesTaken(courses.get(i));
+			transcript.setCoursesTaken(courses.get(i),lookupUser(getUser()));
 		}	
 		this.updateTranscript(userId, transcript,false);
 		return generateProgressSummary(userId);
 	}
 
-	public void validateSession(String userId) throws Exception
+	private void validateSession(String userId) throws Exception
 	{
 		User user = lookupUser(userId);
 		if (!(userId.equals(user.getUserID()))) 
@@ -298,7 +298,7 @@ public class GRADS implements GRADSIntf {
 			throw new Exception ("Session Initiation Failed: Not qualified to access GRADS");
 		} 
 	}
-	public void validateAccess(String userId) throws Exception
+	private void validateAccess(String userId) throws Exception
 	{
 		User accessedUser = lookupUser(userId);
 		if (!(userId.equals(accessedUser.getUserID())) 
