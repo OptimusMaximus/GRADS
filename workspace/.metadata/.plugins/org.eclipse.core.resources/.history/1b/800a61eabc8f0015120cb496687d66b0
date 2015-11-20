@@ -197,9 +197,8 @@ public class GRADS implements GRADSIntf {
 			//TODO 
 //			throw new invalidTranscriptException ("invalid transcript lookup");
 		}
-		
-		throw new Exception("Student record of: '" + userId + "' cannot be accessed");
-//		return null;
+				
+		return null;
 	}
 
 	/*
@@ -211,27 +210,25 @@ public class GRADS implements GRADSIntf {
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
 		
-		if (validateAccess(userId)){
-			//StudentRecord originalRecord = getTranscript(userId);	
-			int index = -1;
-			//originalRecord = transcript;
-			for (int i=0; i< allRecords.size(); i++){
-				if (allRecords.get(i).getUser().getUserID().equals(userId)){
-					index = i;
-					break;
-				}
+		
+		//StudentRecord originalRecord = getTranscript(userId);	
+		int index = -1;
+		//originalRecord = transcript;
+		for (int i=0; i< allRecords.size(); i++){
+			if (allRecords.get(i).getUser().getUserID().equals(userId)){
+				index = i;
+				break;
 			}
-			allRecords.remove(index);
-			allRecords.add(transcript);		
-			
-			if(permanent){
-				String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
-				writeToFile("src/resources/students.txt", representation);	
-				//TODO:  Do we need to load the new allRecords?
-			} 
-		} else {
-			throw new Exception("Transcript could not be updated");
 		}
+		allRecords.remove(index);
+		allRecords.add(transcript);		
+		
+		if(permanent){
+			String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
+			writeToFile("src/resources/students.txt", representation);	
+			//TODO:  Do we need to load the new allRecords?
+		} 
+		
 	}
 
 	/*
@@ -298,7 +295,6 @@ public class GRADS implements GRADSIntf {
 			if (!flag){
 				throw new CoursesInvalidException("Invalid course given " + courses.get(i).getCourse().getId());
 			}
-			System.out.println(record);
 			record.setCoursesTaken(courses.get(i));
 		}
 		updateTranscript(userId, record, false);
@@ -315,12 +311,12 @@ public class GRADS implements GRADSIntf {
 		return false;
 	}
 	
-	public boolean validateAccess(String userID) throws Exception 
+	public void validateAccess(String userID) throws Exception 
 	{
 		if (getCSCEGPCIDs().contains(getUser())){
-			return true;
+			//;
 		} else if (getCSCEStudentIDs().contains(userID) && getUser().equals(userID)){
-			return true;
+			//return true;
 		} else{
 			throw new Exception("Illegal record access!");
 		}

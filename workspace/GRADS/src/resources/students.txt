@@ -215,5 +215,202 @@
       "I\u0027m a note stillllllll!!!"
     ],
     "tempEdit": false
+  },
+  {
+    "student": {
+      "id": "mbr",
+      "firstName": "Michelle",
+      "lastName": "xxxxxxx"
+    },
+    "department": "COMPUTER_SCIENCE",
+    "termBegan": {
+      "semester": "FALL",
+      "year": 2006
+    },
+    "degreeSought": {
+      "name": "PHD",
+      "graduation": {
+        "semester": "SPRING",
+        "year": 2018
+      }
+    },
+    "previousDegrees": [
+      {
+        "name": "BS",
+        "graduation": {
+          "semester": "SPRING",
+          "year": 2008
+        }
+      }
+    ],
+    "advisors": [
+      {
+        "firstName": "Duncan",
+        "lastName": "Buell",
+        "department": "COMPUTER_SCIENCE"
+      }
+    ],
+    "committee": [
+      {
+        "firstName": "Manton",
+        "lastName": "Matthews",
+        "department": "COMPUTER_SCIENCE"
+      },
+      {
+        "firstName": "Jason",
+        "lastName": "Bakos",
+        "department": "COMPUTER_SCIENCE"
+      },
+      {
+        "firstName": "Richard",
+        "lastName": "McGehee",
+        "department": "MATHEMATICS"
+      }
+    ],
+    "coursesTaken": [
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2014
+        },
+        "grade": "B",
+        "course": {
+          "name": "Naptime",
+          "id": "nap734",
+          "numCredits": "5"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        },
+        "grade": "B",
+        "course": {
+          "name": "Advanced Naptime",
+          "id": "nap888",
+          "numCredits": "5"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2013
+        },
+        "grade": "A",
+        "course": {
+          "name": "Computer Architecture",
+          "id": "csce513",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2014
+        },
+        "grade": "A",
+        "course": {
+          "name": "Compiler Construction",
+          "id": "csce531",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        },
+        "grade": "A",
+        "course": {
+          "name": "Theory of Computation",
+          "id": "csce551",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2015
+        },
+        "grade": "A",
+        "course": {
+          "name": "Analysis of Algorithms",
+          "id": "csce750",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2015
+        },
+        "grade": "A",
+        "course": {
+          "name": "Seminar in Advances in Computing",
+          "id": "csce791",
+          "numCredits": "1"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        },
+        "grade": "P",
+        "course": {
+          "name": "Dissertation Preparation",
+          "id": "csce899",
+          "numCredits": "6"
+        }
+      },
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2015
+        },
+        "grade": "P",
+        "course": {
+          "name": "Dissertation Preparation",
+          "id": "csce899",
+          "numCredits": "6"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2015
+        },
+        "grade": "_",
+        "course": {
+          "name": "Software Engineering",
+          "id": "csce740",
+          "numCredits": "3"
+        }
+      }
+    ],
+    "milestonesSet": [
+      {
+        "milestone": "DISSERTATION_ADVISOR_SELECTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      },
+      {
+        "milestone": "DISSERTATION_COMMITTEE_FORMED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      }
+    ],
+    "notes": [
+      "Great student. A++ Would recommend.",
+      "Owes me 20 bucks.",
+      "I\u0027m a note!!!",
+      "I\u0027m a note stillllllll!!!"
+    ],
+    "tempEdit": false
   }
 ]

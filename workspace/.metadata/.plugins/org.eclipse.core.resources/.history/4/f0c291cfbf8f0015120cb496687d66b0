@@ -198,8 +198,8 @@ public class GRADS implements GRADSIntf {
 //			throw new invalidTranscriptException ("invalid transcript lookup");
 		}
 		
-		throw new Exception("Student record of: '" + userId + "' cannot be accessed");
-//		return null;
+		throw new Exception("Student record cannot be accessed");
+		return null;
 	}
 
 	/*

@@ -48,7 +48,7 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		grads.setUser("mbr");
+		grads.setUser("ggay");
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
@@ -59,7 +59,7 @@ public class Driver {
 		//grads.generateProgressSummary("mhunt");
 		//grads.getTranscript("mhunt").setLastName("xxxxxxx");
 		//grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-		//grads.validateAccess("mhunt");
+		grads.validateAccess("mhunt");
 		
 		List<CourseTaken> courses = new ArrayList<CourseTaken>();
 		Course firstCourse = new Course();

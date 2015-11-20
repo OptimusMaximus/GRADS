@@ -197,9 +197,8 @@ public class GRADS implements GRADSIntf {
 			//TODO 
 //			throw new invalidTranscriptException ("invalid transcript lookup");
 		}
-		
-		throw new Exception("Student record of: '" + userId + "' cannot be accessed");
-//		return null;
+				
+		return null;
 	}
 
 	/*
@@ -297,9 +296,10 @@ public class GRADS implements GRADSIntf {
 			}
 			if (!flag){
 				throw new CoursesInvalidException("Invalid course given " + courses.get(i).getCourse().getId());
+			} else{
+//			System.out.println(courses.get(0).getTerm().getYear() + ", " + i );
+				record.setCoursesTaken(courses.get(i));
 			}
-			System.out.println(record);
-			record.setCoursesTaken(courses.get(i));
 		}
 		updateTranscript(userId, record, false);
 		return generateProgressSummary(userId);

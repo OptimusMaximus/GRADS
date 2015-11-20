@@ -197,9 +197,8 @@ public class GRADS implements GRADSIntf {
 			//TODO 
 //			throw new invalidTranscriptException ("invalid transcript lookup");
 		}
-		
-		throw new Exception("Student record of: '" + userId + "' cannot be accessed");
-//		return null;
+				
+		return null;
 	}
 
 	/*
@@ -229,8 +228,6 @@ public class GRADS implements GRADSIntf {
 				writeToFile("src/resources/students.txt", representation);	
 				//TODO:  Do we need to load the new allRecords?
 			} 
-		} else {
-			throw new Exception("Transcript could not be updated");
 		}
 	}
 
@@ -298,7 +295,6 @@ public class GRADS implements GRADSIntf {
 			if (!flag){
 				throw new CoursesInvalidException("Invalid course given " + courses.get(i).getCourse().getId());
 			}
-			System.out.println(record);
 			record.setCoursesTaken(courses.get(i));
 		}
 		updateTranscript(userId, record, false);
