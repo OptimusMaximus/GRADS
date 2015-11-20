@@ -275,9 +275,7 @@ public class GRADS implements GRADSIntf {
 		transcript = getTranscript(userId);
 		for (int i = 0; i<courses.size(); i++)
 		{
-			CourseTaken course;
-			course = courses(i);
-			transcript.setCoursesTaken(course);
+			transcript.setCoursesTaken(courses.get(i));
 		}	
 		this.updateTranscript(userId, transcript,false);
 		return generateProgressSummary(userId);
