@@ -143,6 +143,10 @@ public class GRADS implements GRADSIntf {
 
 	public List<String> getStudentIDs() throws Exception {
 		// TODO Auto-generated method stub
+		if (!(lookupUser(getUser()).getRole().equals("GRADUATE_PROGRAM_COORDINATOR")))
+		{
+			throw new Exception ("No Access: StudentIDs");
+		}
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("STUDENT".equals(allUsers.get(i).getRole())
@@ -176,18 +180,17 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#getTranscript(java.lang.String)
 	 */
-	public StudentRecord getTranscript(String userId) throws Exception {
-		if (getGPCIDs().contains(getUser())
-			|| getUser().equals(userId)){
-			for (int i=0; i< allRecords.size(); i++){
-				if (allRecords.get(i).getUser().getUserID().equals(userId)){
-					return allRecords.get(i);
-				}
+	public StudentRecord getTranscript(String userId) throws Exception 
+	{
+		
+		//validateAccess(getUser());
+		for (int i=0; i< allRecords.size(); i++)
+		{
+			if (allRecords.get(i).getUser().getUserID().equals(userId))
+			{
+				return allRecords.get(i);
 			}
-			//TODO 
-//			throw new invalidTranscriptException ("invalid transcript lookup");
-		}
-				
+		}			
 		return null;
 	}
 
@@ -227,6 +230,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
+		//validateAccess(userId);
 		StudentRecord record;
 		StudentRecord tempRecord;
 		
@@ -249,7 +253,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public ProgressSummary generateProgressSummary(String userId)
 			throws Exception {
-		
+		//validateAccess(userId);
 		ProgressSummary progessSummary = new ProgressSummary();
 		progessSummary.setRecord(this.getTranscript(userId));
 		progessSummary.getResults();
@@ -284,25 +288,31 @@ public class GRADS implements GRADSIntf {
 		{
 			throw new Exception ("Session Initation Failed: Department mismatch");
 		}
-		if (!(getStudentIDs().contains(userId)) && !(getGPCIDs().contains(userId)))
+		if (!(user.getRole().equals("STUDENT")) 
+		   && !(user.getRole().equals("GRADUATE_PROGRAM_COORDINATOR")))
 		{
 			throw new Exception ("Session Initiation Failed: Not qualified to access GRADS");
 		} 
 	}
 	public void validateAccess(String userId) throws Exception
 	{
-		User user = lookupUser(userId);
-		if (!(userId.equals(user.getUserID()) || "COMPUTER_SCIENCE".equals(user.getDepartment()))) 
+		User accessedUser = lookupUser(userId);
+		if (!(userId.equals(accessedUser.getUserID())) 
+		   || !("COMPUTER_SCIENCE".equals(accessedUser.getDepartment()))) 
 		{
 			throw new Exception ("No Access: Department mismatch");
 		}
-		if (!(getGPCIDs().contains(getUser())) && !(getStudentIDs().contains(userId) || getUser().equals(userId)))
+		if (!(lookupUser(getUser()).getRole().equals("GRADUATE_PROGRAM_COORDINATOR")) 
+		   && !(accessedUser.getRole().equals("STUDENT") && getUser().equals(userId)))
 		{
+			System.out.println(accessedUser.getRole());
+			System.out.println(lookupUser(getUser()).getUserID());
+			System.out.println(lookupUser(getUser()).getRole());
 			throw new Exception ("No Access: Unauthorized record access");
 		} 
 	}
 	
-	public User lookupUser(String userId)
+	private User lookupUser(String userId)
 	{
 		User user = null;
 		for (int i = 0; i < allUsers.size(); i++) 
