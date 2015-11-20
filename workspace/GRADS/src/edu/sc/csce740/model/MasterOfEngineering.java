@@ -4,15 +4,16 @@ import java.util.List;
 
 public class MasterOfEngineering extends DegreeRequirements {
 
+	private List<Milestone> milestones;
+	
 	@Override
-	public List<Milestone> getMilestones() {
-		return null;		
+	public List<Milestone> getMilestones(){
+		return milestones;
 	}
-
+	
 	@Override
-	public void addMilestone(Milestone milestone) {
-		// TODO Auto-generated method stub
-		
+	public void addMilestone(Milestone milestone){
+		milestones.add(milestone);
 	}
 
 	@Override

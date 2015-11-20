@@ -12,6 +12,7 @@ import java.util.List;
 public class MasterOfSoftwareEngineering extends DegreeRequirements {
 
 	private Course internship;
+	private List<Milestone> milestones;
 	
 	@Override
 	public Course getInternship(){
@@ -24,14 +25,13 @@ public class MasterOfSoftwareEngineering extends DegreeRequirements {
 	}
 
 	@Override
-	public List<Milestone> getMilestones() {
-		return null;		
+	public List<Milestone> getMilestones(){
+		return milestones;
 	}
-
+	
 	@Override
-	public void addMilestone(Milestone milestone) {
-		// TODO Auto-generated method stub
-		
+	public void addMilestone(Milestone milestone){
+		milestones.add(milestone);
 	}
 
 	@Override

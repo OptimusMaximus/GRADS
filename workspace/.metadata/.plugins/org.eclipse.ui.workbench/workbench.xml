@@ -61,9 +61,9 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GRADSIntf.java" partName="GRADSIntf.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/GRADSIntf.java" title="GRADSIntf.java" tooltip="GRADS/src/edu/sc/csce740/GRADSIntf.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GRADSIntf.java" partName="GRADSIntf.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/GRADSIntf.java" title="GRADSIntf.java" tooltip="GRADS/src/edu/sc/csce740/GRADSIntf.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/GRADSIntf.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4773" selectionTopPixel="1193"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4426" selectionTopPixel="1513"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StudentRecord.java" partName="StudentRecord.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/StudentRecord.java" title="StudentRecord.java" tooltip="GRADS/src/edu/sc/csce740/model/StudentRecord.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/StudentRecord.java"/>
@@ -71,15 +71,15 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ProgressSummary.java" partName="ProgressSummary.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/ProgressSummary.java" title="ProgressSummary.java" tooltip="GRADS/src/edu/sc/csce740/model/ProgressSummary.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/ProgressSummary.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="398" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="581" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CourseTaken.java" partName="CourseTaken.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/CourseTaken.java" title="CourseTaken.java" tooltip="GRADS/src/edu/sc/csce740/model/CourseTaken.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/CourseTaken.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="219" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="157" selectionTopPixel="255"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GRADS.java" partName="GRADS.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/GRADS.java" title="GRADS.java" tooltip="GRADS/src/edu/sc/csce740/GRADS.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/GRADS.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="34" selectionOffset="6258" selectionTopPixel="3367"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7265" selectionTopPixel="4164"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="User.java" partName="User.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/User.java" title="User.java" tooltip="GRADS/src/edu/sc/csce740/model/User.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/User.java"/>
@@ -91,7 +91,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Course.java" partName="Course.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/Course.java" title="Course.java" tooltip="GRADS/src/edu/sc/csce740/model/Course.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/Course.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="284" selectionTopPixel="102"/>
+<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="87" selectionTopPixel="102"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Term.java" partName="Term.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/Term.java" title="Term.java" tooltip="GRADS/src/edu/sc/csce740/model/Term.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/Term.java"/>
@@ -99,7 +99,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Driver.java" partName="Driver.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/Driver.java" title="Driver.java" tooltip="GRADS/src/edu/sc/csce740/Driver.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/Driver.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1245" selectionTopPixel="37"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1380" selectionTopPixel="629"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Milestone.java" partName="Milestone.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/Milestone.java" title="Milestone.java" tooltip="GRADS/src/edu/sc/csce740/model/Milestone.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/Milestone.java"/>
@@ -107,23 +107,23 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DegreeRequirements.java" partName="DegreeRequirements.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/DegreeRequirements.java" title="DegreeRequirements.java" tooltip="GRADS/src/edu/sc/csce740/model/DegreeRequirements.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/DegreeRequirements.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="861" selectionTopPixel="1959"/>
+<editorState selectionHorizontalPixel="0" selectionLength="13" selectionOffset="2885" selectionTopPixel="1904"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DoctorOfPhilosophy.java" partName="DoctorOfPhilosophy.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/DoctorOfPhilosophy.java" title="DoctorOfPhilosophy.java" tooltip="GRADS/src/edu/sc/csce740/model/DoctorOfPhilosophy.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/DoctorOfPhilosophy.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="560" selectionTopPixel="55"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="322" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterOfScience.java" partName="MasterOfScience.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/MasterOfScience.java" title="MasterOfScience.java" tooltip="GRADS/src/edu/sc/csce740/model/MasterOfScience.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/MasterOfScience.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="351" selectionTopPixel="72"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="351" selectionTopPixel="17"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterOfEngineering.java" partName="MasterOfEngineering.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java" title="MasterOfEngineering.java" tooltip="GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterOfEngineering.java" partName="MasterOfEngineering.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java" title="MasterOfEngineering.java" tooltip="GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="258" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterOfSoftwareEngineering.java" partName="MasterOfSoftwareEngineering.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/MasterOfSoftwareEngineering.java" title="MasterOfSoftwareEngineering.java" tooltip="GRADS/src/edu/sc/csce740/model/MasterOfSoftwareEngineering.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/MasterOfSoftwareEngineering.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="659" selectionTopPixel="55"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="601" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SecurityCertificate.java" partName="SecurityCertificate.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/SecurityCertificate.java" title="SecurityCertificate.java" tooltip="GRADS/src/edu/sc/csce740/model/SecurityCertificate.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/SecurityCertificate.java"/>
@@ -131,7 +131,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RequirementCheck.java" partName="RequirementCheck.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/RequirementCheck.java" title="RequirementCheck.java" tooltip="GRADS/src/edu/sc/csce740/model/RequirementCheck.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/RequirementCheck.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8762" selectionTopPixel="319"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5862" selectionTopPixel="2964"/>
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="degreeRequirements.txt" partName="degreeRequirements.txt" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/resources/degreeRequirements.txt" title="degreeRequirements.txt" tooltip="GRADS/src/resources/degreeRequirements.txt" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/resources/degreeRequirements.txt"/>
@@ -139,7 +139,7 @@
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="students.txt" partName="students.txt" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/resources/students.txt" title="students.txt" tooltip="GRADS/src/resources/students.txt" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/resources/students.txt"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4308" selectionTopPixel="3013"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="372" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Validation.java" partName="Validation.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/model/Validation.java" title="Validation.java" tooltip="GRADS/src/edu/sc/csce740/model/Validation.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/model/Validation.java"/>
@@ -167,7 +167,7 @@
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="courses.txt" partName="courses.txt" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/resources/courses.txt" title="courses.txt" tooltip="GRADS/src/resources/courses.txt" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/resources/courses.txt"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="7092"/>
+<editorState selectionHorizontalPixel="0" selectionLength="28" selectionOffset="450" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CoursesInvalidException.java" partName="CoursesInvalidException.java" path="/acct/brandemr/740/GRADS/workspace/GRADS/src/edu/sc/csce740/exception/CoursesInvalidException.java" title="CoursesInvalidException.java" tooltip="GRADS/src/edu/sc/csce740/exception/CoursesInvalidException.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/GRADS/src/edu/sc/csce740/exception/CoursesInvalidException.java"/>
@@ -259,7 +259,7 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottomRight" ratio="0.81453365" ratioLeft="751" ratioRight="171" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.jdt.callhierarchy.view" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.jdt.callhierarchy.view" label="Call Hierarchy"/>
@@ -287,168 +287,169 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/Driver.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/GRADS.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/invalidUserException.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/GRADS/src/resources/users.txt"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/exception/DataNotRetrievedException.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/exception/InvalidUserException.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/exception/DataCanNotBeWrittenException.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/exception/ProgressSummaryNotGeneratedException.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/GRADSIntf.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/Driver.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/GRADS/src/resources/courses.txt"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/CourseTaken.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/exception/CoursesInvalidException.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/Course.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/GRADSIntf.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/DoctorOfPhilosophy.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/MasterOfScience.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/MasterOfSoftwareEngineering.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/ProgressSummary.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/RequirementCheck.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/GRADS/src/edu/sc/csce740/model/DegreeRequirements.java"/>
 </editors>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="8419" y="0"/>
+<item historyLabel="Driver.java" index="1">
+<position info="not_deleted" x="1868" y="43"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="4223" y="0"/>
-</item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="1558" y="0"/>
-</item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="8582" y="0"/>
-</item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="1562" y="0"/>
-</item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="8582" y="0"/>
-</item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="3587" y="0"/>
-</item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="840" y="0"/>
-</item>
-<item historyLabel="users.txt" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="840" y="0"/>
-</item>
-<item historyLabel="users.txt" index="3">
-<position info="not_deleted" x="818" y="27"/>
-</item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="836" y="0"/>
-</item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="3587" y="0"/>
-</item>
-<item historyLabel="DataNotRetrievedException.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="invalidUserException.java" index="2">
-<position info="not_deleted" x="87" y="20"/>
-</item>
-<item historyLabel="DataNotRetrievedException.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="InvalidUserException.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="836" y="0"/>
-</item>
-<item historyLabel="GRADS.java" index="1">
+<item historyLabel="GRADS.java" index="0">
 <position/>
 </item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="836" y="0"/>
+<item historyLabel="courses.txt" index="2">
+<position info="not_deleted" x="540" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
+<item historyLabel="GRADS.java" index="0">
 <position/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="2385" y="0"/>
+<item historyLabel="courses.txt" index="2">
+<position info="not_deleted" x="540" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="1617" y="11"/>
+<item historyLabel="GRADS.java" index="0">
+<position/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="2377" y="0"/>
+<item historyLabel="CourseTaken.java" index="3">
+<position info="not_deleted" x="554" y="9"/>
 </item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="388" y="0"/>
+<item historyLabel="CourseTaken.java" index="3">
+<position info="not_deleted" x="581" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="3238" y="0"/>
+<item historyLabel="CourseTaken.java" index="3">
+<position info="not_deleted" x="157" y="6"/>
 </item>
-<item historyLabel="DataCanNotBeWrittenException.java" index="6">
-<position info="not_deleted" x="91" y="28"/>
+<item historyLabel="GRADS.java" index="0">
+<position/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="1963" y="0"/>
+<item historyLabel="courses.txt" index="2">
+<position info="not_deleted" x="25" y="37"/>
 </item>
-<item historyLabel="ProgressSummaryNotGeneratedException.java" index="7">
-<position info="not_deleted" x="0" y="4"/>
+<item historyLabel="Course.java" index="4">
+<position info="not_deleted" x="87" y="6"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="7327" y="0"/>
+<item historyLabel="Driver.java" index="1">
+<position info="not_deleted" x="1824" y="0"/>
 </item>
-<item historyLabel="Driver.java" index="0">
-<position info="not_deleted" x="1245" y="0"/>
+<item historyLabel="GRADS.java" index="0">
+<position/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="7327" y="0"/>
+<item historyLabel="Driver.java" index="1">
+<position info="not_deleted" x="1904" y="0"/>
 </item>
-<item historyLabel="GRADSIntf.java" index="8">
-<position info="not_deleted" x="4165" y="0"/>
+<item historyLabel="GRADSIntf.java" index="5">
+<position info="not_deleted" x="4426" y="0"/>
 </item>
-<item historyLabel="courses.txt" index="9">
+<item historyLabel="GRADS.java" index="0">
+<position/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8122" y="0"/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8122" y="0"/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8947" y="0"/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8127" y="0"/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8086" y="0"/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8128" y="0"/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8308" y="0"/>
+</item>
+<item historyLabel="Driver.java" index="1">
+<position info="not_deleted" x="1701" y="0"/>
+</item>
+<item historyLabel="courses.txt" index="2">
+<position info="not_deleted" x="450" y="28"/>
+</item>
+<item historyLabel="Driver.java" index="1">
+<position info="not_deleted" x="1733" y="0"/>
+</item>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="8308" y="0"/>
+</item>
+<item historyLabel="MasterOfEngineering.java" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="8002" y="0"/>
+<item historyLabel="DoctorOfPhilosophy.java" index="7">
+<position info="not_deleted" x="215" y="175"/>
 </item>
-<item historyLabel="GRADSIntf.java" index="8">
-<position info="not_deleted" x="4165" y="0"/>
+<item historyLabel="MasterOfEngineering.java" index="6">
+<position info="not_deleted" x="341" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="8002" y="0"/>
+<item historyLabel="DoctorOfPhilosophy.java" index="7">
+<position info="not_deleted" x="174" y="216"/>
 </item>
-<item historyLabel="CourseTaken.java" index="10">
-<position info="not_deleted" x="219" y="0"/>
+<item historyLabel="MasterOfEngineering.java" index="6">
+<position info="not_deleted" x="341" y="0"/>
 </item>
-<item historyLabel="GRADSIntf.java" index="8">
-<position info="not_deleted" x="4165" y="0"/>
+<item historyLabel="MasterOfScience.java" index="8">
+<position info="not_deleted" x="351" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="8002" y="0"/>
+<item historyLabel="MasterOfEngineering.java" index="6">
+<position info="not_deleted" x="125" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="7758" y="0"/>
+<item historyLabel="MasterOfSoftwareEngineering.java" index="9">
+<position info="not_deleted" x="601" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="7861" y="0"/>
+<item historyLabel="Driver.java" index="1">
+<position info="not_deleted" x="1380" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="7855" y="0"/>
+<item historyLabel="GRADS.java" index="0">
+<position info="not_deleted" x="7025" y="23"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="7915" y="0"/>
+<item historyLabel="ProgressSummary.java" index="10">
+<position info="not_deleted" x="398" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="6727" y="4"/>
+<item historyLabel="ProgressSummary.java" index="10">
+<position info="not_deleted" x="425" y="10"/>
 </item>
-<item historyLabel="CoursesInvalidException.java" index="11">
-<position info="not_deleted" x="91" y="23"/>
+<item historyLabel="RequirementCheck.java" index="11">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="7596" y="0"/>
+<item historyLabel="RequirementCheck.java" index="11">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="GRADSIntf.java" index="8">
-<position info="not_deleted" x="4165" y="0"/>
+<item historyLabel="DegreeRequirements.java" index="12">
+<position info="not_deleted" x="861" y="0"/>
 </item>
-<item historyLabel="GRADS.java" index="1">
-<position info="not_deleted" x="6258" y="34"/>
+<item historyLabel="DegreeRequirements.java" index="12">
+<position info="not_deleted" x="2885" y="13"/>
 </item>
-<item active="true" historyLabel="GRADSIntf.java" index="8">
-<position info="not_deleted" x="4165" y="0"/>
+<item historyLabel="DoctorOfPhilosophy.java" index="7">
+<position info="not_deleted" x="174" y="216"/>
+</item>
+<item active="true" historyLabel="MasterOfEngineering.java" index="6">
+<position info="not_deleted" x="125" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -456,6 +457,10 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topLeft"/>
+<trimItem IMemento.internal.id="bottomLeft"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -463,10 +468,14 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottomRight"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="students1.txt" tooltip="GRADS/src/resources/students1.txt">
+<persistable path="/GRADS/src/resources/students1.txt"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CoursesInvalidException.java" tooltip="GRADS/src/edu/sc/csce740/exception/CoursesInvalidException.java">
 <persistable path="/GRADS/src/edu/sc/csce740/exception/CoursesInvalidException.java"/>
 </file>
@@ -508,9 +517,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterOfSoftwareEngineering.java" tooltip="GRADS/src/edu/sc/csce740/model/MasterOfSoftwareEngineering.java">
 <persistable path="/GRADS/src/edu/sc/csce740/model/MasterOfSoftwareEngineering.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MasterOfEngineering.java" tooltip="GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java">
-<persistable path="/GRADS/src/edu/sc/csce740/model/MasterOfEngineering.java"/>
 </file>
 </mruList>
 </workbench>

@@ -43,7 +43,6 @@ public class Course {
 		this.id = ID;
 		this.name = name;
 		this.numCredits = creditHours;
-	}
-	
+	}	
 
 }

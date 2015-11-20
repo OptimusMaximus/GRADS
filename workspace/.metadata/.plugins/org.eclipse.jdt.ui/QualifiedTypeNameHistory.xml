@@ -5,7 +5,6 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="com.google.gson.reflect.TypeToken"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
@@ -14,4 +13,9 @@
 <fullyQualifiedTypeName name="edu.sc.csce740.exception.DataCanNotBeWrittenException"/>
 <fullyQualifiedTypeName name="edu.sc.csce740.exception.ProgressSummaryNotGeneratedException"/>
 <fullyQualifiedTypeName name="edu.sc.csce740.exception.CoursesInvalidException"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.Writer"/>
+<fullyQualifiedTypeName name="edu.sc.csce740.model.Course"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

@@ -211,23 +211,23 @@ public class GRADS implements GRADSIntf {
 			Boolean permanent) throws Exception {
 		
 		
-		StudentRecord originalRecord = getTranscript(userId);	
-		if(permanent){
-			int index = -1;
-			originalRecord = transcript;
-			for (int i=0; i< allRecords.size(); i++){
-				if (allRecords.get(i).getUser().getUserID().equals(userId)){
-					index = i;
-					break;
-				}
+		//StudentRecord originalRecord = getTranscript(userId);	
+		int index = -1;
+		//originalRecord = transcript;
+		for (int i=0; i< allRecords.size(); i++){
+			if (allRecords.get(i).getUser().getUserID().equals(userId)){
+				index = i;
+				break;
 			}
-			allRecords.remove(index);
-			allRecords.add(transcript);
-			
-		} else {
-			//TODO: still need to work on this
-			
 		}
+		allRecords.remove(index);
+		allRecords.add(transcript);		
+		
+		if(permanent){
+			String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
+			writeToFile("src/resources/students.txt", representation);	
+			//TODO:  Do we need to load the new allRecords?
+		} 
 		
 	}
 
@@ -239,17 +239,14 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
-		StudentRecord record;
-		StudentRecord tempRecord;
+		StudentRecord transcript;
 		
-		record = getTranscript(userId);
-		tempRecord = record;
-		
-		if(permanent){
-			record.addNote(note);
+		transcript = getTranscript(userId);
+		transcript.addNote(note);
+		if (permanent){
+			updateTranscript(userId, transcript, true); 
 		} else {
-			//TODO: still need to work on this
-			tempRecord.addNote(note);
+			updateTranscript(userId, transcript, false); 
 		}
 
 	}
@@ -262,13 +259,18 @@ public class GRADS implements GRADSIntf {
 	public ProgressSummary generateProgressSummary(String userId)
 			throws ProgressSummaryNotGeneratedException {
 		try{
-			ProgressSummary progessSummary = new ProgressSummary();
-			progessSummary.setRecord(this.getTranscript(userId));
-			progessSummary.getResults();
-			return progessSummary;
+			ProgressSummary progressSummary = new ProgressSummary();
+			progressSummary.setRecord(this.getTranscript(userId));
+			progressSummary.getResults();
+			String representation = new GsonBuilder().setPrettyPrinting().create().toJson(progressSummary);
+			writeToFile("src/resources/progessSummary.txt", representation);
+			return progressSummary;
 		} catch (Exception e){
 			throw new ProgressSummaryNotGeneratedException("Can not generate progress summary");
 		}
+		
+		
+		
 	}
 
 	/*
@@ -279,20 +281,26 @@ public class GRADS implements GRADSIntf {
 	 */
 	public ProgressSummary simulateCourses(String userId,
 			List<CourseTaken> courses) throws CoursesInvalidException, Exception {
+		
+		boolean flag = false; 
+		StudentRecord record = getTranscript(userId);
+		
 		//Check to see if the courses passed in are valid courses
 		for(int i = 0; i < courses.size(); i++){
-			if(!allCourses.contains(courses.get(i).getCourse())){
-				throw new CoursesInvalidException("Invalid course given " + courses.get(i).getCourse());
+			for(int j = 0; j < allCourses.size(); j++){
+				
+				if (courseIsEqual(allCourses.get(j).getCourse(), courses.get(i).getCourse())){
+					flag = true;
+					break;
+				}
 			}
+			if (!flag){
+				throw new CoursesInvalidException("Invalid course given " + courses.get(i).getCourse().getId());
+			}
+			record.setCoursesTaken(courses.get(i));
 		}
-		StudentRecord record = getTranscript(userId);
 		updateTranscript(userId, record, false);
 		return generateProgressSummary(userId);
-	}
-
-	private int getRecordIndex(String userID) {
-
-		return -1;
 	}
 
 	private boolean validateUser(String id) {
@@ -315,5 +323,18 @@ public class GRADS implements GRADSIntf {
 			throw new Exception("Illegal record access!");
 		}
 		
+	}
+	
+	public boolean courseIsEqual(Course firstCourse, Course secondCourse) {
+	      if (!firstCourse.getName().equals(secondCourse.getName())){
+	    	  return false;
+	      }
+	      if (!firstCourse.getId().equals(secondCourse.getId())){
+	    	  return false;
+	      }
+	      if (!firstCourse.getNumCredits().equals(secondCourse.getNumCredits())){
+	    	  return false;
+	      }
+	      return true;
 	}
 }
