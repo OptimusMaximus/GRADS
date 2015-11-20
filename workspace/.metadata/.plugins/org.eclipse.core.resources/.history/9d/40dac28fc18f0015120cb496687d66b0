@@ -59,7 +59,6 @@ public class Driver {
 		//grads.generateProgressSummary("mhunt");
 		grads.getTranscript("mhunt").setLastName("yyyyyyy");
 		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-		System.out.println(grads.getTranscript("mhunt").getLastName());
 		//grads.validateAccess("mhunt");
 		
 //		List<CourseTaken> courses = new ArrayList<CourseTaken>();

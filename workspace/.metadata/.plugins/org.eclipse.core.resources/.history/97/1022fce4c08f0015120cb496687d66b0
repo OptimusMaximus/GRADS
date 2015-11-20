@@ -198,7 +198,7 @@ public class GRADS implements GRADSIntf {
 //			throw new invalidTranscriptException ("invalid transcript lookup");
 		}
 		
-		throw new Exception("Student record of: '" + userId + "' cannot be accessed by: " + getUser());
+		throw new Exception("Student record of: '" + userId + "' cannot be accessed");
 //		return null;
 	}
 
@@ -227,7 +227,7 @@ public class GRADS implements GRADSIntf {
 			if(permanent){
 				String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
 				writeToFile("src/resources/students.txt", representation);	
-				loadRecords("resources/students.txt");
+				//TODO:  Do we need to load the new allRecords?
 			} 
 		} else {
 			throw new Exception("Transcript could not be updated");
@@ -253,7 +253,7 @@ public class GRADS implements GRADSIntf {
 				updateTranscript(userId, transcript, false); 
 			}
 		} else {
-			throw new Exception("Note cannot be added to the record of '" + userId + "' by: " + getUser());
+			throw new Exception("Note cannot be added to the record of: " + userId);
 		}
 	}
 
@@ -266,7 +266,7 @@ public class GRADS implements GRADSIntf {
 			throws ProgressSummaryNotGeneratedException {
 		try{
 			ProgressSummary progressSummary = new ProgressSummary();
-			progressSummary.setRecord(getTranscript(userId));
+			progressSummary.setRecord(this.getTranscript(userId));
 			progressSummary.getResults();
 			String representation = new GsonBuilder().setPrettyPrinting().create().toJson(progressSummary);
 			writeToFile("src/resources/progessSummary.txt", representation);

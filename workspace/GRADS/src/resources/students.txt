@@ -21,7 +21,7 @@
   },
   {
     "student": {
-      "id": "mhunt",
+      "id": "mbr",
       "firstName": "Michelle",
       "lastName": "xxxxxxx"
     },
@@ -218,9 +218,9 @@
   },
   {
     "student": {
-      "id": "mbr",
+      "id": "mhunt",
       "firstName": "Michelle",
-      "lastName": "xxxxxxx"
+      "lastName": "yyyyyyy"
     },
     "department": "COMPUTER_SCIENCE",
     "termBegan": {

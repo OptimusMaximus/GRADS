@@ -55,11 +55,10 @@ public class Driver {
 		//System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
 		
 		//Testing if degree reqs are being loaded
-		//grads.addNote("mhunt", "I'm a note stillllllll!!!", true);
+		grads.addNote("mhunt", "I'm a note stillllllll!!!", true);
 		//grads.generateProgressSummary("mhunt");
 		grads.getTranscript("mhunt").setLastName("yyyyyyy");
 		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-		System.out.println(grads.getTranscript("mhunt").getLastName());
 		//grads.validateAccess("mhunt");
 		
 //		List<CourseTaken> courses = new ArrayList<CourseTaken>();

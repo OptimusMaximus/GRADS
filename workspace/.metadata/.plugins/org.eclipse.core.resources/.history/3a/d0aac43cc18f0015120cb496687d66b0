@@ -227,7 +227,7 @@ public class GRADS implements GRADSIntf {
 			if(permanent){
 				String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
 				writeToFile("src/resources/students.txt", representation);	
-				loadRecords("resources/students.txt");
+				//TODO:  Do we need to load the new allRecords?
 			} 
 		} else {
 			throw new Exception("Transcript could not be updated");
