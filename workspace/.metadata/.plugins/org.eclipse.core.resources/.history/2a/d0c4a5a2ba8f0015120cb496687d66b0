@@ -44,18 +44,5 @@ public class Course {
 		this.name = name;
 		this.numCredits = creditHours;
 	}	
-	
-	public boolean courseIsEqual(Course firstCourse, Course secondCourse) {
-	      if (!firstCourse.getName().equals(secondCourse.getName())){
-	    	  return false;
-	      }
-	      if (!firstCourse.getId().equals(secondCourse.getId())){
-	    	  return false;
-	      }
-	      if (!firstCourse.getNumCredits().equals(secondCourse.getNumCredits())){
-	    	  return false;
-	      }
-	      return true;
-	}
 
 }

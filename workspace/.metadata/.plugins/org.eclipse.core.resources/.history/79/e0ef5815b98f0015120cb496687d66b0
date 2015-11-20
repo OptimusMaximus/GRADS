@@ -267,7 +267,9 @@ public class GRADS implements GRADSIntf {
 			return progressSummary;
 		} catch (Exception e){
 			throw new ProgressSummaryNotGeneratedException("Can not generate progress summary");
-		}		
+		}
+		
+		
 		
 	}
 
@@ -279,15 +281,15 @@ public class GRADS implements GRADSIntf {
 	 */
 	public ProgressSummary simulateCourses(String userId,
 			List<CourseTaken> courses) throws CoursesInvalidException, Exception {
-		Course course = null;
+		
 		boolean flag = false; 
 		StudentRecord record = getTranscript(userId);
 		
 		//Check to see if the courses passed in are valid courses
 		for(int i = 0; i < courses.size(); i++){
 			for(int j = 0; j < allCourses.size(); j++){
-				course = allCourses.get(j);
-				if (course.courseIsEqual(course.getCourse(), courses.get(i).getCourse())){
+				
+				if (courseIsEqual(allCourses.get(j).getCourse(), courses.get(i).getCourse())){
 					flag = true;
 					break;
 				}
@@ -323,4 +325,16 @@ public class GRADS implements GRADSIntf {
 		
 	}
 	
+	public boolean courseIsEqual(Course firstCourse, Course secondCourse) {
+	      if (!firstCourse.getName().equals(secondCourse.getName())){
+	    	  return false;
+	      }
+	      if (!firstCourse.getId().equals(secondCourse.getId())){
+	    	  return false;
+	      }
+	      if (!firstCourse.getNumCredits().equals(secondCourse.getNumCredits())){
+	    	  return false;
+	      }
+	      return true;
+	}
 }

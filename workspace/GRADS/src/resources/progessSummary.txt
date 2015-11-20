@@ -173,7 +173,7 @@
       },
       {
         "term": {
-          "semester": "Sprint",
+          "semester": "Spring",
           "year": 2015
         },
         "grade": "P",
