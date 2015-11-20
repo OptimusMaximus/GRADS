@@ -145,7 +145,7 @@ public class GRADS implements GRADSIntf {
 		// TODO Auto-generated method stub
 		if (!(lookupUser(getUser()).getRole().equals("GRADUATE_PROGRAM_COORDINATOR")))
 		{
-			throw new Exception ("No Access: StudentIDs");
+			throw new Exception ("No Access: Not a Graduate Program Coordinator");
 		}
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -183,7 +183,7 @@ public class GRADS implements GRADSIntf {
 	public StudentRecord getTranscript(String userId) throws Exception 
 	{
 		
-		//validateAccess(getUser());
+		validateAccess(userId);
 		for (int i=0; i< allRecords.size(); i++)
 		{
 			if (allRecords.get(i).getUser().getUserID().equals(userId))
@@ -203,23 +203,26 @@ public class GRADS implements GRADSIntf {
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
 		
-		
-		StudentRecord record = getTranscript(userId);	
-		if(permanent){
-			int index = -1;
-			record = transcript;
-			for (int i=0; i< allRecords.size(); i++){
-				if (allRecords.get(i).getUser().getUserID().equals(userId)){
-					index = i;
-				}
-			}
-			allRecords.remove(index);
-			allRecords.add(transcript);
-			
-		} else {
-			//TODO: still need to work on this
+		validateAccess(userId);
+		if (permanent && transcript.getTempEdit())
+		{
+			throw new Exception ("Update Failed: Temporary edits found in attempted permanent update");
 		}
 		
+		else
+		{
+			int index = getRecordIndex(userId);
+			if (index == -1)
+			{
+				System.out.println("Previous record not found. Adding new record to database");
+				allRecords.add(transcript);
+				if (permanent){/*write out in Json, overwriting recordFile*/}	
+			}
+			else	
+				allRecords.remove(index);
+				allRecords.add(transcript);
+				if (permanent) {/*overwrite Json file, overwriting recordFile*/ }
+		} 
 	}
 
 	/*
@@ -272,11 +275,6 @@ public class GRADS implements GRADSIntf {
 		return null;
 	}
 
-	private int getRecordIndex(String userID) {
-
-		return -1;
-	}
-
 	public void validateSession(String userId) throws Exception
 	{
 		User user = lookupUser(userId);
@@ -305,9 +303,6 @@ public class GRADS implements GRADSIntf {
 		if (!(lookupUser(getUser()).getRole().equals("GRADUATE_PROGRAM_COORDINATOR")) 
 		   && !(accessedUser.getRole().equals("STUDENT") && getUser().equals(userId)))
 		{
-			System.out.println(accessedUser.getRole());
-			System.out.println(lookupUser(getUser()).getUserID());
-			System.out.println(lookupUser(getUser()).getRole());
 			throw new Exception ("No Access: Unauthorized record access");
 		} 
 	}
@@ -325,4 +320,18 @@ public class GRADS implements GRADSIntf {
 		}
 		return user; 
 	}
+	
+	private int getRecordIndex(String userId) throws Exception
+	{
+		int index = -1;
+		for (int i=0; i< allRecords.size(); i++)
+		{
+			if (allRecords.get(i).getUser().getUserID().equals(userId))
+			{
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}	
 }

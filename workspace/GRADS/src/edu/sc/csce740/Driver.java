@@ -42,7 +42,7 @@ public class Driver {
 			e.printStackTrace();
 		}
 	
-		grads.setUser("mmatthews");
+		grads.setUser("mhunt");
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
@@ -54,6 +54,7 @@ public class Driver {
 		grads.getTranscript("mhunt").setLastName("xxxxxxx");
 		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
 		grads.validateAccess("mhunt");
+		
 		
 		//For testing...don't delete!
 //		String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
