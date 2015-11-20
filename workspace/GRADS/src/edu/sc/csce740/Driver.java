@@ -53,7 +53,7 @@ public class Driver {
 		grads.generateProgressSummary("mhunt");
 		grads.getTranscript("mhunt").setLastName("xxxxxxx");
 		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-		grads.validateAccess("mhunt");
+		
 		
 		
 		//For testing...don't delete!

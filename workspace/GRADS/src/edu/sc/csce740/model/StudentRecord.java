@@ -42,6 +42,7 @@ public class StudentRecord {
 		return degreeSought;
 	}
 	public void setDegreeSought(Degree degreeSought) {
+		
 		this.degreeSought = degreeSought;
 	}
 	public Degree getCertificateSought() {
@@ -70,8 +71,9 @@ public class StudentRecord {
 	public boolean getTempEdit() {
 		return tempEdit;
 	}
-	//TODO: why setTempEdit private on class diagram
-	private void setTempEdit(boolean tempEdit) {
+	
+	private void setTempEdit(boolean tempEdit) 
+	{
 		this.tempEdit = tempEdit;
 	}
 	public String getDept() {

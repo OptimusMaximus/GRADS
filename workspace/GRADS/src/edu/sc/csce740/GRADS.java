@@ -233,7 +233,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
-		//validateAccess(userId);
+		validateAccess(userId);
 		StudentRecord record;
 		StudentRecord tempRecord;
 		
@@ -256,7 +256,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public ProgressSummary generateProgressSummary(String userId)
 			throws Exception {
-		//validateAccess(userId);
+		validateAccess(userId);
 		ProgressSummary progessSummary = new ProgressSummary();
 		progessSummary.setRecord(this.getTranscript(userId));
 		progessSummary.getResults();
@@ -269,10 +269,18 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#simulateCourses(java.lang.String,
 	 * java.util.List)
 	 */
-	public ProgressSummary simulateCourses(String userId,
-			List<CourseTaken> courses) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ProgressSummary simulateCourses(String userId, List<CourseTaken> courses) throws Exception 
+	{
+		StudentRecord transcript;
+		transcript = getTranscript(userId);
+		for (int i = 0; i<courses.size(); i++)
+		{
+			CourseTaken course;
+			course = courses(i);
+			transcript.setCoursesTaken(course);
+		}	
+		this.updateTranscript(userId, transcript,false);
+		return generateProgressSummary(userId);
 	}
 
 	public void validateSession(String userId) throws Exception
