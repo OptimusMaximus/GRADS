@@ -233,7 +233,7 @@
                 }
                ],
              "minGPA": 3.0,
-             "maxDegreeTime": 10,
+             "maxDegreeTime": 8,
              "dissertation": true,
              "thesis": false,
              "report": false,

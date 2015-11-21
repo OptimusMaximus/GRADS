@@ -3,6 +3,8 @@
  */
 package edu.sc.csce740.model;
 
+import edu.sc.csce740.GRADS;
+
 /**
  * Class defining a user object for the GRADS system. 
  * @author Maximus Brandel
@@ -17,6 +19,7 @@ public class User {
 	private String lastName;
 	private String role;
 	private String department;
+	private boolean tempEditFlag = false; 
 	
 	public String getUserID(){
 		return id;
@@ -43,10 +46,18 @@ public class User {
 	}
 
 	public void setFirstName(String firstName) {
+		if (GRADS.getRole().equals("STUDENT"))
+		{
+			setUserTempEdit(true);
+		}
 		this.firstName = firstName;
 	}
 
 	public void setLastName(String lastName) {
+		if (GRADS.getRole().equals("STUDENT"))
+		{
+			setUserTempEdit(true);
+		}
 		this.lastName = lastName;
 	}
 	
@@ -62,5 +73,15 @@ public class User {
 		return id + " " + firstName + " "  + lastName + " " + role + " " + department;
 		
 	}
+	public boolean getTempEditStatus()
+	{
+		return tempEditFlag; 
+	}
+	private void setUserTempEdit(boolean flag)
+	{
+		tempEditFlag = flag; 
+	}
+	
+	
 
 }

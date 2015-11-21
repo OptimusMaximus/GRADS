@@ -27,121 +27,142 @@ public abstract class DegreeRequirements {
 	
 	
 	/**
-	 * @return the coreCourses
+	 * Method to get the core course objects for the degree
+	 * @return a list of course obects that define the core courses for the degree
 	 */
 	public List<Course> getCoreCourses() {
 		return coreCourses;
 	}
 	/**
-	 * @param coreCourses the coreCourses to set
+	 * Method to set the core course objects for the degree
+	 * @param coreCourses the list of core course objects to set for the degree
 	 */
 	public void setCoreCourses(List<Course> coreCourses) {
 		this.coreCourses = coreCourses;
 	}
 	/**
-	 * @return the minGPA
+	 * Method to get the minimum GPA allowed for the degree
+	 * @return the minGPA allow for the degree
 	 */
 	public double getMinGPA() {
 		return minGPA;
 	}
 	/**
-	 * @param minGPA the minGPA to set
+	 * Method to set the minimum GPA allowed for the degree
+	 * @param minGPA the minGPA to set for the degree
 	 */
 	public void setMinGPA(double minGPA) {
 		this.minGPA = minGPA;
 	}
 	/**
-	 * @return the maxDegreeTime
+	 * Method to get the maximum degree time in contiguous years allowed to complete the degree
+	 * @return the maxDegreeTime the max degree time allowed to complete the degree
 	 */
 	public int getMaxDegreeTime() {
 		return maxDegreeTime;
 	}
 	/**
+	 * Method to set the maximum degree time in contiguous years allowed to complete the degree
 	 * @param maxDegreeTime the maxDegreeTime to set
 	 */
 	public void setMaxDegreeTime(int maxDegreeTime) {
 		this.maxDegreeTime = maxDegreeTime;
 	}
 	/**
-	 * @return the dissertation
+	 * Method to check if a dissertation is required for the degree
+	 * @return the dissertation true if so, false else
 	 */
 	public boolean isDissertation() {
 		return dissertation;
 	}
 	/**
-	 * @param dissertation the dissertation to set
+	 * Method to set if a dissertation is required for the degree
+	 * @param dissertation the dissertation to set true if so, false else
 	 */
 	public void setDissertation(boolean dissertation) {
 		this.dissertation = dissertation;
 	}
 	/**
-	 * @return the thesis
+	 * Method to check if a thesis is required for the degree
+	 * @return thesis true if so, false else
 	 */
 	public boolean isThesis() {
 		return thesis;
 	}
 	/**
-	 * @param thesis the thesis to set
+	 * Method to set if a thesis is required for the degree
+	 * @param thesis true if so, false else
 	 */
 	public void setThesis(boolean thesis) {
 		this.thesis = thesis;
 	}
 	/**
-	 * @return the report
+	 * Method to check if a report is required for the degree
+	 * @return the report true if so, false else
 	 */
 	public boolean isReport() {
 		return report;
 	}
 	/**
-	 * @param report the report to set
+	 * Method to set if a report is required for the degree
+	 * @param report true if so false else
 	 */
 	public void setReport(boolean report) {
 		this.report = report;
 	}
 	/**
-	 * @return the exam
+	 * Method to check if an exam is required for the degree
+	 * @return the exam true if so false else
 	 */
 	public boolean isExam() {
 		return exam;
 	}
 	/**
-	 * @param exam the exam to set
+	 * Method to set if an exam is required for the degree
+	 * @param exam the exam to set true if so false else
 	 */
 	public void setExam(boolean exam) {
 		this.exam = exam;
 	}
 	/**
-	 * @return the minCSCEElectiveHours
+	 * Method to get the minimum elective hours required for the degree
+	 * @return the minCSCEElectiveHours return as a double
 	 */
 	public double getMinCSCEElectiveHours() {
 		return minCSCEElectiveHours;
 	}
 	/**
-	 * @param minCSCEElectiveHours the minCSCEElectiveHours to set
+	 * Method to set the minimum elective hours for a degree
+	 * @param minCSCEElectiveHours the minCSCEElectiveHours to set as a double
 	 */
 	public void setMinCSCEElectiveHours(double minCSCEElectiveHours) {
 		this.minCSCEElectiveHours = minCSCEElectiveHours;
 	}
 	/**
-	 * @return the degreeName
+	 * Method to get the string name of the degree
+	 * @return the degreeName as a string
 	 */
 	public String getDegreeName() {
 		return degreeName;
 	}
 	/**
-	 * @param degreeName the degreeName to set
+	 * Method to set the string name of the degree
+	 * @param degreeName the degreeName to set as a string
 	 */
 	public void setDegreeName(String degreeName) {
 		this.degreeName = degreeName;
 	}
 	/**
-	 * @return the remainingCoreCourses()
+	 * Method to get the remaining core courses 
+	 * @return the remainingCoreCourses() list of remaining courses required for the degree 
 	 */
 	public List<Course> getRemainingCoreCourses() {
 		return null;
 	}
 	/**
-	 * @param course the course to set
+	 * Method to check if a supplied course is a core course
+	 * @param course the course to check
+	 * @return true if so false else
 	 */
 	public boolean checkCoreCourses(Course course) {
 		return false;

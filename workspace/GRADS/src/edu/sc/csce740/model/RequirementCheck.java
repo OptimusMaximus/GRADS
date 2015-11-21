@@ -39,6 +39,7 @@ public class RequirementCheck {
 	
 	
 	/**
+	 * Method the name of the 
 	 * @return the name
 	 */
 	public String getName() {

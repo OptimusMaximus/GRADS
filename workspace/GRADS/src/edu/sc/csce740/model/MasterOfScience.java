@@ -16,29 +16,47 @@ import edu.sc.csce740.model.Milestone;
  */
 public class MasterOfScience extends DegreeRequirements {
 
+	/**
+	 *Instance variable that lists the milestone objects particular to the MS 
+	 */
 	private List<Milestone> milestones;
 	
+	/* (non-Javadoc)
+	 * @see edu.sc.csce740.model.DegreeRequirements#getMilestones()
+	 */
 	@Override
 	public List<Milestone> getMilestones(){
 		return milestones;
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.sc.csce740.model.DegreeRequirements#addMilestone(edu.sc.csce740.model.Milestone)
+	 */
 	@Override
 	public void addMilestone(Milestone milestone){
 		milestones.add(milestone);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.sc.csce740.model.DegreeRequirements#checkMilestone(edu.sc.csce740.model.Milestone)
+	 */
 	@Override
 	public boolean checkMilestone(Milestone milestone){
 		return milestones.contains(milestone);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.sc.csce740.model.DegreeRequirements#getInternship()
+	 */
 	@Override
 	public Course getInternship() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.sc.csce740.model.DegreeRequirements#setInternship(edu.sc.csce740.model.Course)
+	 */
 	@Override
 	public void setInternship(Course internship) {
 		// TODO Auto-generated method stub
