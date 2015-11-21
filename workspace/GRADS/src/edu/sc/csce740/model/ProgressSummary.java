@@ -1,5 +1,13 @@
 package edu.sc.csce740.model;
 
+/**
+ * Class generating a progress summary for a given student at the University of South Carolina
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
+ *
+ */
 public class ProgressSummary {
 
 	private StudentRecord record;

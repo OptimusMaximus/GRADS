@@ -4,7 +4,11 @@
 package edu.sc.csce740.model;
 
 /**
- * @author brandemr
+ * Class defining a user object for the GRADS system. 
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
 public class User {

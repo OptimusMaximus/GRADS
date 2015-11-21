@@ -33,23 +33,43 @@ import edu.sc.csce740.exception.DataNotRetrievedException;
 import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
 
 /**
- * @author brandemr
+ * Class that implement a graduate tracking system "GRADS" 
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  * 
  */
-/**
- * @author merchane
- *
- */
-/**
- * @author merchane
- *
- */
+
 public class GRADS implements GRADSIntf {
+	/**
+	 * the current session user for the GRADS system
+	 */
 	private String currentUser;
+	/**
+	 * In memory data structure storing all the users in the database
+	 */
 	private List<User> allUsers;
+	
+	/**
+	 *In memory data structure storing all StudentRecord objects of students in CSCE graduate program 
+	 */
 	private List<StudentRecord> allRecords;
+	
+	/**
+	 * In memory data structure storing the current degree requirements for all supported degrees 
+	 */
 	private List<Degree> allDegrees;
+	
+	/**
+	 * In memory data structure storing all CSCE graduate courses that 
+	 * students may take at the University of South Carolina
+	 */
 	private List<Course> allCourses;
+	
+	/**
+	 * The role of the current session user
+	 */
 	private static String role;
 		
 	/**

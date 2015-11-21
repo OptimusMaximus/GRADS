@@ -18,7 +18,11 @@ import com.google.gson.reflect.TypeToken;
 
 
 /**
- * @author brandemr
+ * Class checking and calculating requirements for the <code>ProgressSummary</code>
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
 public class RequirementCheck {

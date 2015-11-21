@@ -6,7 +6,11 @@ package edu.sc.csce740.model;
 import java.util.List;
 
 /**
- * @author brandemr
+ * Abstract class defining elements in a given degree or security certificate at the University of South Carolina
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
 public abstract class DegreeRequirements {

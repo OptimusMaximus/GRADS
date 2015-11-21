@@ -6,7 +6,11 @@ package edu.sc.csce740.model;
 import java.util.List;
 
 /**
- * @author brandemr
+ * Class extending degree requirements for the optional Security Certificate in Computer Science at the University of South Carolina
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
 public class SecurityCertificate extends DegreeRequirements {

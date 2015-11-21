@@ -4,7 +4,11 @@
 package edu.sc.csce740.model;
 
 /**
- * @author brandemr
+ * Class defining fields of milestones in a degree program at the University of South Carolina
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
 public class Milestone {
