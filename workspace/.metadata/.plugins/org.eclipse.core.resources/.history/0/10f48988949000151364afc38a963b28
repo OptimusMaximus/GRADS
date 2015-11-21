@@ -82,6 +82,14 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
+
+	 * @return the allCourses
+	 */
+	public List<Course> getAllCourses() {
+		return allCourses;
+	}
+
+	/**
 	 * Sets the user <code>role</code> for the current session
 	 * @param role the role to set
 	 */

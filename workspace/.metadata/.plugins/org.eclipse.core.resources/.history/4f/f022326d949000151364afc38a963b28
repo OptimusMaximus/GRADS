@@ -97,7 +97,7 @@ public class Course {
 		this.numCredits = creditHours;
 	}	
 	
-
+<<<<<<< HEAD
 	private File getFile(String fileName) {
 		//Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
@@ -105,13 +105,14 @@ public class Course {
 		return file;
 	}
 	
-
+=======
 	/**
 	 * Method to check whether two courses are equivalent in name, id, and number of credits
 	 * @param firstCourse the first course to check
 	 * @param secondCourse the second course to check
 	 * @return true if the courses are equivalent (functionally the same) false otherwise
 	 */
+>>>>>>> b26f745d42d1cad2d55df96b42996867ba4643a1
 	public boolean courseIsEqual(Course firstCourse, Course secondCourse) {
 	      if (!firstCourse.getName().equals(secondCourse.getName())){
 	    	  return false;

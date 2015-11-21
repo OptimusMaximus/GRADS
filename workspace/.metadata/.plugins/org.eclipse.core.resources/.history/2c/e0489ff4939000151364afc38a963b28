@@ -1,9 +1,9 @@
 package edu.sc.csce740.model;
 
-
+<<<<<<< HEAD
 import java.util.List;
 
-
+=======
 /**
  * Class generating a progress summary for a given student at the University of South Carolina
  * @author Maximus Brandel
@@ -12,7 +12,7 @@ import java.util.List;
  * @version 1.00 2015-11-21
  *
  */
-
+>>>>>>> b26f745d42d1cad2d55df96b42996867ba4643a1
 public class ProgressSummary {
 
 	private StudentRecord record;

@@ -4,7 +4,11 @@
 package edu.sc.csce740.model;
 
 /**
- * @author brandemr
+ * Exception Class for GRADS 
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
 public class invalidUserException extends Exception {

@@ -4,6 +4,14 @@ import java.util.List;
 
 import edu.sc.csce740.GRADS;
 
+/**
+ * Class defining a student record object for stuents at the University of South Carolina
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
+ *
+ */
 public class StudentRecord {
 
 	private User student;
@@ -17,7 +25,7 @@ public class StudentRecord {
 	private List<CourseTaken> coursesTaken;
 	private List<Milestone> milestonesSet;
 	private List<String> notes;
-	private boolean tempEdit;
+	private boolean tempEdit = false;
 	
 	public User getUser(){	
 		return student;
@@ -104,10 +112,18 @@ public class StudentRecord {
 	}
 	
 	public void setFirstName(String firstName){
+		if (GRADS.getRole().equals("STUDENT"))
+		{
+			setTempEdit(true);
+		}
 		this.student.setFirstName(firstName);
 	}
 	
 	public void setLastName(String lastName){
+		if (GRADS.getRole().equals("STUDENT"))
+		{
+			setTempEdit(true);
+		}
 		this.student.setLastName(lastName);
 	}
 	

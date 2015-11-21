@@ -82,7 +82,17 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * @return the allCourses
+	 */
+	public List<Course> getAllCourses() {
+		return allCourses;
+	}
+
+	/**
+=======
 	 * Sets the user <code>role</code> for the current session
+>>>>>>> b26f745d42d1cad2d55df96b42996867ba4643a1
 	 * @param role the role to set
 	 */
 	private static void setRole(String role) {

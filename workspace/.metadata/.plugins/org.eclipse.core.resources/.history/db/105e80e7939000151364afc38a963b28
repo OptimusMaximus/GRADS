@@ -39,6 +39,16 @@ public class RequirementCheck {
 //	private List<Course> coursesTaken;
 //	private boolean withinTime;
 	
+<<<<<<< HEAD
+=======
+	/**
+	 * Method the name of the 
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+>>>>>>> b26f745d42d1cad2d55df96b42996867ba4643a1
 
 	private File getFile(String fileName) {
 		//Get file from resources folder

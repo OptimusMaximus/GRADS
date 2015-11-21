@@ -30,7 +30,7 @@ public abstract class DegreeRequirements {
 	
 	/**
 	 * Method to get the core course objects for the degree
-	 * @return a list of course objects that define the core courses for the degree
+	 * @return a list of course obects that define the core courses for the degree
 	 */
 	public List<Course> getCoreCourses() {
 		return coreCourses;
@@ -127,17 +127,23 @@ public abstract class DegreeRequirements {
 		this.exam = exam;
 	}
 	/**
+<<<<<<< HEAD
 	 * @return the additionalCreditHours
-	 * Method to get the minimum additional credit hours required for the degree
-	 * @return the additionalCreditHours return as a double
+=======
+	 * Method to get the minimum elective hours required for the degree
+	 * @return the minCSCEElectiveHours return as a double
+>>>>>>> b26f745d42d1cad2d55df96b42996867ba4643a1
 	 */
 	public int getAdditionalCreditHours() {
 		return additionalCreditHours;
 	}
 	/**
+<<<<<<< HEAD
 	 * @param additionalCreditHours the additionalCreditHours to set
-	 * Method to set the minimum additional credit hours for a degree
-	 * @param additionalCreditHours the additionalCreditHours to set as a double
+=======
+	 * Method to set the minimum elective hours for a degree
+	 * @param minCSCEElectiveHours the minCSCEElectiveHours to set as a double
+>>>>>>> b26f745d42d1cad2d55df96b42996867ba4643a1
 	 */
 	public void setAdditionalCreditHours(int additionalCreditHours) {
 		this.additionalCreditHours = additionalCreditHours;
