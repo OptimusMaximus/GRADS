@@ -38,7 +38,9 @@
              "exam": true,
              "qualifyingExam": false,
              "comprehensiveExam": false,
-             "minCSCEElectiveHours": 11,
+             "additionalCreditHours": 11,
+	     "thesisCreditHours": 0,
+             "degreeBasedCreditHours": 30,
 	     "milestones": [
                  {
                  "milestone": "ACADEMIC_ADVISOR_APPOINTED"                 
@@ -98,7 +100,9 @@
              "exam": true,
              "qualifyingExam": false,
              "comprehensiveExam": false,
-             "minCSCEElectiveHours": 15,
+             "additionalCreditHours": 15,
+	     "thesisCreditHours": 0,
+             "degreeBasedCreditHours": 0,
 	     "milestones": [
                  {
                  "milestone": "ACADEMIC_ADVISOR_APPOINTED"                 
@@ -162,7 +166,9 @@
              "exam": true,
              "qualifyingExam": false,
              "comprehensiveExam": false,
-             "minCSCEElectiveHours": 8,
+             "additionalCreditHours": 8,
+	     "thesisCreditHours": 6,
+             "degreeBasedCreditHours": 24,
              "milestones": [
 		{
                  "milestone": "ACADEMIC_ADVISOR_APPOINTED"                 
@@ -240,9 +246,12 @@
              "exam": false,
              "qualifyingExam": true,
              "comprehensiveExam": true,
-             "minCSCEElectiveHours": 48,
+	     "additionalCreditHours": 20,
+	     "thesisCreditHours": 12,
+             "degreeBasedCreditHours": 48,
              "milestones": [
-		 "milestone": "PROGRAM_OF_STUDY_SUBMITTED"                 
+		 		 {
+		 		 "milestone": "PROGRAM_OF_STUDY_SUBMITTED"                 
                  }, 
                  {
                  "milestone": "QUALIFYING_EXAM_PASSED"                 

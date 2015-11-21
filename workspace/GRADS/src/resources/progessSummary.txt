@@ -196,44 +196,7 @@
     ],
     "tempEdit": false
   },
-  "results": {
-    "passed": false,
-    "gpa": "3.57",
-    "milestonesRemaining": [
-      {
-        "milestone": "PROGRAM_OF_STUDY_SUBMITTED"
-      },
-      {
-        "milestone": "QUALIFYING_EXAM_PASSED"
-      },
-      {
-        "milestone": "DISSERTATION_PROPOSAL_SCHEDULED"
-      },
-      {
-        "milestone": "DISSERTATION_PROPOSAL_APPROVED"
-      },
-      {
-        "milestone": "DISSERTATION_SUBMITTED"
-      },
-      {
-        "milestone": "DISSERTATION_DEFENSE_SCHEDULED"
-      },
-      {
-        "milestone": "DISSERTATION_DEFENSE_PASSED"
-      },
-      {
-        "milestone": "COMPREHENSIVE_EXAM_PASSED"
-      }
-    ],
-    "notes": [
-      "Great student. A++ Would recommend.",
-      "Owes me 20 bucks.",
-      "I\u0027m a note!!!",
-      "I\u0027m a note stillllllll!!!"
-    ],
-    "coreCoursesRemaining": [],
-    "withinTime": true
-  },
+  "results": {},
   "requirementCheckResults": [
     {
       "passed": "true",
@@ -313,6 +276,47 @@
     {
       "passed": "true",
       "name": "TIME_LIMIT_PHD"
+    },
+    {
+      "passed": "false",
+      "name": "MILESTONES_PHD",
+      "details": {
+        "milestones": [
+          {
+            "milestone": "DISSERTATION_ADVISOR_SELECTED",
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            }
+          },
+          {
+            "milestone": "DISSERTATION_COMMITTEE_FORMED",
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            }
+          }
+        ],
+        "notes": [
+          "Missing milestone PROGRAM_OF_STUDY_SUBMITTED",
+          "Missing milestone QUALIFYING_EXAM_PASSED",
+          "Missing milestone DISSERTATION_PROPOSAL_SCHEDULED",
+          "Missing milestone DISSERTATION_PROPOSAL_APPROVED",
+          "Missing milestone DISSERTATION_SUBMITTED",
+          "Missing milestone DISSERTATION_DEFENSE_SCHEDULED",
+          "Missing milestone DISSERTATION_DEFENSE_PASSED",
+          "Missing milestone COMPREHENSIVE_EXAM_PASSED"
+        ]
+      }
+    },
+    {
+      "passed": "false",
+      "name": "ADDITIONAL_CREDITS_PHD",
+      "details": {
+        "notes": [
+          "Must pass -5 more hours of CSCE courses numbered above 700 that are not core courses."
+        ]
+      }
     }
   ]
 }

@@ -52,6 +52,13 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
+	 * @return the allCourses
+	 */
+	public List<Course> getAllCourses() {
+		return allCourses;
+	}
+
+	/**
 	 * @param role the role to set
 	 */
 	private static void setRole(String role) {
@@ -438,4 +445,5 @@ public class GRADS implements GRADSIntf {
 			throw new Exception ("No Access: Unauthorized record access");
 		} 
 	}
+	
 }

@@ -18,7 +18,9 @@ public abstract class DegreeRequirements {
 	private boolean thesis;
 	private boolean report;
 	private boolean exam;
-	private double minCSCEElectiveHours;
+	private int additionalCreditHours;
+	private int degreeBasedCreditHours;
+	private int thesisCreditHours;
 	private String degreeName;
 	
 	
@@ -107,16 +109,40 @@ public abstract class DegreeRequirements {
 		this.exam = exam;
 	}
 	/**
-	 * @return the minCSCEElectiveHours
+	 * @return the additionalCreditHours
 	 */
-	public double getMinCSCEElectiveHours() {
-		return minCSCEElectiveHours;
+	public int getAdditionalCreditHours() {
+		return additionalCreditHours;
 	}
 	/**
-	 * @param minCSCEElectiveHours the minCSCEElectiveHours to set
+	 * @param additionalCreditHours the additionalCreditHours to set
 	 */
-	public void setMinCSCEElectiveHours(double minCSCEElectiveHours) {
-		this.minCSCEElectiveHours = minCSCEElectiveHours;
+	public void setAdditionalCreditHours(int additionalCreditHours) {
+		this.additionalCreditHours = additionalCreditHours;
+	}
+	/**
+	 * @return the degreeBasedCreditHours
+	 */
+	public int getDegreeBasedCreditHours() {
+		return degreeBasedCreditHours;
+	}
+	/**
+	 * @param degreeBasedCreditHours the degreeBasedCreditHours to set
+	 */
+	public void setDegreeBasedCreditHours(int degreeBasedCreditHours) {
+		this.degreeBasedCreditHours = degreeBasedCreditHours;
+	}
+	/**
+	 * @return the thesisCreditHours
+	 */
+	public int getThesisCreditHours() {
+		return thesisCreditHours;
+	}
+	/**
+	 * @param thesisCreditHours the thesisCreditHours to set
+	 */
+	public void setThesisCreditHours(int thesisCreditHours) {
+		this.thesisCreditHours = thesisCreditHours;
 	}
 	/**
 	 * @return the degreeName
@@ -152,4 +178,6 @@ public abstract class DegreeRequirements {
 	public abstract Course getInternship();
 	
 	public abstract void setInternship(Course internship);
+	
+	
 }
