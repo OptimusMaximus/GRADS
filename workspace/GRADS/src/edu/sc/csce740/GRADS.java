@@ -35,6 +35,7 @@ public class GRADS implements GRADSIntf {
 	private List<StudentRecord> allRecords;
 	private List<Degree> allDegrees;
 	private List<Course> allCourses;
+	private static String role; 
 		
 	private File getFile(String fileName) {
 		//Get file from resources folder
@@ -108,7 +109,14 @@ public class GRADS implements GRADSIntf {
 	{
 		// TODO Auto-generated method stub
 		validateSession(userId);
-		this.currentUser = userId;	
+		this.currentUser = userId;
+		role = lookupUser(userId).getRole();
+		
+	}
+
+	public static String getRole()
+	{
+		return role; 
 	}
 
 	/*
@@ -123,6 +131,7 @@ public class GRADS implements GRADSIntf {
 		this.allDegrees = null;
 		this.allRecords = null;
 		this.allUsers = null;
+		role = null;
 	}
 
 	/*
@@ -275,7 +284,7 @@ public class GRADS implements GRADSIntf {
 		transcript = getTranscript(userId);
 		for (int i = 0; i<courses.size(); i++)
 		{
-			transcript.setCoursesTaken(courses.get(i),lookupUser(getUser()));
+			transcript.setCoursesTaken(courses.get(i));
 		}	
 		this.updateTranscript(userId, transcript,false);
 		return generateProgressSummary(userId);
