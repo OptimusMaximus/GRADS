@@ -36,6 +36,14 @@ import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
  * @author brandemr
  * 
  */
+/**
+ * @author merchane
+ *
+ */
+/**
+ * @author merchane
+ *
+ */
 public class GRADS implements GRADSIntf {
 	private String currentUser;
 	private List<User> allUsers;
@@ -45,19 +53,28 @@ public class GRADS implements GRADSIntf {
 	private static String role;
 		
 	/**
-	 * @return the role
+	 * Static method that can check the <code>role</code> of the current user. Used in <code>StudentRecord</code> and 
+	 * <code>User</code>to set the temporary edit flag for security
+	 * @return String role of the current session user
 	 */
 	public static String getRole() {
 		return role;
 	}
 
 	/**
+	 * Sets the user <code>role</code> for the current session
 	 * @param role the role to set
 	 */
 	private static void setRole(String role) {
 		GRADS.role = role;
 	}
-
+	
+	
+	/**
+	 * Convenience method for importing flatfile from the hard disk into memory 
+	 * @param fileName the <code>String</code> name of the file to be retrieved
+	 * @return File being loaded
+	 */
 	private File getFile(String fileName) {
 		//Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
@@ -65,6 +82,12 @@ public class GRADS implements GRADSIntf {
 		return file;
 	 }
 	
+	/**
+	 * Convenience method for exporting data to Json text file
+	 * @param fileName the name of the file to be written to
+	 * @param text the text data being written in Json format
+	 * @throws DataCanNotBeWrittenException data write failure
+	 */
 	public void writeToFile(String fileName, String text) throws DataCanNotBeWrittenException{
 		try{
 			File file = new File(fileName);
@@ -77,9 +100,7 @@ public class GRADS implements GRADSIntf {
 		}
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see edu.sc.csce740.GRADSIntf#loadUsers(java.lang.String)
 	 */
 	public void loadUsers(String usersFile) throws DataNotRetrievedException {
@@ -153,6 +174,7 @@ public class GRADS implements GRADSIntf {
 		this.allDegrees = null;
 		this.allRecords = null;
 		this.allUsers = null;
+		role = null; 
 	}
 
 	/*
@@ -244,6 +266,7 @@ public class GRADS implements GRADSIntf {
 			{
 				System.out.println("Previous record not found. Adding new record to database...");
 				allRecords.add(transcript);
+				System.out.println("New record successfully added");
 				if (permanent){
 					String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
 					writeToFile("src/resources/students.txt", representation);	
@@ -383,6 +406,11 @@ public class GRADS implements GRADSIntf {
 	
 	
 	
+	/**
+	 * Method to retrieve the user object from <code>allUsers</code> associated with the <code>userId</code>
+	 * @param userId the userId of the user to look up 
+	 * @return the user object associated with the <code>userId</code>
+	 */
 	private User lookupUser(String userId) {
 		User user = null;
 		for (int i = 0; i < allUsers.size(); i++) 
@@ -396,7 +424,14 @@ public class GRADS implements GRADSIntf {
 		return user; 
 	}
 	
-	private int getRecordIndex(String userId) throws Exception {
+	
+	/**
+	 * Method to return the position of the user object associated with <code>userId</code>
+	 * @param userId the id of the user we wish to locate the position of within <code>allRecords</code>
+	 * @return the index position of the user object associated with <code>userId</code> in <code>allRecords</code>
+	 */
+	private int getRecordIndex(String userId) 
+	{
 		int index = -1;
 		for (int i=0; i< allRecords.size(); i++)
 		{
@@ -409,6 +444,11 @@ public class GRADS implements GRADSIntf {
 		return index;
 	}
 	
+	/**
+	 * Method that validates the creation of a new GRADS session
+	 * @param userId the id of the user trying to create a new session GRADS
+	 * @throws InvalidUserException 
+	 */
 	private void validateSession(String userId) throws InvalidUserException {
 		User user = lookupUser(userId);
 		if (!(userId.equals(user.getUserID()))) 
@@ -425,6 +465,12 @@ public class GRADS implements GRADSIntf {
 			throw new InvalidUserException ("Session Initiation Failed: Not qualified to access GRADS");
 		} 
 	}
+	
+	/**
+	 * Method that validates user access to front-facing methods in GRADS
+	 * @param userId the id of the user whose record the current session user is attempting to access
+	 * @throws Exception 
+	 */
 	private void validateAccess(String userId) throws Exception {
 		User accessedUser = lookupUser(userId);
 		if (!(userId.equals(accessedUser.getUserID())) 
