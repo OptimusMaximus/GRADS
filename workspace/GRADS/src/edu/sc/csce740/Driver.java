@@ -49,6 +49,7 @@ public class Driver {
 			e.printStackTrace();
 		}
 		grads.setUser("mhunt");
+		
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
@@ -56,10 +57,10 @@ public class Driver {
 		
 		//Testing if degree reqs are being loaded
 		//grads.addNote("mhunt", "I'm a note stillllllll!!!", true);
-		//grads.generateProgressSummary("mhunt");
-		grads.getTranscript("mhunt").setLastName("Hunter");
-		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-		System.out.println(grads.getTranscript("mhunt").getLastName());
+		grads.generateProgressSummary("mhunt");
+//		grads.getTranscript("mhunt").setLastName("Hunter");
+//		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
+//		System.out.println(grads.getTranscript("mhunt").getLastName());
 		//grads.validateAccess("mhunt");
 		
 //		List<CourseTaken> courses = new ArrayList<CourseTaken>();

@@ -1,10 +1,12 @@
 package edu.sc.csce740.model;
 
+import java.util.List;
+
 public class ProgressSummary {
 
 	private StudentRecord record;
 	private RequirementCheck results;
-	
+	private List<RequirementCheckResults> requirementCheckResults;
 	/**
 	 * @return the record
 	 */
@@ -22,12 +24,12 @@ public class ProgressSummary {
 	/**
 	 * @return the results
 	 */
-	public RequirementCheck getResults() {
+	public List<RequirementCheckResults> getResults() {
 		String degreeName = record.getDegreeSought().getDegreeName();
 		results = new RequirementCheck();
-		System.out.println(results.generateResults(record).getNotes());
-		//DegreeRequirements degreeRequirements = results.getDegreeRequirements(degreeName);
-		return results;
+		requirementCheckResults = results.generateResults(record);
+
+		return requirementCheckResults;
 	}
 
 	/**

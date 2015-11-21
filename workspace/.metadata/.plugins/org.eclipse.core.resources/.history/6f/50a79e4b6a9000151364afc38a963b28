@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package edu.sc.csce740.model;
+
+/**
+ * @author brandemr
+ *
+ */
+public class RequirementCheckResults {
+
+	/**
+	 * 
+	 */
+	public RequirementCheckResults() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

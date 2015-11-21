@@ -3,7 +3,7 @@
     "student": {
       "id": "mhunt",
       "firstName": "Michelle",
-      "lastName": "xxxxxxx"
+      "lastName": "Hunter"
     },
     "department": "COMPUTER_SCIENCE",
     "termBegan": {
@@ -233,5 +233,14 @@
     ],
     "coreCoursesRemaining": [],
     "withinTime": true
-  }
+  },
+  "x": [
+    {
+      "passed": "true",
+      "name": "GPA",
+      "details": [
+        "3.57"
+      ]
+    }
+  ]
 }

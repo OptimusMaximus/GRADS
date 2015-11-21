@@ -16,6 +16,8 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import edu.sc.csce740.exception.CoursesInvalidException;
+
 
 /**
  * @author brandemr
@@ -97,15 +99,60 @@ public class RequirementCheck {
 		return file;
 	}
 	
-	public RequirementCheck generateResults(StudentRecord record){
-		//System.out.println(getRemainingMilestones(record).get(0).getMilestone());
+	public List<RequirementCheckResults> generateResults(StudentRecord record){
+		
 		milestonesRemaining = getRemainingMilestones(record);
 		gpa = calculateGPA(record);
-		//System.out.println(isWithinTime(record));
 		withinTime = isWithinTime(record);
 		coreCoursesRemaining = getRemainingCourses(record);
 		notes = getNotes(record);
-		return this;
+		
+		List<RequirementCheckResults> requirementCheckResults = new ArrayList<RequirementCheckResults>();
+		
+		/////////////////////////////
+		RequirementCheckResults gpaRequirementCheckResults = new RequirementCheckResults();
+		gpaRequirementCheckResults.setName("GPA");
+		if (Double.parseDouble(gpa) >= 3.0){
+			gpaRequirementCheckResults.setPassed("true");
+		} else {
+			gpaRequirementCheckResults.setPassed("false");
+		}		
+		Details gpaDetails = new Details();
+		gpaDetails.setGpa(Double.parseDouble(gpa));
+		gpaRequirementCheckResults.setDetails(gpaDetails);
+		requirementCheckResults.add(gpaRequirementCheckResults);
+		/////////////////////////////
+		RequirementCheckResults coreCoursesRequirementCheckResults = new RequirementCheckResults();
+		coreCoursesRequirementCheckResults.setName("CORE_COURSES_" + record.getDegreeSought().getDegreeName().toUpperCase());
+		if (0 == coreCoursesRemaining.size()){
+			coreCoursesRequirementCheckResults.setPassed("true");
+		} else {
+			coreCoursesRequirementCheckResults.setPassed("false");
+			System.out.println(coreCoursesRemaining.size());
+		}
+		Details coreCoursesDetails = new Details();
+		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
+		coursesTaken = record.getCoursesTaken();
+		coreCoursesDetails.setCoursesTaken(getCoreCourses(record));
+		coreCoursesRequirementCheckResults.setDetails(coreCoursesDetails);
+		requirementCheckResults.add(coreCoursesRequirementCheckResults);
+		/////////////////////////////
+		RequirementCheckResults withinTimeRequirementCheckResults = new RequirementCheckResults();
+		withinTimeRequirementCheckResults.setName("TIME_LIMIT_" + record.getDegreeSought().getDegreeName().toUpperCase());
+		if (isWithinTime()){
+			withinTimeRequirementCheckResults.setPassed("true");
+		} else {
+			withinTimeRequirementCheckResults.setPassed("false");
+			Details withinTimeDetails = new Details();
+			List <String> notes = new ArrayList<String>();
+			notes.add("The time limit has been exceeded");
+			withinTimeDetails.setNotes(notes);
+		}
+		requirementCheckResults.add(withinTimeRequirementCheckResults);
+		/////////////////////////////
+		
+		
+		return requirementCheckResults;
 	}
 	
 	
@@ -275,8 +322,7 @@ public class RequirementCheck {
 		List<Course> coursesRemaining = new ArrayList<Course>();
 		List<Course> coreCourses = degreeRequirements.getCoreCourses();
 		List<CourseTaken> coursesCompleted = record.getCoursesTaken();		
-		List<String> coursesCompletedIDs = new ArrayList<String>();
-		
+		List<String> coursesCompletedIDs = new ArrayList<String>();		
 		
 		for(int i = 0; i < coursesCompleted.size(); i++){
 			coursesCompletedIDs.add(coursesCompleted.get(i).getCourse().getId());
@@ -287,6 +333,28 @@ public class RequirementCheck {
 			}
 		}
 		return coursesRemaining;
+	}
+	
+	private List<CourseTaken> getCoreCourses(StudentRecord record){
+		DegreeRequirements  degreeRequirements = getDegreeRequirements(record.getDegreeSought().getDegreeName());
+		List<Course> coreCourses = degreeRequirements.getCoreCourses();
+		List<CourseTaken> coursesCompleted = record.getCoursesTaken();		
+		List<Course> coursesCompletedList = new ArrayList<Course>();		
+		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();;
+		
+		for (int i = 0; i < coursesCompleted.size(); i++){
+			coursesCompletedList.add(coursesCompleted.get(i).getCourse());
+		}
+		for (int j = 0; j < coursesCompleted.size(); j++){
+			for (int i = 0; i < coreCourses.size(); i++){
+				if (coursesCompleted.get(j).getCourse().getId().equals(coreCourses.get(i).getId())){
+					coursesTaken.add(coursesCompleted.get(j));
+				}
+			}
+		
+		}
+		
+		return coursesTaken;
 	}
 	
 	private boolean clearProgress(String userID){
