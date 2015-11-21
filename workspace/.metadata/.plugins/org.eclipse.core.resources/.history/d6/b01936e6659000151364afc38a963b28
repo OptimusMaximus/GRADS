@@ -129,14 +129,11 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void setUser(String userId)  throws InvalidUserException {
 		// TODO Auto-generated method stub
-		validateSession(userId);
-		this.currentUser = userId;	
-		
-//		if (validateUser(userId)) {
-//			this.currentUser = userId;
-//		} else {
-//			throw new InvalidUserException("Invalid user");
-//		}
+		if (validateUser(userId)) {
+			this.currentUser = userId;
+		} else {
+			throw new InvalidUserException("Invalid user");
+		}
 		setRole(lookupUser(userId).getRole());
 		
 	}
@@ -409,20 +406,20 @@ public class GRADS implements GRADSIntf {
 		return index;
 	}
 	
-	private void validateSession(String userId) throws InvalidUserException {
+	private void validateSession(String userId) throws Exception {
 		User user = lookupUser(userId);
 		if (!(userId.equals(user.getUserID()))) 
 		{
-			throw new InvalidUserException ("Session Initation Failed: Not in user database");
+			throw new Exception ("Session Initation Failed: Not in user database");
 		}
 		if(!("COMPUTER_SCIENCE".equals(user.getDepartment())))
 		{
-			throw new InvalidUserException ("Session Initation Failed: Department mismatch");
+			throw new Exception ("Session Initation Failed: Department mismatch");
 		}
 		if (!(user.getRole().equals("STUDENT")) 
 		   && !(user.getRole().equals("GRADUATE_PROGRAM_COORDINATOR")))
 		{
-			throw new InvalidUserException ("Session Initiation Failed: Not qualified to access GRADS");
+			throw new Exception ("Session Initiation Failed: Not qualified to access GRADS");
 		} 
 	}
 	private void validateAccess(String userId) throws Exception {

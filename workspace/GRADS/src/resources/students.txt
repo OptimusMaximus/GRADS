@@ -220,7 +220,7 @@
     "student": {
       "id": "mhunt",
       "firstName": "Michelle",
-      "lastName": "yyyyyyy"
+      "lastName": "Hunter"
     },
     "department": "COMPUTER_SCIENCE",
     "termBegan": {

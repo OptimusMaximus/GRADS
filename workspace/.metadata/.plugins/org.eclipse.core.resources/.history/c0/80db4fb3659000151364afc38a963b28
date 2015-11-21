@@ -70,7 +70,7 @@ public class StudentRecord {
 	public boolean getTempEdit() {
 		return tempEdit;
 	}
-	
+	//TODO: why setTempEdit private on class diagram
 	private void setTempEdit(boolean tempEdit) {
 		this.tempEdit = tempEdit;
 	}
@@ -82,7 +82,7 @@ public class StudentRecord {
 	}
 	
 	public void setCoursesTaken(CourseTaken course){
-		if(GRADS.getRole().equals("STUDENT")){
+		if(GRADS.getRole.equals("STUDENT")){
 			setTempEdit(true);
 		}
 		coursesTaken.add(course);
