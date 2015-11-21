@@ -80,35 +80,40 @@ public class CourseTaken {
 	}
 
 	/**
-	 * @param course
+	 * Method to set the course object
+	 * @param course the object to set
 	 */
 	public void setCourse(Course course) {
 		this.course = course;
 	}
 
 	/**
-	 * @return
+	 * Method to get the term in which the course was taken
+	 * @return the term the course was taken
 	 */
 	public Term getTermTaken() {
 		return term;
 	}
 
-	/**
-	 * @param termTaken
+	/** 
+	 * Method to set the term taken
+	 * @param termTaken sets the term taken
 	 */
 	public void setTermTaken(Term termTaken) {
 		this.term = termTaken;
 	}
 
 	/**
-	 * @param grade
+	 * Method to set the grade made by the student in the course
+	 * @param grade the grade to set for the student
 	 */
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 
 	/**
-	 * @param courseTaken
+	 * Method to set the course object taken by the student
+	 * @param courseTaken the course object taken
 	 */
 	public void setCourseTaken(Course courseTaken) {
 		this.course = courseTaken;

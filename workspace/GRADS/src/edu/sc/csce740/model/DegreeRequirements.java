@@ -147,13 +147,35 @@ public abstract class DegreeRequirements {
 		return false;
 	}
 	
+	/**
+	 * Abstract method to get the list of milestones for a particular degree
+	 * @return the <code>List</code> of milestones for the degree
+	 */
 	public abstract List<Milestone> getMilestones();
 	//public abstract setMilestones();
+	
+	/**
+	 * Abstract method to add milestones to the degree
+	 * @param milestone the milestone to add
+	 */
 	public abstract void addMilestone(Milestone milestone);
 
+	/**
+	 * Abstract method to check if a milestone is in the degree 
+	 * @param milestone the milestone to be checked
+	 * @return true if it is in the degree requirements, else false
+	 */
 	public abstract boolean checkMilestone(Milestone milestone);
 	
+	/**
+	 * Abstract method to get the internship course object for the degree
+	 * @return the internship course object. Null if the degree doesn't require one
+	 */
 	public abstract Course getInternship();
 	
+	/**
+	 * Abstract class to set the internship for the degree
+	 * @param internship the course object of the internship to set
+	 */
 	public abstract void setInternship(Course internship);
 }
