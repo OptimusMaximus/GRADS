@@ -120,12 +120,6 @@ public class RequirementCheck {
 		
 		if(remainingElectiveHours <= 0){
 			additionalCreditsRequirementCheckResults.setPassed("true");
-			Details additionalCreditDetails = new Details();
-			List <String> notes = new ArrayList<String>();
-			notes.add("Additional credit hours taken is: " + totalElectiveHoursTaken 
-					+ ", Additional credit hours needed is: " +  numOfRequiredElectiveHours);
-			additionalCreditDetails.setNotes(notes);
-			additionalCreditsRequirementCheckResults.setDetails(additionalCreditDetails);
 		} else {
 			additionalCreditsRequirementCheckResults.setPassed("false");
 			Details additionalCreditDetails = new Details();
