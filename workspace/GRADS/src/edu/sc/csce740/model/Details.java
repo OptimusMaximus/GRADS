@@ -19,10 +19,6 @@ public class Details {
 	public List<Milestone> milestones;
 	public List<String> notes;
 	
-	
-	public Details() {
-	}
-
 	/**
 	 * @return the gpa
 	 */
