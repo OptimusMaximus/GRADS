@@ -158,12 +158,4 @@ public class ProgressSummary {
 		requirementCheckResults = r.generateResults(record, allCourses);
 		return requirementCheckResults;
 	}
-
-	/**
-	 * @param results the results to set
-	 */
-	public void setResults(List<RequirementCheck> results) {
-		this.requirementCheckResults = results;
-	}
-	
 }
