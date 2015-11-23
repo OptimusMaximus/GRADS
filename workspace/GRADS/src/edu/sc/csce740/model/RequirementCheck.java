@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -141,7 +142,6 @@ public class RequirementCheck {
 			coreCoursesRequirementCheckResults.setPassed("true");
 		} else {
 			coreCoursesRequirementCheckResults.setPassed("false");
-			//System.out.println(coreCoursesRemaining.size());
 		}
 		Details coreCoursesDetails = new Details();
 		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
@@ -213,7 +213,23 @@ public class RequirementCheck {
 			}
 		}
 		
-		for (int i = 0; i < validCoursesTaken.size(); i++){
+		//Remove thesis credits from valid courses
+		List<CourseTaken> coursesTakenWithThesisRemoved = new ArrayList<CourseTaken>();
+		for(int i = 0; i < validCoursesTaken.size(); i++){
+			if(!isThesisCourse(validCoursesTaken.get(i).getCourseTaken())){		        
+				coursesTakenWithThesisRemoved.add(validCoursesTaken.get(i).getCourseTaken());
+			}
+		}		
+		
+		//Also remove courses taken that have no grade
+		List<CourseTaken> coursesTakenWithThesisAndBlankGradeRemoved = new ArrayList<CourseTaken>();
+		for (int i = 0; i < coursesTakenWithThesisRemoved.size(); i++){			
+			if(!coursesTakenWithThesisRemoved.get(i).getCourseTaken().getGrade().equals("_")){
+				coursesTakenWithThesisAndBlankGradeRemoved.add(coursesTakenWithThesisRemoved.get(i).getCourseTaken());
+			}			
+		}		
+
+		for (int i = 0; i < coursesTakenWithThesisAndBlankGradeRemoved.size(); i++){
 			totalNumberOfHoursTaken += Integer.parseInt(validCoursesTaken.get(i).getCourse().getCreditHours());
 		}
 		
@@ -230,6 +246,7 @@ public class RequirementCheck {
 				details.setCoursesTaken(valid700LevelCoursesTaken);
 			} else{
 				degreeBasedCreditsRequirementCheckResults.setPassed("false");
+				details.setCoursesTaken(valid700LevelCoursesTaken);
 				List <String> notes = new ArrayList<String>();
 				notes.add("Must pass "+ remaining700LevelHours +" more hours of CSCE courses numbered above 700.");
 				details.setNotes(notes);
@@ -238,9 +255,10 @@ public class RequirementCheck {
 		} else{
 			if(totalNumberOf700LevelHoursTaken >= numberOfRequiredHours/2 && totalNumberOfHoursTaken >= numberOfRequiredHours){
 				degreeBasedCreditsRequirementCheckResults.setPassed("true");
-				details.setCoursesTaken(validCoursesTaken);
+				details.setCoursesTaken(coursesTakenWithThesisAndBlankGradeRemoved);
 			} else{
 				degreeBasedCreditsRequirementCheckResults.setPassed("false");
+				details.setCoursesTaken(coursesTakenWithThesisAndBlankGradeRemoved);
 				List <String> notes = new ArrayList<String>();
 				notes.add("Must pass " + remainingTotalHours + " more hours of graduate courses.");
 				notes.add("Must pass "+ remaining700LevelHours/2 +" more hours of CSCE courses numbered above 700.");

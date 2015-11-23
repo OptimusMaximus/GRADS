@@ -7,7 +7,7 @@
   "department": "COMPUTER_SCIENCE",
   "termBegan": {
     "semester": "FALL",
-    "year": 2006
+    "year": 2012
   },
   "degreeSought": {
     "name": "PHD",
@@ -122,8 +122,70 @@
       "name": "DEGREE_BASED_CREDITS_PHD",
       "passed": "false",
       "details": {
+        "coursesTaken": [
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2013
+            },
+            "grade": "A",
+            "course": {
+              "name": "Computer Architecture",
+              "id": "csce513",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Compiler Construction",
+              "id": "csce531",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Theory of Computation",
+              "id": "csce551",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2015
+            },
+            "grade": "A",
+            "course": {
+              "name": "Analysis of Algorithms",
+              "id": "csce750",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2015
+            },
+            "grade": "A",
+            "course": {
+              "name": "Seminar in Advances in Computing",
+              "id": "csce791",
+              "numCredits": "1"
+            }
+          }
+        ],
         "notes": [
-          "Must pass 20 more hours of graduate courses.",
+          "Must pass 35 more hours of graduate courses.",
           "Must pass 20 more hours of CSCE courses numbered above 700."
         ]
       }
@@ -162,7 +224,7 @@
     },
     {
       "name": "TIME_LIMIT_PHD",
-      "passed": "false"
+      "passed": "true"
     },
     {
       "name": "GPA",

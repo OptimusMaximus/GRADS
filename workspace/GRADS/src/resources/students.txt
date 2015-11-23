@@ -225,7 +225,7 @@
     "department": "COMPUTER_SCIENCE",
     "termBegan": {
       "semester": "FALL",
-      "year": 2006
+      "year": 2012
     },
     "degreeSought": {
       "name": "PHD",
