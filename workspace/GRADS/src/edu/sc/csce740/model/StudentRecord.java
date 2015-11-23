@@ -2,10 +2,12 @@ package edu.sc.csce740.model;
 
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+
 import edu.sc.csce740.GRADS;
 
 /**
- * Class defining a student record object for stuents at the University of South Carolina
+ * Class defining a student record object for students at the University of South Carolina
  * @author Maximus Brandel
  * @author Ibrahim Elsayed
  * @author Christian Merchant

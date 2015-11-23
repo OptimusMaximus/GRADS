@@ -24,6 +24,7 @@ public abstract class DegreeRequirements {
 	private boolean exam;
 	private int additionalCreditHours;
 	private int degreeBasedCreditHours;
+	private int degreeBasedCreditHoursWithValidMasterDegree;
 	private int thesisCreditHours;
 	private String degreeName;
 	
@@ -153,6 +154,18 @@ public abstract class DegreeRequirements {
 	 */
 	public void setDegreeBasedCreditHours(int degreeBasedCreditHours) {
 		this.degreeBasedCreditHours = degreeBasedCreditHours;
+	}
+	/**
+	 * @return the degreeBasedCreditHoursWithValidMasterDegree
+	 */
+	public int getDegreeBasedCreditHoursWithValidMasterDegree() {
+		return degreeBasedCreditHoursWithValidMasterDegree;
+	}
+	/**
+	 * @param degreeBasedCreditHoursWithValidMasterDegree the degreeBasedCreditHoursWithValidMasterDegree to set
+	 */
+	public void setDegreeBasedCreditHoursWithValidMasterDegree(int degreeBasedCreditHoursWithValidMasterDegree) {
+		this.degreeBasedCreditHoursWithValidMasterDegree = degreeBasedCreditHoursWithValidMasterDegree;
 	}
 	/**
 	 * @return the thesisCreditHours

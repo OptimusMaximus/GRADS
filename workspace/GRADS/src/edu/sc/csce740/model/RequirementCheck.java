@@ -28,17 +28,66 @@ import edu.sc.csce740.exception.CoursesInvalidException;
  *
  */
 public class RequirementCheck {
+
+	/**
+	 * 
+	 */
+	public String name;
+	public String passed;
+	public Details details;
 	
-//	private String name;
-//	private boolean passed;
-//	private String gpa;
-	//private List<Milestone> milestonesRemaining;
-	//TODO: remove double milestoneProgress
-//	private List<String> notes;
-//	private List<Course> coreCoursesRemaining;
-//	private List<Course> coursesTaken;
-//	private boolean withinTime;
 	
+	public RequirementCheck() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	/**
+	 * @return the passed
+	 */
+	public String getPassed() {
+		return passed;
+	}
+
+
+	/**
+	 * @param passed the passed to set
+	 */
+	public void setPassed(String passed) {
+		this.passed = passed;
+	}
+
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	/**
+	 * @return the details
+	 */
+	public Details getDetails() {
+		return details;
+	}
+
+
+	/**
+	 * @param details the details to set
+	 */
+	public void setDetails(Details details) {
+		this.details = details;
+	}
 
 	private File getFile(String fileName) {
 		//Get file from resources folder
@@ -47,28 +96,32 @@ public class RequirementCheck {
 		return file;
 	}
 	
-	public List<RequirementCheckResults> generateResults(StudentRecord record){
+	public List<RequirementCheck> generateResults(StudentRecord record, List<Course> allCourses){
 		
-//		milestonesRemaining = getRemainingMilestones(record);
-//		gpa = calculateGPA(record);
-//		withinTime = isWithinTime(record);
-//		coreCoursesRemaining = getRemainingCourses(record);
-//		notes = getNotes(record);
+		List<RequirementCheck> requirementCheckResults = new ArrayList<RequirementCheck>();
 		
-		List<RequirementCheckResults> requirementCheckResults = new ArrayList<RequirementCheckResults>();
-
-		requirementCheckResults.add(getGpaRequirementCheckResults(record, calculateGPA(record)));
+		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
+		coursesTaken = record.getCoursesTaken();
+		
+		List<CourseTaken> validCoursesTaken = new ArrayList<CourseTaken>();
+		validCoursesTaken = getValidCoursesTaken(coursesTaken, allCourses);		
+			
+		List<CourseTaken> valid700LevelCoursesTaken = new ArrayList<CourseTaken>();
+		valid700LevelCoursesTaken = getValid700LevelCoursesTaken(validCoursesTaken, allCourses);
+		
 		requirementCheckResults.add(getCoreCoursesRequirementCheckResults(record, getRemainingCourses(record)));
+		requirementCheckResults.add(getAdditionalCreditsRequirementCheckResults(record, valid700LevelCoursesTaken));
+		requirementCheckResults.add(getDegreeBasedCreditsRequirementCheckResults(record, validCoursesTaken, valid700LevelCoursesTaken));
+		requirementCheckResults.add(getThesisCreditsRequirementCheckResults(record, validCoursesTaken));
 		requirementCheckResults.add(getWithinTimeRequirementCheckResults(record));
-		requirementCheckResults.add(getMilestonesRequirementCheckResults(record, getRemainingMilestones(record)));
-		requirementCheckResults.add(getAdditionalCreditsRequirementCheckResults(record));		
+		requirementCheckResults.add(getGpaRequirementCheckResults(record, calculateGPA(record)));
+		requirementCheckResults.add(getMilestonesRequirementCheckResults(record, getRemainingMilestones(record)));		
 		
 		return requirementCheckResults;
 	}
 	
-	
-	private RequirementCheckResults getGpaRequirementCheckResults(StudentRecord record, String gpa) {
-		RequirementCheckResults gpaRequirementCheckResults = new RequirementCheckResults();
+	private RequirementCheck getGpaRequirementCheckResults(StudentRecord record, String gpa) {
+		RequirementCheck gpaRequirementCheckResults = new RequirementCheck();
 		gpaRequirementCheckResults.setName("GPA");
 		if (Double.parseDouble(gpa) >= 3.0){
 			gpaRequirementCheckResults.setPassed("true");
@@ -81,14 +134,14 @@ public class RequirementCheck {
 		return gpaRequirementCheckResults;
 	}
 
-	private RequirementCheckResults getCoreCoursesRequirementCheckResults(StudentRecord record, List<Course> coreCoursesRemaining) {
-		RequirementCheckResults coreCoursesRequirementCheckResults = new RequirementCheckResults();
+	private RequirementCheck getCoreCoursesRequirementCheckResults(StudentRecord record, List<Course> coreCoursesRemaining) {
+		RequirementCheck coreCoursesRequirementCheckResults = new RequirementCheck();
 		coreCoursesRequirementCheckResults.setName("CORE_COURSES_" + record.getDegreeSought().getDegreeName().toUpperCase());
 		if (0 == coreCoursesRemaining.size()){
 			coreCoursesRequirementCheckResults.setPassed("true");
 		} else {
 			coreCoursesRequirementCheckResults.setPassed("false");
-			System.out.println(coreCoursesRemaining.size());
+			//System.out.println(coreCoursesRemaining.size());
 		}
 		Details coreCoursesDetails = new Details();
 		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
@@ -98,27 +151,23 @@ public class RequirementCheck {
 		return coreCoursesRequirementCheckResults;
 	}
 	
-	private RequirementCheckResults getAdditionalCreditsRequirementCheckResults(StudentRecord record) {
-		RequirementCheckResults additionalCreditsRequirementCheckResults = new RequirementCheckResults();
+	private RequirementCheck getAdditionalCreditsRequirementCheckResults(StudentRecord record, List<CourseTaken> valid700LevelCoursesTaken) {
+		RequirementCheck additionalCreditsRequirementCheckResults = new RequirementCheck();
 		additionalCreditsRequirementCheckResults.setName("ADDITIONAL_CREDITS_" + record.getDegreeSought().getDegreeName().toUpperCase());
+		
 		int totalElectiveHoursTaken = 0;
 		int remainingElectiveHours = 0;
-		int numOfRequiredElectiveHours = getNumberOfAdditionalHours(record.getDegreeSought().getDegreeName());
-		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
-		coursesTaken = record.getCoursesTaken();
-		Course course = new Course();
-
-		for (int i=0; i< coursesTaken.size(); i++){
-			if (!course.isCoreCourse(record.getDegreeSought().getDegreeName(), coursesTaken.get(i).getCourse())){
-				totalElectiveHoursTaken += Integer.parseInt(coursesTaken.get(i).getCourse().getCreditHours());
-			}
-		}
-
-		remainingElectiveHours = numOfRequiredElectiveHours - totalElectiveHoursTaken;
-		System.out.println(numOfRequiredElectiveHours);
-		System.out.println(totalElectiveHoursTaken);
+		int numOfRequiredElectiveHours = getNumberOfAdditionalHours(record.getDegreeSought().getDegreeName());				
 		
-		if(remainingElectiveHours <= 0){
+		Course course = new Course();
+		for (int i = 0; i < valid700LevelCoursesTaken.size(); i++){
+			if (!course.isCoreCourse(record.getDegreeSought().getDegreeName(), valid700LevelCoursesTaken.get(i).getCourse())){
+				totalElectiveHoursTaken += Integer.parseInt(valid700LevelCoursesTaken.get(i).getCourse().getCreditHours());
+			}
+		}		
+		remainingElectiveHours = numOfRequiredElectiveHours - totalElectiveHoursTaken;
+		
+		if(remainingElectiveHours <= 0 ){
 			additionalCreditsRequirementCheckResults.setPassed("true");
 			Details additionalCreditDetails = new Details();
 			List <String> notes = new ArrayList<String>();
@@ -134,14 +183,111 @@ public class RequirementCheck {
 			additionalCreditDetails.setNotes(notes);
 			additionalCreditsRequirementCheckResults.setDetails(additionalCreditDetails);
 		}
-//		course.isCoreCourse()
-		//coreCoursesDetails.setCoursesTaken(getCoreCourses(record));
 		
 		return additionalCreditsRequirementCheckResults;
 	}
 
-	private RequirementCheckResults getWithinTimeRequirementCheckResults(StudentRecord record) {
-		RequirementCheckResults withinTimeRequirementCheckResults = new RequirementCheckResults();
+	private RequirementCheck getDegreeBasedCreditsRequirementCheckResults(StudentRecord record, 
+			List<CourseTaken> validCoursesTaken, List<CourseTaken> valid700LevelCoursesTaken){
+		RequirementCheck degreeBasedCreditsRequirementCheckResults = new RequirementCheck();
+		degreeBasedCreditsRequirementCheckResults.setName("DEGREE_BASED_CREDITS_" + record.getDegreeSought().getDegreeName().toUpperCase());
+		
+		String degreeName = record.getDegreeSought().getDegreeName();
+		int numberOfRequiredHours = 0;
+		int totalNumberOf700LevelHoursTaken = 0;
+		int totalNumberOfHoursTaken = 0;
+		int remainingTotalHours = 0;
+		int remaining700LevelHours = 0;
+		boolean masterDegreeFlag = false;
+		
+		String tempDegreeName;
+		for (int i = 0; i < record.getPreviousDegrees().size(); i++){
+			tempDegreeName = record.getPreviousDegrees().get(i).getDegreeName();
+			if(tempDegreeName == "MS" || tempDegreeName == "MENG" || tempDegreeName == "MSE"){
+				numberOfRequiredHours = getNumberOfDegreeBasedHoursForPreviousMasterDegree(degreeName);
+				masterDegreeFlag = true;
+				break;
+			}
+			else{
+				numberOfRequiredHours = getNumberOfDegreeBasedHours(degreeName);
+			}
+		}
+		
+		for (int i = 0; i < validCoursesTaken.size(); i++){
+			totalNumberOfHoursTaken += Integer.parseInt(validCoursesTaken.get(i).getCourse().getCreditHours());
+		}
+		
+		for (int i = 0; i < valid700LevelCoursesTaken.size(); i++){
+			totalNumberOf700LevelHoursTaken += Integer.parseInt(valid700LevelCoursesTaken.get(i).getCourse().getCreditHours());
+		}
+		remaining700LevelHours = numberOfRequiredHours - totalNumberOf700LevelHoursTaken;
+		remainingTotalHours = numberOfRequiredHours - totalNumberOfHoursTaken;
+
+		Details details = new Details();		
+		if(masterDegreeFlag){
+			if(totalNumberOf700LevelHoursTaken >= numberOfRequiredHours ){
+				degreeBasedCreditsRequirementCheckResults.setPassed("true");
+				details.setCoursesTaken(valid700LevelCoursesTaken);
+			} else{
+				degreeBasedCreditsRequirementCheckResults.setPassed("false");
+				List <String> notes = new ArrayList<String>();
+				notes.add("Must pass "+ remaining700LevelHours +" more hours of CSCE courses numbered above 700.");
+				details.setNotes(notes);
+				
+			}
+		} else{
+			if(totalNumberOf700LevelHoursTaken >= numberOfRequiredHours/2 && totalNumberOfHoursTaken >= numberOfRequiredHours){
+				degreeBasedCreditsRequirementCheckResults.setPassed("true");
+				details.setCoursesTaken(validCoursesTaken);
+			} else{
+				degreeBasedCreditsRequirementCheckResults.setPassed("false");
+				List <String> notes = new ArrayList<String>();
+				notes.add("Must pass " + remainingTotalHours + " more hours of graduate courses.");
+				notes.add("Must pass "+ remaining700LevelHours/2 +" more hours of CSCE courses numbered above 700.");
+				details.setNotes(notes);						
+			}
+		}	
+		degreeBasedCreditsRequirementCheckResults.setDetails(details);
+		return degreeBasedCreditsRequirementCheckResults;
+	}
+	
+	private RequirementCheck getThesisCreditsRequirementCheckResults(StudentRecord record,
+			List<CourseTaken> validCoursesTaken) {
+		RequirementCheck thesisCreditsRequirementCheckResults = new RequirementCheck();
+		thesisCreditsRequirementCheckResults.setName("THESIS_CREDITS_" + record.getDegreeSought().getDegreeName().toUpperCase());
+		
+		String degreeName = record.getDegreeSought().getDegreeName();
+		int numberOfRequiredThesisCreditHours = getNumberOfThesisCreditHours(degreeName);
+		int totalNumberOfThesisHours = 0;
+		int remainingThesisHours = 0;
+		List<CourseTaken> thesisCoursesTaken = new ArrayList<CourseTaken>();
+		
+		for(int i = 0; i < validCoursesTaken.size(); i++){
+			if(isThesisCourse(validCoursesTaken.get(i))){
+				totalNumberOfThesisHours += Integer.parseInt(validCoursesTaken.get(i).getCourse().getCreditHours());
+				thesisCoursesTaken.add(validCoursesTaken.get(i).getCourseTaken());
+			}
+		}
+		remainingThesisHours = numberOfRequiredThesisCreditHours - totalNumberOfThesisHours;
+		
+		
+		Details details = new Details();
+		if(totalNumberOfThesisHours >= numberOfRequiredThesisCreditHours){
+			thesisCreditsRequirementCheckResults.setPassed("true");
+			details.setCoursesTaken(thesisCoursesTaken);			
+		} else{
+			thesisCreditsRequirementCheckResults.setPassed("false");					
+			List <String> notes = new ArrayList<String>();
+			notes.add("Must pass " + remainingThesisHours + " more hours of thesis courses.");
+			details.setNotes(notes);
+		}		
+		thesisCreditsRequirementCheckResults.setDetails(details);
+		
+		return thesisCreditsRequirementCheckResults;
+	}
+	
+	private RequirementCheck getWithinTimeRequirementCheckResults(StudentRecord record) {
+		RequirementCheck withinTimeRequirementCheckResults = new RequirementCheck();
 		withinTimeRequirementCheckResults.setName("TIME_LIMIT_" + record.getDegreeSought().getDegreeName().toUpperCase());
 		if (isWithinTime(record)){
 			withinTimeRequirementCheckResults.setPassed("true");
@@ -155,14 +301,13 @@ public class RequirementCheck {
 		return withinTimeRequirementCheckResults;
 	}
 
-	private RequirementCheckResults getMilestonesRequirementCheckResults(StudentRecord record, List<Milestone> milestonesRemaining) {
-		RequirementCheckResults milestonesRequirementCheckResults = new RequirementCheckResults();
+	private RequirementCheck getMilestonesRequirementCheckResults(StudentRecord record, List<Milestone> milestonesRemaining) {
+		RequirementCheck milestonesRequirementCheckResults = new RequirementCheck();
 		milestonesRequirementCheckResults.setName("MILESTONES_" + record.getDegreeSought().getDegreeName().toUpperCase());
 		if (0 == milestonesRemaining.size()){
 			milestonesRequirementCheckResults.setPassed("true");
 		} else {
 			milestonesRequirementCheckResults.setPassed("false");
-			System.out.println(milestonesRemaining.size());
 		}
 		Details milestoneDetails = new Details();
 		List<Milestone> milestones = new ArrayList<Milestone>();
@@ -177,55 +322,57 @@ public class RequirementCheck {
 		return milestonesRequirementCheckResults;
 	}
 
-	public DegreeRequirements getDegreeRequirements(String degreeName){
+	private DegreeRequirements getDegreeRequirements(String degreeName){
 		List<DegreeRequirements> degreeRequirements = null;
-		
+		int index = -1;
 		try{
 			switch(degreeName){
 			case "PHD": 
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<DoctorOfPhilosophy>>() {}.getType());
-						return degreeRequirements.get(3);
+						break;
 			case "MS":
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<MasterOfScience>>() {
 						}.getType());
-						return degreeRequirements.get(2);
+						break;
 			case "MSE":	
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<MasterOfSoftwareEngineering>>() {
 						}.getType());
-						return degreeRequirements.get(1);
+						break;
 			case "ME":
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<MasterOfEngineering>>() {
 						}.getType());
-						return degreeRequirements.get(0);
+						break;
 			case "CC":
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<SecurityCertificate>>() {
 						}.getType());
-						return degreeRequirements.get(4);
+						break;
 			default:
 						return null;
 						
 			}			
 		} catch (JsonIOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonSyntaxException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		
+		for(int i = 0; i < degreeRequirements.size(); i++){
+			if(degreeName.equals(degreeRequirements.get(i).getDegreeName())){
+				index = i;
+			}
+		}
+		return degreeRequirements.get(index);
 	}
 	
 	private String calculateGPA(StudentRecord record){
 		int totalAttemptedHours = 0;
-		int totalPassedHours = 0;
 		double qualityPoints = 0.0;
 		List<CourseTaken> coursesTaken = record.getCoursesTaken();
 		
@@ -247,12 +394,8 @@ public class RequirementCheck {
 				totalAttemptedHours = totalAttemptedHours - numOfCredits;
 			} else if (grade.toUpperCase().equals("_")){
 				totalAttemptedHours = totalAttemptedHours - numOfCredits;
-			}
-				
-				
+			}				
 		}
-		System.out.println(totalAttemptedHours);
-		System.out.println(qualityPoints);
 		DecimalFormat f = new DecimalFormat("##.00");
 		return f.format(qualityPoints / totalAttemptedHours);
 	}
@@ -307,9 +450,9 @@ public class RequirementCheck {
 		}
 		
 		if (degreeSought.equals("PHD")){		
-			if((currentYear - yearBegan) < 10){
+			if((currentYear - yearBegan) < 8){
 				return true;
-			} else if ((currentYear - yearBegan) == 10){
+			} else if ((currentYear - yearBegan) == 8){
 				if(currentSemester >= semesterBeganCode){
 					return true;
 				} else{
@@ -331,11 +474,6 @@ public class RequirementCheck {
 				return false;
 			}
 		}
-//		System.out.println(currentYear + " hhhhhhhhh: " + currentMonth);
-	}
-	
-	private boolean calcPassed(RequirementCheck check){
-		return false;
 	}
 	
 	private List<Course> getRemainingCourses(StudentRecord record){
@@ -371,17 +509,11 @@ public class RequirementCheck {
 				if (coursesCompleted.get(j).getCourse().getId().equals(coreCourses.get(i).getId())){
 					coursesTaken.add(coursesCompleted.get(j));
 				}
-			}
-		
-		}
-		
+			}		
+		}		
 		return coursesTaken;
 	}
 	
-	private boolean clearProgress(String userID){
-		return false;
-	}
-
 	/**
 	 * @return the notes
 	 */
@@ -389,49 +521,70 @@ public class RequirementCheck {
 		return record.getNotes();
 	}
 	
-	public int getNumberOfAdditionalHours(String degreeName) {
-		List<DegreeRequirements> degreeRequirements = null;
-
-		try{
-			switch(degreeName){
-			case "PHD": 
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
-						new TypeToken<List<DoctorOfPhilosophy>>() {}.getType());
-						return degreeRequirements.get(3).getAdditionalCreditHours();
-			case "MS":
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
-						new TypeToken<List<MasterOfScience>>() {
-						}.getType());
-						return degreeRequirements.get(2).getAdditionalCreditHours();
-			case "MSE":	
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
-						new TypeToken<List<MasterOfSoftwareEngineering>>() {
-						}.getType());
-						return degreeRequirements.get(1).getAdditionalCreditHours();
-
-			case "ME":
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
-						new TypeToken<List<MasterOfEngineering>>() {
-						}.getType());
-						return degreeRequirements.get(0).getAdditionalCreditHours();
-			case "CC":
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
-						new TypeToken<List<SecurityCertificate>>() {
-						}.getType());
-						return degreeRequirements.get(4).getAdditionalCreditHours();
-			default:
-						return 0; 
+	//Returns true if valid CSCE course
+	private boolean isValidCourse(CourseTaken courseTaken, List<Course> allCourses){
+		for(int i = 0; i < allCourses.size(); i++){
+			if (courseTaken.getCourse().courseIsEqual(courseTaken.getCourse(), allCourses.get(i))){
+				return true;
 			}
-			} catch (JsonIOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JsonSyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 		}
-		return 0;
+		return false;
+	}
+	
+	//Returns list of valid courses taken
+	private List<CourseTaken> getValidCoursesTaken(List<CourseTaken> coursesTaken, List<Course> allCourses){
+		List<CourseTaken> validCoursesTaken = new ArrayList<CourseTaken>(); 
+		for (int i = 0; i < coursesTaken.size(); i++){
+			if((isValidCourse(coursesTaken.get(i), allCourses))){
+				validCoursesTaken.add(coursesTaken.get(i).getCourseTaken());
+			}			
+		}
+		return validCoursesTaken;
+	}
+	
+	//Returns a list of valid 700 level courses taken
+	private List<CourseTaken> getValid700LevelCoursesTaken(List<CourseTaken> validCoursesTaken, List<Course> allCourses){
+		List<CourseTaken> valid700LevelCoursesTaken = new ArrayList<CourseTaken>();
+		for (int i = 0; i < validCoursesTaken.size(); i++){
+			if((isValid700LevelCourse(validCoursesTaken.get(i)))){
+				valid700LevelCoursesTaken.add(validCoursesTaken.get(i).getCourseTaken());
+			}			
+		}
+		return valid700LevelCoursesTaken;
+	}
+	
+	private boolean isValid700LevelCourse(CourseTaken courseTaken){
+		int level = Integer.parseInt(courseTaken.getCourse().getId().substring(4, 7));
+		if(level >= 700 && level != 799 && level != 899){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private boolean isThesisCourse(CourseTaken courseTaken){
+		int level = Integer.parseInt(courseTaken.getCourse().getId().substring(4, 7));
+		if(level == 799 || level == 899){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	private int getNumberOfAdditionalHours(String degreeName) {
+		return getDegreeRequirements(degreeName).getAdditionalCreditHours();
+	}
+
+	private int getNumberOfDegreeBasedHours(String degreeName) {
+		return getDegreeRequirements(degreeName).getDegreeBasedCreditHours();
+	}
+	
+	private int getNumberOfDegreeBasedHoursForPreviousMasterDegree(String degreeName) {
+		return getDegreeRequirements(degreeName).getDegreeBasedCreditHoursWithValidMasterDegree();
+	}
+	
+	private int getNumberOfThesisCreditHours(String degreeName){
+		return getDegreeRequirements(degreeName).getThesisCreditHours();
 	}
 }

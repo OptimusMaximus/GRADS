@@ -249,6 +249,7 @@
 	     "additionalCreditHours": 20,
 	     "thesisCreditHours": 12,
              "degreeBasedCreditHours": 48,
+             "degreeBasedCreditHoursWithValidMasterDegree": 24,
              "milestones": [
 		 		 {
 		 		 "milestone": "PROGRAM_OF_STUDY_SUBMITTED"                 

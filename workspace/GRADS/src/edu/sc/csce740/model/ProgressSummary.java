@@ -1,6 +1,7 @@
 package edu.sc.csce740.model;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,39 +16,130 @@ import java.util.List;
 
 public class ProgressSummary {
 
-	private StudentRecord record;
-	private RequirementCheck results;
-	private List<RequirementCheckResults> requirementCheckResults;
+	
+	private User student;
+	private String department;
+	private Term termBegan;
+	private Degree degreeSought;
+	private List<User> advisors;
+	private List<User> committee;
+	private List<RequirementCheck> requirementCheckResults;
+	//private StudentRecord record;
+
+//	/**
+//	 * @return the record
+//	 */
+//	public StudentRecord getRecord() {
+//		return record;
+//	}
+//
+//	/**
+//	 * @param record the record to set
+//	 */
+//	public void setRecord(StudentRecord record) {
+//		this.record = record;
+//	}
+
 	/**
-	 * @return the record
+	 * @return the student
 	 */
-	public StudentRecord getRecord() {
-		return record;
+	public User getStudent() {
+		return student;
 	}
 
 	/**
-	 * @param record the record to set
+	 * @param student the student to set
 	 */
-	public void setRecord(StudentRecord record) {
-		this.record = record;
+	public void setStudent(User student) {
+		this.student = student;
+	}
+
+	/**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	/**
+	 * @return the termBegan
+	 */
+	public Term getTermBegan() {
+		return termBegan;
+	}
+
+	/**
+	 * @param termBegan the termBegan to set
+	 */
+	public void setTermBegan(Term termBegan) {
+		this.termBegan = termBegan;
+	}
+
+	/**
+	 * @return the degreeSought
+	 */
+	public Degree getDegreeSought() {
+		return degreeSought;
+	}
+
+	/**
+	 * @param degreeSought the degreeSought to set
+	 */
+	public void setDegreeSought(Degree degreeSought) {
+		this.degreeSought = degreeSought;
+	}
+
+	/**
+	 * @return the advisors
+	 */
+	public List<User> getAdvisors() {
+		return advisors;
+	}
+
+	/**
+	 * @param advisors the advisors to set
+	 */
+	public void setAdvisors(List<User> advisors) {
+		this.advisors = advisors;
+	}
+
+	/**
+	 * @return the committee
+	 */
+	public List<User> getCommittee() {
+		return committee;
+	}
+
+	/**
+	 * @param committee the committee to set
+	 */
+	public void setCommittee(List<User> committee) {
+		this.committee = committee;
 	}
 
 	/**
 	 * @return the results
 	 */
-	public List<RequirementCheckResults> getResults() {
-		String degreeName = record.getDegreeSought().getDegreeName();
-		results = new RequirementCheck();
-		requirementCheckResults = results.generateResults(record);
-
+	public List<RequirementCheck> getResults(StudentRecord record, List<Course> allCourses) {
+		//String degreeName = record.getDegreeSought().getDegreeName();
+		
+		RequirementCheck r = new RequirementCheck();
+		requirementCheckResults = r.generateResults(record, allCourses);
 		return requirementCheckResults;
 	}
 
 	/**
 	 * @param results the results to set
 	 */
-	public void setResults(RequirementCheck results) {
-		this.results = results;
+	public void setResults(List<RequirementCheck> results) {
+		this.requirementCheckResults = results;
 	}
 	
 }

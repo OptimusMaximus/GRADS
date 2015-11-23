@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -41,6 +43,14 @@ import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
  * 
  */
 
+/**
+ * @author Maximus
+ *
+ */
+/**
+ * @author Maximus
+ *
+ */
 public class GRADS implements GRADSIntf {
 	/**
 	 * the current session user for the GRADS system
@@ -55,11 +65,6 @@ public class GRADS implements GRADSIntf {
 	 *In memory data structure storing all StudentRecord objects of students in CSCE graduate program 
 	 */
 	private List<StudentRecord> allRecords;
-	
-	/**
-	 * In memory data structure storing the current degree requirements for all supported degrees 
-	 */
-	private List<Degree> allDegrees;
 	
 	/**
 	 * In memory data structure storing all CSCE graduate courses that 
@@ -96,7 +101,6 @@ public class GRADS implements GRADSIntf {
 	 * @return File being loaded
 	 */
 	private File getFile(String fileName) {
-		//Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource(fileName).getFile());
 		return file;
@@ -191,7 +195,6 @@ public class GRADS implements GRADSIntf {
 		// TODO Auto-generated method stub
 		this.currentUser = null;
 		this.allCourses = null;
-		this.allDegrees = null;
 		this.allRecords = null;
 		this.allUsers = null;
 		role = null; 
@@ -336,6 +339,7 @@ public class GRADS implements GRADSIntf {
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
 		validateAccess(userId);
+		//TODO: work on this
 //		if (validateAccess(userId)){
 //			StudentRecord transcript;
 //			transcript = getTranscript(userId);
@@ -359,11 +363,20 @@ public class GRADS implements GRADSIntf {
 	public ProgressSummary generateProgressSummary(String userId)
 			throws ProgressSummaryNotGeneratedException {
 		try{
+			StudentRecord record = getTranscript(userId);
 			ProgressSummary progressSummary = new ProgressSummary();
-			progressSummary.setRecord(getTranscript(userId));
-			progressSummary.getResults();
-			String representation = new GsonBuilder().setPrettyPrinting().create().toJson(progressSummary);
-			writeToFile("src/resources/progessSummary.txt", representation);
+			//progressSummary.setRecord(record);
+			progressSummary.setStudent(record.getUser());
+			progressSummary.setDepartment(record.getDept());
+			progressSummary.setTermBegan(record.getTermBegan());
+			progressSummary.setDegreeSought(record.getDegreeSought());
+			progressSummary.setAdvisors(record.getAdvisors());
+			progressSummary.setCommittee(record.getCommittee());
+			progressSummary.getResults(record, allCourses);
+			
+			String representation = new GsonBuilder().setExclusionStrategies(new ExclStrat()).setPrettyPrinting().create().toJson(progressSummary);
+			writeToFile("src/resources/progressSummary.txt", representation);
+			
 			return progressSummary;
 		} catch (Exception e){
 			throw new ProgressSummaryNotGeneratedException("Can not generate progress summary");
@@ -504,5 +517,20 @@ public class GRADS implements GRADSIntf {
 			throw new Exception ("No Access: Unauthorized record access");
 		} 
 	}
+	
+	
+	public class ExclStrat implements ExclusionStrategy {
+
+        public boolean shouldSkipClass(Class<?> arg0) {
+            return false;
+        }
+
+        public boolean shouldSkipField(FieldAttributes f) {
+
+            return (f.getDeclaringClass() == StudentRecord.class && f.getName().equals("tempEdit")) ||
+            		(f.getDeclaringClass() == User.class && f.getName().equals("tempEditFlag"));
+        }
+
+    }
 	
 }
