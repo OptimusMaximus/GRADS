@@ -128,13 +128,6 @@ public class User {
 		this.department = department;
 	}	
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString(){
-		return id + " " + firstName + " "  + lastName + " " + role + " " + department;
-		
-	}
 	/**
 	 * Method to get the tempEditFlag in class User. This method returns 
 	 * this flag status true if a student edits an instance variable over which they have only temporary 
@@ -145,6 +138,7 @@ public class User {
 	{
 		return tempEditFlag; 
 	}
+	
 	/**
 	 * Method to set the tempEditFlag in class User. The flag is set to true if a student 
 	 * edits an instance variable over which they have only temporary 
@@ -156,6 +150,4 @@ public class User {
 		tempEditFlag = flag; 
 	}
 	
-	
-
 }
