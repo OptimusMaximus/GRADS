@@ -1,14 +1,17 @@
-/**
- * 
- */
 package edu.sc.csce740.model;
 
 import java.util.List;
 
+
 /**
- * @author brandemr
+ * Class to ...
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
+ 
 public class Details {
 
 	public Double gpa;
