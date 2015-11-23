@@ -7,7 +7,8 @@ import com.google.gson.annotations.Expose;
 import edu.sc.csce740.GRADS;
 
 /**
- * Class defining a student record object for students at the University of South Carolina
+ * Class defining a student record object for students at 
+ * the University of South Carolina
  * @author Maximus Brandel
  * @author Ibrahim Elsayed
  * @author Christian Merchant
@@ -32,51 +33,88 @@ public class StudentRecord {
 	public User getUser(){	
 		return student;
 	}
+	
+	/**
+	 * Method to get the first name from the record
+	 * @return firstName - the first name from the record
+	 */
 	public String getFirstName(){
 		return student.getFirstName();
 	}
+	
+	/**
+	 * Method to get the last name from the record
+	 * @return lirstName - the last name from the record
+	 */
 	public String getLastName(){
 		return student.getLastName();
 	}
+	
+	/**
+	 * Method to get the role from the record
+	 * @return the role from the record
+	 * (either STUDENT or GRADUATE_PROGRAM-COORDINATOR)
+	 */
 	public String getRole(){
 		return student.getRole();
 	}
 	
+	/**
+	 * Method to get the term began from the record
+	 * @return termBegan - the term began from the record
+	 */
 	public Term getTermBegan() {
 		return termBegan;
 	}
+	
 	public void setTermBegan(Term termBegan) {
 		this.termBegan = termBegan;
 	}
+	
+	/**
+	 * Method to get the student's degree sought from the record
+	 * @return degreeSought - the student's degree sought the record
+	 */
 	public Degree getDegreeSought() {
 		return degreeSought;
 	}
+	
 	public void setDegreeSought(Degree degreeSought) {
 		this.degreeSought = degreeSought;
 	}
+	
+	/**
+	 * Method to get the student's certificate sought from the record
+	 * @return certificateSought - the student's certificate sought the record
+	 */
 	public Degree getCertificateSought() {
 		return certificateSought;
 	}
+	
 	public void setCertificateSought(Degree certificateSought) {
 		this.certificateSought = certificateSought;
 	}
+	
 	public List<User> getAdvisors() {
 		return advisors;
 	}
-	//TODO: remove "All" from setAllAdvisors
+
 	public void setAdvisor(List<User> advisor) {
 		this.advisors = advisor;
 	}
-//	public void setAdvisor(User advisor){
-//		this.advisor.add(advisor);
-//	}
 	
+	/**
+	 * Method to get a list of student's committee members from the record
+	 * @return committee - a list of student's committee members from the record
+	 */
 	public List<User> getCommittee() {
 		return committee;
 	}
+	
 	public void setCommittee(List<User> committee) {
 		this.committee = committee;
 	}
+	
 	public boolean getTempEdit() {
 		return tempEdit;
 	}
@@ -84,9 +122,15 @@ public class StudentRecord {
 	private void setTempEdit(boolean tempEdit) {
 		this.tempEdit = tempEdit;
 	}
+	
+	/**
+	 * Method to get the department of the user from the record
+	 * @return department - the user's department a string from the record
+	 */
 	public String getDept() {
 		return department;
 	}
+	
 	public List<Degree> getPreviousDegrees() {
 		return previousDegrees;
 	}
@@ -100,15 +144,19 @@ public class StudentRecord {
 	public List<CourseTaken> getCoursesTaken() {
 		return coursesTaken;
 	}
+	
 	public List<Milestone> getMilestonesSet() {
 		return milestonesSet;
 	}
+	
 	public void addMilestone(Milestone milestone){
 		this.milestonesSet.add(milestone);
 	}
+	
 	public List<String> getNotes() {
 		return notes;
 	}
+	
 	public void addNote(String note){
 		this.notes.add(note);
 	}
