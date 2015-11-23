@@ -18,9 +18,18 @@ public class ProgressSummary {
 
 	
 	private User student;
+	/**
+	 * Instance variable containing the department of the user 
+	 */
 	private String department;
 	private Term termBegan;
+	/**
+	 * Instance variable containing the degree a student is pursuing
+	 */
 	private Degree degreeSought;
+	/**
+	 * Instance variable containing the student's list of advisors
+	 */
 	private List<User> advisors;
 	private List<User> committee;
 	private List<RequirementCheck> requirementCheckResults;
@@ -55,77 +64,92 @@ public class ProgressSummary {
 	}
 
 	/**
-	 * @return the department
+	 * Method to get the academic department of the user
+	 * @return department the Department of the user as a string
 	 */
 	public String getDepartment() {
 		return department;
 	}
 
+	
 	/**
-	 * @param department the department to set
+	 * Method to set the department associated with the user
+	 * @param department - the sring to be set as the department
 	 */
 	public void setDepartment(String department) {
 		this.department = department;
 	}
 
 	/**
-	 * @return the termBegan
+	 * Method to get the term at which the stusdent started his degree
+	 * @return the term at which the stusdent started his degree
 	 */
 	public Term getTermBegan() {
 		return termBegan;
 	}
 
 	/**
-	 * @param termBegan the termBegan to set
+	 * Method to set the term at which the stusdent started his degree
+	 * @param termBegan - the term at which the stusdent started his degree
 	 */
 	public void setTermBegan(Term termBegan) {
 		this.termBegan = termBegan;
 	}
 
 	/**
-	 * @return the degreeSought
+	 * Method to get the degree the student is pursuing
+	 * @return the degree the student is pursuing
 	 */
 	public Degree getDegreeSought() {
 		return degreeSought;
 	}
 
 	/**
-	 * @param degreeSought the degreeSought to set
+	 * Method to set the degree the student is pursuing
+	 * @param degreeSought - the degree the student is pursuing
 	 */
 	public void setDegreeSought(Degree degreeSought) {
 		this.degreeSought = degreeSought;
 	}
-
+	
 	/**
-	 * @return the advisors
+	 * Method to get a list of student's advisors
+	 * @return a list of student's advisors
 	 */
 	public List<User> getAdvisors() {
 		return advisors;
 	}
-
+	
 	/**
-	 * @param advisors the advisors to set
+	 * Method to set a list of student's advisors
+	 * @param advisors - a list of student's advisors 
 	 */
 	public void setAdvisors(List<User> advisors) {
 		this.advisors = advisors;
 	}
 
 	/**
-	 * @return the committee
+	 * Method to get a list of student's committee members
+	 * @return a list of student's committee members
 	 */
 	public List<User> getCommittee() {
 		return committee;
 	}
 
 	/**
-	 * @param committee the committee to set
+	 * Method to set a list of student's committee members
+	 * @param advisors - a list of student's committee members 
 	 */
 	public void setCommittee(List<User> committee) {
 		this.committee = committee;
 	}
 
 	/**
-	 * @return the results
+	 * Method to calculate the results based on a student's record 
+	 * and all courses
+	 * @param record - the student's full record
+	 * @param allCourses - 
+	 * @return a list of requirments and details about those requiremnts
 	 */
 	public List<RequirementCheck> getResults(StudentRecord record, List<Course> allCourses) {
 		//String degreeName = record.getDegreeSought().getDegreeName();
