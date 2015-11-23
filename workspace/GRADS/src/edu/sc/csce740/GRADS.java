@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.sc.csce740;
 
 import java.io.File;
@@ -43,14 +40,6 @@ import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
  * 
  */
 
-/**
- * @author Maximus
- *
- */
-/**
- * @author Maximus
- *
- */
 public class GRADS implements GRADSIntf {
 	/**
 	 * the current session user for the GRADS system
@@ -124,9 +113,11 @@ public class GRADS implements GRADSIntf {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.GRADSIntf#loadUsers(java.lang.String)
-	 */
+	/**
+     * Loads the list of system usernames and permissions.
+     * @param usersFile the filename of the users file.
+     * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
+     */
 	public void loadUsers(String usersFile) throws DataNotRetrievedException {
 		try{
 			allUsers = new Gson().fromJson(new FileReader(getFile(usersFile)),
@@ -137,11 +128,12 @@ public class GRADS implements GRADSIntf {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#loadCourses(java.lang.String)
-	 */
+
+    /**
+     * Loads the list of valid courses.
+     * @param coursesFile the filename of the users file.
+     * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
+     */
 	public void loadCourses(String coursesFile) throws DataNotRetrievedException  {
 		try{
 			allCourses = new Gson().fromJson(new FileReader(getFile(coursesFile)),
@@ -152,11 +144,11 @@ public class GRADS implements GRADSIntf {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#loadRecords(java.lang.String)
-	 */
+	/**
+     * Loads the list of system transcripts.
+     * @param recordsFile the filename of the transcripts file.
+     * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
+     */
 	public void loadRecords(String recordsFile) throws DataNotRetrievedException  {
 		try{
 			allRecords = new Gson().fromJson(new FileReader(getFile(recordsFile)),
@@ -167,13 +159,13 @@ public class GRADS implements GRADSIntf {
 		}
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#setUser(java.lang.String)
-	 */
+
+    /**
+     * Sets the user id of the user currently using the system.
+     * @param userId  the id of the user to log in.
+     * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
+     */
 	public void setUser(String userId)  throws InvalidUserException {
-		// TODO Auto-generated method stub
 		validateSession(userId);
 		this.currentUser = userId;	
 		
@@ -186,13 +178,11 @@ public class GRADS implements GRADSIntf {
 		
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#clearSession()
-	 */
+	/**
+     * Closes the current session, logs the user out, and clears and session data.
+     * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
+     */
 	public void clearSession() throws Exception {
-		// TODO Auto-generated method stub
 		this.currentUser = null;
 		this.allCourses = null;
 		this.allRecords = null;
@@ -200,24 +190,21 @@ public class GRADS implements GRADSIntf {
 		role = null; 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#getUser()
-	 */
+	/**
+     * Gets the user id of the user currently using the system.
+     * @return  the user id of the user currently using the system.
+     */
 	public String getUser() {
-		// TODO Auto-generated method stub
 		return this.currentUser;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
-	 */
-
+	/**
+     * Gets a list of the userIds of the students that a GPC can view.
+     * @return a list containing the userId of for each student in the
+     *      system belonging to the current user 
+     * @throws Exception is the current user is not a GPC.
+     */
 	public List<String> getCSCEStudentIDs() {
-		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("STUDENT".equals(allUsers.get(i).getRole())
@@ -235,7 +222,6 @@ public class GRADS implements GRADSIntf {
 	 */
 
 	public List<String> getCSCEGPCIDs() {
-		// TODO Auto-generated method stub
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("GRADUATE_PROGRAM_COORDINATOR".equals(allUsers.get(i).getRole())
@@ -246,11 +232,13 @@ public class GRADS implements GRADSIntf {
 		return studentIDs;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#getTranscript(java.lang.String)
-	 */
+	/**
+     * Gets the raw student record data for a given userId.
+     * @param userId  the identifier of the student.
+     * @return  the student record data.
+     * @throws Exception  if the form data could not be retrieved.  SEE NOTE IN 
+     *      CLASS HEADER.
+     */
 	public StudentRecord getTranscript(String userId) throws Exception {
 		if (getCSCEGPCIDs().contains(getUser())
 			|| getUser().equals(userId)){
@@ -267,12 +255,15 @@ public class GRADS implements GRADSIntf {
 //		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#updateTranscript(java.lang.String,
-	 * edu.sc.csce740.model.StudentRecord, java.lang.Boolean)
-	 */
+	/**
+     * Saves a new set of student data to the records data.  
+     * @param userId the student ID to overwrite.
+     * @param transcript  the new student record
+     * @param permanent  a status flag indicating whether (if false) to make a 
+     * temporary edit to the in-memory structure or (if true) a permanent edit.
+     * @throws Exception  if the transcript data could not be saved or failed
+     * a validity check.  SEE NOTE IN CLASS HEADER.
+     */
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
 		
@@ -330,12 +321,15 @@ public class GRADS implements GRADSIntf {
 //		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#addNote(java.lang.String, java.lang.String,
-	 * java.lang.Boolean)
-	 */
+	/**
+     * Appends a note to a student record.  
+     * @param userId the student ID to add a note to.
+     * @param note  the note to append
+     * @param permanent  a status flag indicating whether (if false) to make a 
+     * temporary edit to the in-memory structure or (if true) a permanent edit.
+     * @throws Exception  if the note could not be saved or a non-GPC tries to call. 
+     * SEE NOTE IN CLASS HEADER.
+     */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
 		validateAccess(userId);
@@ -355,11 +349,13 @@ public class GRADS implements GRADSIntf {
 //		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#generateProgressSummary(java.lang.String)
-	 */
+	/**
+     * Generates progress summary
+     * @param userId the student to generate the record for.
+     * @returns the student's progress summary in a data class matching the I/O file.
+     * @throws Exception  if the progress summary could not be generated.  
+     * SEE NOTE IN CLASS HEADER.
+     */
 	public ProgressSummary generateProgressSummary(String userId)
 			throws ProgressSummaryNotGeneratedException {
 		try{
@@ -384,12 +380,15 @@ public class GRADS implements GRADSIntf {
 		
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#simulateCourses(java.lang.String,
-	 * java.util.List)
-	 */
+	/**
+     * Generates a new progress summary, assuming that the student passes the
+     * provided set of prospective courses.
+     * @param userId the student to generate the record for.
+     * @param courses a list of the prospective courses.
+     * @returns the student's hypothetical progress summary
+     * @throws Exception  if the progress summary could not be generated or the courses  
+     * are invalid. SEE NOTE IN CLASS HEADER.
+     */
 	public ProgressSummary simulateCourses(String userId,
 			List<CourseTaken> courses) throws CoursesInvalidException, Exception {
 		Course course = null;
