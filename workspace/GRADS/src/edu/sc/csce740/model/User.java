@@ -122,7 +122,7 @@ public class User {
 
 	/**
 	 * Method to set the department associated with the user
-	 * @param department the 
+	 * @param department - the sring to be set as the department
 	 */
 	public void setDepartment(String department) {
 		this.department = department;
