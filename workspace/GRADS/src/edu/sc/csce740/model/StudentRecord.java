@@ -202,7 +202,7 @@ public class StudentRecord {
 	
 	/**
 	 * Method to add a milestone to the list of milestones
-	 * @param course - the mileston to be added to the list of milestones
+	 * @param milestone - the mileston to be added to the list of milestones
 	 */
 	public void addMilestone(Milestone milestone){
 		this.milestonesSet.add(milestone);
