@@ -123,12 +123,12 @@ public class GRADS implements GRADSIntf {
 			throw new DataCanNotBeWrittenException("Can not write data to file");
 		}
 	}
-	
 	/**
-     * Loads the list of system usernames and permissions.
-     * @param usersFile the filename of the users file.
-     * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
-     */
+	 * Loads the list of system usernames and permissions.
+	 * @param usersFile - the filename of the users file.
+	 * @throws Exception
+	 *             for I/O errors. SEE NOTE IN CLASS HEADER.
+	 */
 	public void loadUsers(String usersFile) throws DataNotRetrievedException {
 		try{
 			allUsers = new Gson().fromJson(new FileReader(getFile(usersFile)),
@@ -140,11 +140,12 @@ public class GRADS implements GRADSIntf {
 	}
 
 
-    /**
-     * Loads the list of valid courses.
-     * @param coursesFile the filename of the users file.
-     * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
-     */
+	/**
+	 * Loads the list of valid courses.
+	 * @param coursesFile - the filename of the users file.
+	 * @throws Exception
+	 *             for I/O errors. SEE NOTE IN CLASS HEADER.
+	 */
 	public void loadCourses(String coursesFile) throws DataNotRetrievedException  {
 		try{
 			allCourses = new Gson().fromJson(new FileReader(getFile(coursesFile)),
@@ -156,10 +157,11 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
-     * Loads the list of system transcripts.
-     * @param recordsFile the filename of the transcripts file.
-     * @throws Exception for I/O errors.  SEE NOTE IN CLASS HEADER.
-     */
+	 * Loads the list of system transcripts.
+	 * @param recordsFile - the filename of the transcripts file.
+	 * @throws Exception
+	 *             for I/O errors. SEE NOTE IN CLASS HEADER.
+	 */
 	public void loadRecords(String recordsFile) throws DataNotRetrievedException  {
 		try{
 			allRecords = new Gson().fromJson(new FileReader(getFile(recordsFile)),
@@ -172,11 +174,12 @@ public class GRADS implements GRADSIntf {
 	}
 	
 
-    /**
-     * Sets the user id of the user currently using the system.
-     * @param userId  the id of the user to log in.
-     * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
-     */
+	/**
+	 * Sets the user id of the user currently using the system.
+	 * @param userId - the id of the user to log in.
+	 * @throws Exception
+	 *             if the user id is invalid. SEE NOTE IN CLASS HEADER.
+	 */
 	public void setUser(String userId)  throws InvalidUserException {
 		validateSession(userId);
 		this.currentUser = userId;	
@@ -184,9 +187,11 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
-     * Closes the current session, logs the user out, and clears and session data.
-     * @throws Exception  if the user id is invalid.  SEE NOTE IN CLASS HEADER.
-     */
+	 * Closes the current session, logs the user out, and clears and session
+	 * data.
+	 * @throws Exception
+	 *             if the user id is invalid. SEE NOTE IN CLASS HEADER.
+	 */
 	public void clearSession() throws Exception {
 		this.currentUser = null;
 		this.allCourses = null;
@@ -196,24 +201,20 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
-     * Gets the user id of the user currently using the system.
-     * @return  the user id of the user currently using the system.
-     */
+	 * Gets the user id of the user currently using the system.
+	 * @return the user id of the user currently using the system.
+	 */
 	public String getUser() {
 		return this.currentUser;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
-	 */
 	/**
-     * Gets a list of the userIds of the students that a GPC can view.
-     * @return a list containing the userId of for each student in the
-     *      system belonging to the current user 
-     * @throws Exception is the current user is not a GPC.
-     */
+	 * Gets a list of the userIds of the students that a GPC can view
+	 * @return a list containing the userId of for each student in the system
+	 *         belonging to the current user
+	 * @throws Exception
+	 *             is the current user is not a GPC.
+	 */
 	public List<String> getStudentIDs() throws InvalidUserException {
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
@@ -225,10 +226,10 @@ public class GRADS implements GRADSIntf {
 		return studentIDs;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
+	/**
+	 * Gets a list of the userIds of the CSCE GPC's
+	 * @return a list containing the userId of for each GPC in the system
+	 *         belonging to the current user
 	 */
 	public List<String> getCSCEGPCIDs() throws InvalidUserException {
 		List<String> studentIDs = new ArrayList<String>();
@@ -248,12 +249,13 @@ public class GRADS implements GRADSIntf {
 	 */
 	
 	/**
-     * Gets the raw student record data for a given userId.
-     * @param userId  the identifier of the student.
-     * @return  the student record data.
-     * @throws Exception  if the form data could not be retrieved.  SEE NOTE IN 
-     *      CLASS HEADER.
-     */
+	 * Gets the raw student record data for a given userId.
+	 * @param userId - the identifier of the student.
+	 * @return the student record data.
+	 * @throws Exception
+	 *             if the form data could not be retrieved. SEE NOTE IN CLASS
+	 *             HEADER.
+	 */
 	public StudentRecord getTranscript(String userId) throws InvalidUserException {
 		if (getCSCEGPCIDs().contains(getUser())
 			|| getUser().equals(userId)){
@@ -269,14 +271,17 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
-     * Saves a new set of student data to the records data.  
-     * @param userId the student ID to overwrite.
-     * @param transcript  the new student record
-     * @param permanent  a status flag indicating whether (if false) to make a 
-     * temporary edit to the in-memory structure or (if true) a permanent edit.
-     * @throws Exception  if the transcript data could not be saved or failed
-     * a validity check.  SEE NOTE IN CLASS HEADER.
-     */
+	 * Saves a new set of student data to the records data.
+	 * @param userId - the student ID to overwrite.
+	 * @param transcript - the new student record
+	 * @param permanent
+	 *            a status flag indicating whether (if false) to make a
+	 *            temporary edit to the in-memory structure or (if true) a
+	 *            permanent edit.
+	 * @throws Exception
+	 *             if the transcript data could not be saved or failed a
+	 *             validity check. SEE NOTE IN CLASS HEADER.
+	 */
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
 		
@@ -307,14 +312,17 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
-     * Appends a note to a student record.  
-     * @param userId the student ID to add a note to.
-     * @param note  the note to append
-     * @param permanent  a status flag indicating whether (if false) to make a 
-     * temporary edit to the in-memory structure or (if true) a permanent edit.
-     * @throws Exception  if the note could not be saved or a non-GPC tries to call. 
-     * SEE NOTE IN CLASS HEADER.
-     */
+	 * Appends a note to a student record.
+	 * @param userId the student ID to add a note to.
+	 * @param note the note to append
+	 * @param permanent
+	 *            a status flag indicating whether (if false) to make a
+	 *            temporary edit to the in-memory structure or (if true) a
+	 *            permanent edit.
+	 * @throws Exception
+	 *             if the note could not be saved or a non-GPC tries to call.
+	 *             SEE NOTE IN CLASS HEADER.
+	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
 		validateAccess(userId);
@@ -331,12 +339,14 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
-     * Generates progress summary
-     * @param userId the student to generate the record for.
-     * @returns the student's progress summary in a data class matching the I/O file.
-     * @throws Exception  if the progress summary could not be generated.  
-     * SEE NOTE IN CLASS HEADER.
-     */
+	 * Generates progress summary
+	 * @param userId - the student to generate the record for.
+	 * @returns the student's progress summary in a data class matching the I/O
+	 *          file.
+	 * @throws Exception
+	 *             if the progress summary could not be generated. SEE NOTE IN
+	 *             CLASS HEADER.
+	 */
 	public ProgressSummary generateProgressSummary(String userId)
 			throws ProgressSummaryNotGeneratedException {
 		try{
@@ -363,14 +373,15 @@ public class GRADS implements GRADSIntf {
 	}
 
 	/**
-     * Generates a new progress summary, assuming that the student passes the
-     * provided set of prospective courses.
-     * @param userId the student to generate the record for.
-     * @param courses a list of the prospective courses.
-     * @returns the student's hypothetical progress summary
-     * @throws Exception  if the progress summary could not be generated or the courses  
-     * are invalid. SEE NOTE IN CLASS HEADER.
-     */
+	 * Generates a new progress summary, assuming that the student passes the
+	 * provided set of prospective courses.
+	 * @param userId - the student to generate the record for.
+	 * @param courses - a list of the prospective courses.
+	 * @returns the student's hypothetical progress summary
+	 * @throws Exception
+	 *             if the progress summary could not be generated or the courses
+	 *             are invalid. SEE NOTE IN CLASS HEADER.
+	 */
 	public ProgressSummary simulateCourses(String userId,
 			List<CourseTaken> courses) throws CoursesInvalidException, Exception {
 		Course course = null;
