@@ -16,20 +16,57 @@ import java.util.List;
 public abstract class DegreeRequirements {
 
 	/**
-	 * 
+	 * The in memory data structure to store core courses
 	 */
 	private List<Course> coreCourses;
+	/**
+	 * The minimum GPA required for a degree
+	 */
 	private double minGPA;
+	/**
+	 * The maximum degree time in years before a degree becomes invalid
+	 */
 	private int maxDegreeTime;
+	/**
+	 * Flag to see if dissertation requirement was met
+	 */
 	private boolean dissertation;
+	/**
+	 * Flag to see if thesis requirement was met
+	 */
 	private boolean thesis;
+	/**
+	 * Flag to see if report requirement was met(for MSE)
+	 */
 	private boolean report;
+	/**
+	 * Flag to see if exam requirement was met
+	 */
 	private boolean exam;
+	/**
+	 * The number of additional credit hours required for a degree
+	 */
 	private int additionalCreditHours;
+	/**
+	 * The courses to exclude for required for a degree(These courses don't count towards the degree requirement)
+	 */
 	private List<String> additionalCreditExcludeCourseIDs;
+	/**
+	 * The credit hours to exclude for required for a degree(These courses don't count towards the degree requirement)
+	 * Associated with additionalCreditExcludeCourseIDs.
+	 */
 	private List<Course> additionalCreditIncludeCourses;
+	/**
+	 * The number of degree based credit hours required for a degree
+	 */
 	private int degreeBasedCreditHours;
+	/**
+	 * The number of allowed degree based non-CSCE credit hours for a degree
+	 */
 	private int degreeBasedNonCSCEHours;
+	/**
+	 * The course 
+	 */
 	private String degreeBasedMaxCourse;
 	private int degreeBasedMaxHours;
 	private List<String> degreeBasedExcludeCourseIDs;
