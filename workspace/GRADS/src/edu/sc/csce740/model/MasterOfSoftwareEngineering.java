@@ -24,16 +24,18 @@ public class MasterOfSoftwareEngineering extends DegreeRequirements {
 	 */
 	private List<Milestone> milestones;
 	
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#getInternship()
+	/* 
+	 * Method to get the internsip course instance
+	 * @returns the internsip course instance
 	 */
 	@Override
 	public Course getInternship(){
 		return internship;
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.sc.csce740.model.DegreeRequirements#setInternship(edu.sc.csce740.model.Course)
+	/* 
+	 * Method to set the internsip course instance
+	 * @param internship - the internsip course instance to set
 	 */
 	@Override
 	public void setInternship(Course internship){
