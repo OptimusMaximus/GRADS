@@ -139,11 +139,20 @@ public class StudentRecord {
 		this.committee = committee;
 	}
 	
-	
+	/**
+	 * Method to get the temporary edit flag in a student record
+	 * @return boolean true if the student has edited a field in the record over which they have only temporary 
+	 * edit permissions, false otherwise
+	 */
 	public boolean getTempEdit() {
 		return tempEdit;
 	}
 	
+	/**
+	 * Method to set the temporary edit flag in a student record
+	 * @param boolean true if the student has edited a field in the record over which they have only temporary 
+	 * edit permissions, false otherwise
+	*/
 	private void setTempEdit(boolean tempEdit) {
 		this.tempEdit = tempEdit;
 	}
@@ -156,36 +165,69 @@ public class StudentRecord {
 		return department;
 	}
 	
+	/**
+	 * Method to get the student's previous degree(s)
+	 * @return previousDegrees - the student's list of previous degrees
+	 */
 	public List<Degree> getPreviousDegrees() {
 		return previousDegrees;
 	}
 	
-	public void setCoursesTaken(CourseTaken course){
+	/**
+	 * Method to add a course to the list of taken course
+	 * @param course - the course to be added to the list of taken course
+	 */
+	 public void setCoursesTaken(CourseTaken course){
 		if(GRADS.getRole().equals("STUDENT")){
 			setTempEdit(true);
 		}
 		coursesTaken.add(course);
 	}
-	public List<CourseTaken> getCoursesTaken() {
+	
+	/**
+	 * Method to get a list of all taken courses
+	 * @return coursesTaken - list of all taken courses
+	 */
+	 public List<CourseTaken> getCoursesTaken() {
 		return coursesTaken;
 	}
 	
+	/**
+	 * Method to get a list of all milestones
+	 * @return milestonesSet - list of all milestones
+	 */
 	public List<Milestone> getMilestonesSet() {
 		return milestonesSet;
 	}
 	
+	/**
+	 * Method to add a milestone to the list of milestones
+	 * @param course - the mileston to be added to the list of milestones
+	 */
 	public void addMilestone(Milestone milestone){
 		this.milestonesSet.add(milestone);
 	}
 	
+	/**
+	 * Method to get a list of all notes
+	 * @return notes - list of all notes
+	 */
 	public List<String> getNotes() {
 		return notes;
 	}
 	
+	/**
+	 * Method to add a note to the list of note
+	 * @param notes - the note to be added to the list of note
+	 */
 	public void addNote(String note){
 		this.notes.add(note);
 	}
 	
+	/**
+	 * Method to set the first name associated with the user
+	 * @param firstName the firstName of the user
+	 */
 	public void setFirstName(String firstName){
 		if (GRADS.getRole().equals("STUDENT"))
 		{
@@ -194,6 +236,10 @@ public class StudentRecord {
 		this.student.setFirstName(firstName);
 	}
 	
+	/**
+	 * Method to set the last name associated with the user
+	 * @param lastName the last name of the user
+	 */
 	public void setLastName(String lastName){
 		if (GRADS.getRole().equals("STUDENT"))
 		{
