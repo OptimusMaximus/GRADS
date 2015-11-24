@@ -250,133 +250,133 @@ public abstract class DegreeRequirements {
 	 * @param internship the course object of the internship to set
 	 */
 	public abstract void setInternship(Course internship);
-	/**
+	/**Get the course id's of the courses that are excluded for the additional credit hours requirement
 	 * @return the additionalCreditExcludeCourseIDs
 	 */
 	public List<String> getAdditionalCreditExcludeCourseIDs() {
 		return additionalCreditExcludeCourseIDs;
 	}
-	/**
+	/**Set the course id's of the courses that are excluded for the additional credit hours requirement
 	 * @param additionalCreditExcludeCourseIDs the additionalCreditExcludeCourseIDs to set
 	 */
 	public void setAdditionalCreditExcludeCourseIDs(List<String> additionalCreditExcludeCourseIDs) {
 		this.additionalCreditExcludeCourseIDs = additionalCreditExcludeCourseIDs;
 	}
-	/**
+	/**Get the number of additional credit hours required for a degree
 	 * @return the additionalCreditIncludeCourses
 	 */
 	public List<Course> getAdditionalCreditIncludeCourses() {
 		return additionalCreditIncludeCourses;
 	}
-	/**
+	/**Set the number of additional credit hours required for a degree
 	 * @param additionalCreditIncludeCourses the additionalCreditIncludeCourses to set
 	 */
 	public void setAdditionalCreditIncludeCourses(List<Course> additionalCreditIncludeCourses) {
 		this.additionalCreditIncludeCourses = additionalCreditIncludeCourses;
 	}
-	/**
+	/**Get the number of credit hours allowed non-CSCE courses
 	 * @return the degreeBasedNonCSCEHours
 	 */
 	public int getDegreeBasedNonCSCEHours() {
 		return degreeBasedNonCSCEHours;
 	}
-	/**
+	/**Set the number of credit hours allowed non-CSCE courses
 	 * @param degreeBasedNonCSCEHours the degreeBasedNonCSCEHours to set
 	 */
 	public void setDegreeBasedNonCSCEHours(int degreeBasedNonCSCEHours) {
 		this.degreeBasedNonCSCEHours = degreeBasedNonCSCEHours;
 	}
-	/**
+	/**Get the course that has a maximum limit of how many hours count towards a degree
 	 * @return the degreeBasedMaxCourse
 	 */
 	public String getDegreeBasedMaxCourse() {
 		return degreeBasedMaxCourse;
 	}
-	/**
+	/**Set the course that has a maximum limit of how many hours count towards a degree
 	 * @param degreeBasedMaxCourse the degreeBasedMaxCourse to set
 	 */
 	public void setDegreeBasedMaxCourse(String degreeBasedMaxCourse) {
 		this.degreeBasedMaxCourse = degreeBasedMaxCourse;
 	}
-	/**
+	/**Get the maximum hours allowed for the degreeBasedMaxCourse for a degree
 	 * @return the degreeBasedMaxHours
 	 */
 	public int getDegreeBasedMaxHours() {
 		return degreeBasedMaxHours;
 	}
-	/**
+	/**Set the maximum hours allowed for the degreeBasedMaxCourse for a degree
 	 * @param degreeBasedMaxHours the degreeBasedMaxHours to set
 	 */
 	public void setDegreeBasedMaxHours(int degreeBasedMaxHours) {
 		this.degreeBasedMaxHours = degreeBasedMaxHours;
 	}
-	/**
+	/**Get the course id's to exclude for degree based requirements
 	 * @return the degreeBasedExcludeCourseIDs
 	 */
 	public List<String> getDegreeBasedExcludeCourseIDs() {
 		return degreeBasedExcludeCourseIDs;
 	}
-	/**
+	/**Set the course id's to exclude for degree based requirements
 	 * @param degreeBasedExcludeCourseIDs the degreeBasedExcludeCourseIDs to set
 	 */
 	public void setDegreeBasedExcludeCourseIDs(List<String> degreeBasedExcludeCourseIDs) {
 		this.degreeBasedExcludeCourseIDs = degreeBasedExcludeCourseIDs;
 	}
-	/**
+	/**Get the thesis course id's for a degree
 	 * @return the thesisCourseIDs
 	 */
 	public List<String> getThesisCourseIDs() {
 		return thesisCourseIDs;
 	}
-	/**
+	/**Set the thesis course id's for a degree
 	 * @param thesisCourseIDs the thesisCourseIDs to set
 	 */
 	public void setThesisCourseIDs(List<String> thesisCourseIDs) {
 		this.thesisCourseIDs = thesisCourseIDs;
 	}
-	/**
+	/**Get the minimum credit hours required for 700 level courses for INFAS certificate
 	 * @return the additionalCreditINFASMinHours
 	 */
 	public int getAdditionalCreditINFASMinHours() {
 		return additionalCreditINFASMinHours;
 	}
-	/**
+	/**Set the minimum credit hours required for 700 level courses for INFAS certificate
 	 * @param additionalCreditINFASMinHours the additionalCreditINFASMinHours to set
 	 */
 	public void setAdditionalCreditINFASMinHours(int additionalCreditINFASMinHours) {
 		this.additionalCreditINFASMinHours = additionalCreditINFASMinHours;
 	}
-	/**
+	/**Get the maximum non-CSCE credit hours allowed for INFAS certificate
 	 * @return the additionalCreditINFASMaxNonCSCEHours
 	 */
 	public int getAdditionalCreditINFASMaxNonCSCEHours() {
 		return additionalCreditINFASMaxNonCSCEHours;
 	}
-	/**
+	/**Set the maximum non-CSCE credit hours allowed for INFAS certificate
 	 * @param additionalCreditINFASMaxNonCSCEHours the additionalCreditINFASMaxNonCSCEHours to set
 	 */
 	public void setAdditionalCreditINFASMaxNonCSCEHours(int additionalCreditINFASMaxNonCSCEHours) {
 		this.additionalCreditINFASMaxNonCSCEHours = additionalCreditINFASMaxNonCSCEHours;
 	}
-	/**
+	/**Get the maximum additional credit hours for INFAS certificate with a concurrent Master's degree
 	 * @return the additionalCreditINFASMaxIncludeMasterHours
 	 */
 	public int getAdditionalCreditINFASMaxIncludeMasterHours() {
 		return additionalCreditINFASMaxIncludeMasterHours;
 	}
-	/**
+	/**Set the maximum additional credit hours for INFAS certificate with a concurrent Master's degree
 	 * @param additionalCreditINFASMaxIncludeMasterHours the additionalCreditINFASMaxIncludeMasterHours to set
 	 */
 	public void setAdditionalCreditINFASMaxIncludeMasterHours(int additionalCreditINFASMaxIncludeMasterHours) {
 		this.additionalCreditINFASMaxIncludeMasterHours = additionalCreditINFASMaxIncludeMasterHours;
 	}
-	/**
+	/**Get the years required to complete courses
 	 * @return the coursesInvalidYears
 	 */
 	public int getCoursesInvalidYears() {
 		return coursesInvalidYears;
 	}
-	/**
+	/**Set the years required to complete courses
 	 * @param coursesInvalidYears the coursesInvalidYears to set
 	 */
 	public void setCoursesInvalidYears(int coursesInvalidYears) {
