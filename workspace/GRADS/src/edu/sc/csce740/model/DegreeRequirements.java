@@ -52,8 +52,7 @@ public abstract class DegreeRequirements {
 	 */
 	private List<String> additionalCreditExcludeCourseIDs;
 	/**
-	 * The credit hours to exclude for required for a degree(These courses don't count towards the degree requirement)
-	 * Associated with additionalCreditExcludeCourseIDs.
+	 * The courses that a student must complete for additionalCreditHours for a degree(Used for MSE )
 	 */
 	private List<Course> additionalCreditIncludeCourses;
 	/**
@@ -65,9 +64,12 @@ public abstract class DegreeRequirements {
 	 */
 	private int degreeBasedNonCSCEHours;
 	/**
-	 * The course 
+	 * The course that has a maximum number of hours allowed for a degree, associated with degreeBasedMaxHours
 	 */
 	private String degreeBasedMaxCourse;
+	/**
+	 * The maximum number of hours allowed for a degree, associated with degreeBasedMaxCourse
+	 */
 	private int degreeBasedMaxHours;
 	private List<String> degreeBasedExcludeCourseIDs;
 	private int degreeBasedCreditHoursWithValidMasterDegree;
