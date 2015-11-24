@@ -220,6 +220,8 @@ public class GRADS implements GRADSIntf {
 			if ("STUDENT".equals(allUsers.get(i).getRole())
 					&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())){
 				studentIDs.add(allUsers.get(i).getUserID());
+			} else {
+				throw new InvalidUserException("Invalid user trying to access student ids");
 			}
 		}
 		return studentIDs;
@@ -236,6 +238,8 @@ public class GRADS implements GRADSIntf {
 			if ("GRADUATE_PROGRAM_COORDINATOR".equals(allUsers.get(i).getRole())
 					&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())){
 				studentIDs.add(allUsers.get(i).getUserID());
+			} else {
+				throw new InvalidUserException("Invalid user trying to access GPC ids");
 			}
 		}
 		return studentIDs;
