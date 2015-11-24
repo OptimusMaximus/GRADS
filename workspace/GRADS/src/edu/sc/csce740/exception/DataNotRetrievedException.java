@@ -1,10 +1,11 @@
-/**
- * 
- */
 package edu.sc.csce740.exception;
 
 /**
- * @author brandemr
+ * Exception class that simulates an error if data cannot be loaded from the databases
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  *
  */
 public class DataNotRetrievedException extends Exception {
