@@ -15,6 +15,9 @@ import java.util.List;
  */
 public abstract class DegreeRequirements {
 
+	/**
+	 * 
+	 */
 	private List<Course> coreCourses;
 	private double minGPA;
 	private int maxDegreeTime;
@@ -35,8 +38,17 @@ public abstract class DegreeRequirements {
 	private List<String> thesisCourseIDs;
 	private String degreeName;
 	private int additionalCreditINFASMinHours;
+	/**
+	 * The maximum non-CSCE credit hours allowed for INFAS certificate
+	 */
 	private int additionalCreditINFASMaxNonCSCEHours;
+	/**
+	 * The maximum additional credit hours for INFAS certificate with a concurrent Master's degree
+	 */
 	private int additionalCreditINFASMaxIncludeMasterHours;
+	/**
+	 * The years required to complete courses
+	 */
 	private int coursesInvalidYears;
 	
 	
@@ -152,38 +164,38 @@ public abstract class DegreeRequirements {
 	public void setAdditionalCreditHours(int additionalCreditHours) {
 		this.additionalCreditHours = additionalCreditHours;
 	}
-	/**
+	/**Get the number of credit hours required for degree based requirements
 	 * @return the degreeBasedCreditHours
 	 */
 	public int getDegreeBasedCreditHours() {
 		return degreeBasedCreditHours;
 	}
-	/**
+	/**Set the number of credit hours required for degree based requirements
 	 * @param degreeBasedCreditHours the degreeBasedCreditHours to set
 	 */
 	public void setDegreeBasedCreditHours(int degreeBasedCreditHours) {
 		this.degreeBasedCreditHours = degreeBasedCreditHours;
 	}
-	/**
+	/**Get the number of credit hours required for degree based requirements with a previous master's degree
 	 * @return the degreeBasedCreditHoursWithValidMasterDegree
 	 */
 	public int getDegreeBasedCreditHoursWithValidMasterDegree() {
 		return degreeBasedCreditHoursWithValidMasterDegree;
 	}
-	/**
+	/**Set the number of credit hours required for degree based requirements with a previous master's degree
 	 * @param degreeBasedCreditHoursWithValidMasterDegree :
 	 * 	the degreeBasedCreditHoursWithValidMasterDegree to set
 	 */
 	public void setDegreeBasedCreditHoursWithValidMasterDegree(int degreeBasedCreditHoursWithValidMasterDegree) {
 		this.degreeBasedCreditHoursWithValidMasterDegree = degreeBasedCreditHoursWithValidMasterDegree;
 	}
-	/**
+	/**Get the number of thesis credit hours for the thesis requirement
 	 * @return the thesisCreditHours
 	 */
 	public int getThesisCreditHours() {
 		return thesisCreditHours;
 	}
-	/**
+	/**Set the number of thesis credit hours for the thesis requirement
 	 * @param thesisCreditHours the thesisCreditHours to set
 	 */
 	public void setThesisCreditHours(int thesisCreditHours) {
