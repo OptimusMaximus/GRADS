@@ -814,7 +814,7 @@ public class RequirementCheck {
 	/**
 	 * This method determines if a course is in the allCourses "database"
 	 * @param courseTaken, list of courses taken
- 	 * @param allCourses, the degree requirments instance
+ 	 * @param allCourses, list of all courses
 	 * @return true if course is within allCourses
 	 */	
 	 private boolean isValidCourse(CourseTaken courseTaken, List<Course> allCourses){
@@ -826,7 +826,12 @@ public class RequirementCheck {
 		return false;
 	}
 	
-	//Returns list of valid courses taken
+	/**
+	 * This method generates a list of valid courses
+	 * @param courseTaken, list of courses taken
+ 	 * @param allCourses, list of all courses
+	 * @return a list of valid courses
+	 */
 	private List<CourseTaken> getValidCoursesTaken(List<CourseTaken> coursesTaken, List<Course> allCourses){
 		List<CourseTaken> validCoursesTaken = new ArrayList<CourseTaken>(); 
 		for (int i = 0; i < coursesTaken.size(); i++){
@@ -837,7 +842,12 @@ public class RequirementCheck {
 		return validCoursesTaken;
 	}
 	
-	//Returns a list of valid 700 level courses taken
+	/**
+	 * This method generates a list of valid 700 level courses
+	 * @param courseTaken, list of courses taken
+ 	 * @param allCourses, list of all courses
+	 * @return a list of valid 700 level courses
+	 */
 	private List<CourseTaken> getValid700LevelCoursesTaken(List<CourseTaken> validCoursesTaken, List<Course> allCourses){
 		List<CourseTaken> valid700LevelCoursesTaken = new ArrayList<CourseTaken>();
 		for (int i = 0; i < validCoursesTaken.size(); i++){
@@ -848,6 +858,11 @@ public class RequirementCheck {
 		return valid700LevelCoursesTaken;
 	}
 	
+	/**
+	 * This method determines if a course is a valid 700 level course
+	 * @param courseTaken, list of courses taken
+	 * @return true if course is level 700 or above
+	 */
 	private boolean isValid700LevelCourse(CourseTaken courseTaken){
 		int level = Integer.parseInt(courseTaken.getCourse().getId().substring(4, 7));
 		if(level >= 700 ){
@@ -857,6 +872,12 @@ public class RequirementCheck {
 		}
 	}
 	
+	/**
+	 * This method determines if a course is a thesis course
+	 * @param courseTaken, list of courses taken
+	 * @param thesis, list of thesis' for a degree
+	 * @return true if course is a thesis course
+	 */
 	private boolean isThesisCourse(CourseTaken courseTaken, List<String> thesis){
 		String id = courseTaken.getCourse().getId();
 		for(int i = 0; i < thesis.size(); i++){
@@ -866,23 +887,48 @@ public class RequirementCheck {
 		}
 		return false;
 	}	
-	
+
+	/**
+	 * This method gets the additional credit hours for a degree
+	 * @param degreeName, the degree name for the requirement
+	 * @return number of additional credit hours needed for a degree
+	 */
 	private int getNumberOfAdditionalHours(String degreeName) {
 		return getDegreeRequirements(degreeName).getAdditionalCreditHours();
 	}
 
+	/**
+	 * This method gets the degree based credit hours for a degree
+	 * @param degreeName, the degree name for the requirement
+	 * @return number of degree based credit hours needed for a degree
+	 */
 	private int getNumberOfDegreeBasedHours(String degreeName) {
 		return getDegreeRequirements(degreeName).getDegreeBasedCreditHours();
 	}
 	
+	/**
+	 * This method gets the degree based credit hours for a degree, and if the student has a previous master's degree
+	 * @param degreeName, the degree name for the requirement
+	 * @return number of degree based credit hours needed for a degree, and if the student has a previous master's degree
+	 */
 	private int getNumberOfDegreeBasedHoursForPreviousMasterDegree(String degreeName) {
 		return getDegreeRequirements(degreeName).getDegreeBasedCreditHoursWithValidMasterDegree();
 	}
 	
+	/**
+	 * This method gets the thesis credit hours for a degree
+	 * @param degreeName, the degree name for the requirement
+	 * @return number of thesis credit hours needed for a degree
+	 */
 	private int getNumberOfThesisCreditHours(String degreeName){
 		return getDegreeRequirements(degreeName).getThesisCreditHours();
 	}
 	
+	/**
+	 * This method removes courses with a blank grade
+	 * @param coursesTaken, list of courses taken
+	 * @return a list of courses with blank grade courses removed
+	 */
 	private List<CourseTaken> removeCoursesWithNoGrade(List<CourseTaken> coursesTaken){
 		List<CourseTaken> updatedCoursesTakenBlankGradeRemoved = new ArrayList<CourseTaken>();
 		for (int i = 0; i < coursesTaken.size(); i++){			
@@ -893,6 +939,12 @@ public class RequirementCheck {
 		return updatedCoursesTakenBlankGradeRemoved;
 	}
 	
+	/**
+	 * This method gets the expired courses taken
+	 * @param coursesTaken, list of courses taken
+	 * @param requirements, the degree requirements
+	 * @return a list of expired courses
+	 */
 	private List<CourseTaken> expiredCoursesTaken(List<CourseTaken> coursesTaken, DegreeRequirements requirements){
 		List<CourseTaken> expiredCoursesTaken = new ArrayList<CourseTaken>();		
 		String semesterBegan = "";
@@ -907,6 +959,12 @@ public class RequirementCheck {
 		return expiredCoursesTaken;
 	}
 	
+	/**
+	 * This method gets the non-expired courses taken
+	 * @param coursesTaken, list of courses taken
+	 * @param requirements, the degree requirements
+	 * @return a list of non-expired courses
+	 */
 	private List<CourseTaken> nonExpiredCoursesTaken(List<CourseTaken> coursesTaken, DegreeRequirements requirements){
 		List<CourseTaken> nonExpiredCoursesTaken = new ArrayList<CourseTaken>();		
 		String semesterBegan = "";
