@@ -167,7 +167,7 @@ public class Course {
 						new TypeToken<List<MasterOfEngineering>>() {
 						}.getType());
 						break;
-			case "CC":
+			case "INFAS":
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<SecurityCertificate>>() {
 						}.getType());

@@ -155,6 +155,7 @@ public class ProgressSummary {
 		//String degreeName = record.getDegreeSought().getDegreeName();
 		
 		RequirementCheck r = new RequirementCheck();
+		
 		requirementCheckResults = r.generateResults(record, allCourses);
 		return requirementCheckResults;
 	}

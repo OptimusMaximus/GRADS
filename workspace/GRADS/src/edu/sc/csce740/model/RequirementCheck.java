@@ -109,14 +109,15 @@ public class RequirementCheck {
 		String degreeName = record.getDegreeSought().getDegreeName();
 		List<RequirementCheck> requirementCheckResults = new ArrayList<RequirementCheck>();
 		List<String> thesis = null;
+		
 		DegreeRequirements requirements = getDegreeRequirements(degreeName);
 		
 		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
 		coursesTaken = removeCoursesWithNoGrade(record.getCoursesTaken());
 		
-		List<CourseTaken> nonExpiredCoursesTaken = new ArrayList<CourseTaken>();
-		nonExpiredCoursesTaken = nonExpiredCoursesTaken(coursesTaken, requirements);
-		
+//		List<CourseTaken> nonExpiredCoursesTaken = new ArrayList<CourseTaken>();
+//		nonExpiredCoursesTaken = nonExpiredCoursesTaken(coursesTaken, requirements);
+//		
 		List<CourseTaken> validCoursesTaken = new ArrayList<CourseTaken>();
 		validCoursesTaken = getValidCoursesTaken(coursesTaken, allCourses);		
 			
@@ -128,7 +129,7 @@ public class RequirementCheck {
 		
 		//Additional Credits Requirement
 		requirementCheckResults.add(getAdditionalCreditsRequirementCheckResults(record, coursesTaken, valid700LevelCoursesTaken, requirements));
-		
+
 		//Degree Based Credits Requirements
 		if(degreeName.equals("PHD") || degreeName.equals("MS") || degreeName.equals("ME")){
 			requirementCheckResults.add(getDegreeBasedCreditsRequirementCheckResults(record, coursesTaken, valid700LevelCoursesTaken, requirements));		
@@ -252,7 +253,7 @@ public class RequirementCheck {
 				}
 			}
 		}
-			
+		
 		//For ME and MS and PHD
 		List<String> name = requirements.getDegreeBasedExcludeCourseIDs();
 		if(name != null){

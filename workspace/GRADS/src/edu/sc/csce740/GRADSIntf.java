@@ -104,7 +104,7 @@ public interface GRADSIntf
      *      system belonging to the current user 
      * @throws Exception is the current user is not a GPC.
      */
-    public List<String> getCSCEStudentIDs() throws Exception;
+    public List<String> getStudentIDs() throws Exception;
     
     /**
      * Gets the raw student record data for a given userId.

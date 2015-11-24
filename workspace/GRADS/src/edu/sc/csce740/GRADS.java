@@ -214,15 +214,13 @@ public class GRADS implements GRADSIntf {
      *      system belonging to the current user 
      * @throws Exception is the current user is not a GPC.
      */
-	public List<String> getCSCEStudentIDs() throws InvalidUserException {
+	public List<String> getStudentIDs() throws InvalidUserException {
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("STUDENT".equals(allUsers.get(i).getRole())
 					&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())){
 				studentIDs.add(allUsers.get(i).getUserID());
-			} else {
-				throw new InvalidUserException("Invalid user trying to access student ids");
-			}
+			} 
 		}
 		return studentIDs;
 	}
@@ -238,8 +236,6 @@ public class GRADS implements GRADSIntf {
 			if ("GRADUATE_PROGRAM_COORDINATOR".equals(allUsers.get(i).getRole())
 					&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())){
 				studentIDs.add(allUsers.get(i).getUserID());
-			} else {
-				throw new InvalidUserException("Invalid user trying to access GPC ids");
 			}
 		}
 		return studentIDs;
@@ -261,8 +257,10 @@ public class GRADS implements GRADSIntf {
 	public StudentRecord getTranscript(String userId) throws InvalidUserException {
 		if (getCSCEGPCIDs().contains(getUser())
 			|| getUser().equals(userId)){
+	
 			for (int i=0; i< allRecords.size(); i++){
 				if (allRecords.get(i).getUser().getUserID().equals(userId)){
+					
 					return allRecords.get(i);
 				}
 			}
@@ -347,6 +345,7 @@ public class GRADS implements GRADSIntf {
 			throws ProgressSummaryNotGeneratedException {
 		try{
 			StudentRecord record = getTranscript(userId);
+			
 			ProgressSummary progressSummary = new ProgressSummary();
 			//progressSummary.setRecord(record);
 			progressSummary.setStudent(record.getUser());
