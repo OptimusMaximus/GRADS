@@ -30,10 +30,17 @@ import edu.sc.csce740.exception.CoursesInvalidException;
 public class RequirementCheck {
 
 	/**
-	 * 
+	 * Instance variable containing the name of the requirement
 	 */
 	public String name;
+	/**
+	 * Instance variable containing either "true" or "false" to indicate whether 
+	 * this requiremnt is passed or not
+	 */
 	public String passed;
+	/**
+	 * Instance variable containing the details about the requirment ()
+	 */
 	public Details details;
 	
 	
@@ -59,7 +66,8 @@ public class RequirementCheck {
 
 
 	/**
-	 * @return the name
+	 * Method to get the  name of the requirment
+	 * @return the  name of the requirment
 	 */
 	public String getName() {
 		return name;
@@ -67,7 +75,8 @@ public class RequirementCheck {
 
 
 	/**
-	 * @param name the name to set
+	 * Method to set the  name of the requirment
+	 * @param name - the  name of the requirment
 	 */
 	public void setName(String name) {
 		this.name = name;

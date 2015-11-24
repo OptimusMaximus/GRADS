@@ -28,6 +28,7 @@ public class Term {
 	public String getSemester() {
 		return semester;
 	}
+	
 	/**
 	 * Method to set the term semester
 	 * @param semester the string name of the semester to set FALL, SPRING, SUMMER
@@ -35,6 +36,7 @@ public class Term {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
+	
 	/**
 	 * Method to get the year of the semester
 	 * @return year the year of the term
@@ -42,6 +44,7 @@ public class Term {
 	public int getYear() {
 		return year;
 	}
+	
 	/**
 	 * Method to set the year of the term
 	 * @param year the year of the term 
@@ -49,6 +52,7 @@ public class Term {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	
 	/**
 	 * Convenience method to set all fields of term at one time
 	 * @param semester the semester of the term

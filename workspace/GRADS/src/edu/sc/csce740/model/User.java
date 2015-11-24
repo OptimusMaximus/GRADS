@@ -155,8 +155,6 @@ public class User {
 	private void setUserTempEdit(boolean flag)
 	{
 		tempEditFlag = flag; 
-	}
-	
-	
+	}	
 
 }

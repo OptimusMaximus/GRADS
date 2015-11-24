@@ -21,6 +21,7 @@ import com.google.gson.reflect.TypeToken;
  * @version 1.00 2015-11-21
  *
  */
+
 public class Course {
 	private String name;
 	private String id;
@@ -97,9 +98,12 @@ public class Course {
 		this.numCredits = creditHours;
 	}	
 	
-
+	/**
+	 * Method to get file from resources folder	
+	 * @param fileName - the name of the file to grab 
+	 * @return the file from resources folder	
+	 */
 	private File getFile(String fileName) {
-		//Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource(fileName).getFile());
 		return file;
@@ -132,6 +136,13 @@ public class Course {
 	      return true;
 	
 	}
+	
+	/**
+	 * Method to check a course is a core course in a specifiec degree or not 
+	 * @param degreeName - the name of the degree to check its core courses
+	 * @param course - course to check if it is core course
+	 * @return true if the course is a core course in the specified degree, false otherwise
+	 */
 	public boolean isCoreCourse(String degreeName, Course course) {
 		List<DegreeRequirements> degreeRequirements = null;
 		int index = -1;
@@ -165,13 +176,10 @@ public class Course {
 						break; 
 			}
 			} catch (JsonIOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (JsonSyntaxException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
 		

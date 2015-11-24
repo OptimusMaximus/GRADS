@@ -139,15 +139,13 @@ public abstract class DegreeRequirements {
 		this.exam = exam;
 	}
 	/**
-	 * @return the additionalCreditHours
 	 * Method to get the minimum additional credit hours required for the degree
-	 * @return the additionalCreditHours return as a double
+	 * @return the additionalCreditHours
 	 */
 	public int getAdditionalCreditHours() {
 		return additionalCreditHours;
 	}
 	/**
-	 * @param additionalCreditHours the additionalCreditHours to set
 	 * Method to set the minimum additional credit hours for a degree
 	 * @param additionalCreditHours the additionalCreditHours to set as a double
 	 */
@@ -173,7 +171,8 @@ public abstract class DegreeRequirements {
 		return degreeBasedCreditHoursWithValidMasterDegree;
 	}
 	/**
-	 * @param degreeBasedCreditHoursWithValidMasterDegree the degreeBasedCreditHoursWithValidMasterDegree to set
+	 * @param degreeBasedCreditHoursWithValidMasterDegree :
+	 * 	the degreeBasedCreditHoursWithValidMasterDegree to set
 	 */
 	public void setDegreeBasedCreditHoursWithValidMasterDegree(int degreeBasedCreditHoursWithValidMasterDegree) {
 		this.degreeBasedCreditHoursWithValidMasterDegree = degreeBasedCreditHoursWithValidMasterDegree;
