@@ -23,174 +23,6 @@
   },
   {
     "student": {
-      "id": "mbr",
-      "firstName": "Maximus",
-      "lastName": "Brandel",
-      "tempEditFlag": false
-    },
-    "department": "COMPUTER_SCIENCE",
-    "termBegan": {
-      "semester": "SPRING",
-      "year": 2010
-    },
-    "degreeSought": {
-      "name": "ME",
-      "graduation": {
-        "semester": "FALL",
-        "year": 2015
-      }
-    },
-    "previousDegrees": [
-      {
-        "name": "BS",
-        "graduation": {
-          "semester": "SPRING",
-          "year": 2014
-        }
-      }
-    ],
-    "advisors": [
-      {
-        "firstName": "Duncan",
-        "lastName": "Buell",
-        "department": "COMPUTER_SCIENCE",
-        "tempEditFlag": false
-      }
-    ],
-    "coursesTaken": [
-      {
-        "term": {
-          "semester": "FALL",
-          "year": 2014
-        },
-        "grade": "B",
-        "course": {
-          "name": "Advanced Naptime",
-          "id": "nap888",
-          "numCredits": "5"
-        }
-      },
-      {
-        "term": {
-          "semester": "FALL",
-          "year": 2013
-        },
-        "grade": "A",
-        "course": {
-          "name": "Individual Study and Research",
-          "id": "csce797",
-          "numCredits": "3"
-        }
-      },
-      {
-        "term": {
-          "semester": "FALL",
-          "year": 2013
-        },
-        "grade": "A",
-        "course": {
-          "name": "Computer Architecture",
-          "id": "csce513",
-          "numCredits": "3"
-        }
-      },
-      {
-        "term": {
-          "semester": "SPRING",
-          "year": 2014
-        },
-        "grade": "A",
-        "course": {
-          "name": "Compiler Construction",
-          "id": "csce531",
-          "numCredits": "3"
-        }
-      },
-      {
-        "term": {
-          "semester": "FALL",
-          "year": 2014
-        },
-        "grade": "A",
-        "course": {
-          "name": "Theory of Computation",
-          "id": "csce551",
-          "numCredits": "3"
-        }
-      },
-      {
-        "term": {
-          "semester": "SPRING",
-          "year": 2015
-        },
-        "grade": "A",
-        "course": {
-          "name": "Analysis of Algorithms",
-          "id": "csce750",
-          "numCredits": "3"
-        }
-      },
-      {
-        "term": {
-          "semester": "SPRING",
-          "year": 2015
-        },
-        "grade": "A",
-        "course": {
-          "name": "Seminar in Advances in Computing",
-          "id": "csce791",
-          "numCredits": "1"
-        }
-      },
-      {
-        "term": {
-          "semester": "FALL",
-          "year": 2014
-        },
-        "grade": "P",
-        "course": {
-          "name": "Directed Study and Research",
-          "id": "csce798",
-          "numCredits": "3"
-        }
-      },
-      {
-        "term": {
-          "semester": "FALL",
-          "year": 2015
-        },
-        "grade": "_",
-        "course": {
-          "name": "Software Engineering",
-          "id": "csce740",
-          "numCredits": "3"
-        }
-      }
-    ],
-    "milestonesSet": [
-      {
-        "milestone": "ACADEMIC_ADVISOR_APPOINTED",
-        "term": {
-          "semester": "FALL",
-          "year": 2014
-        }
-      },
-      {
-        "milestone": "PROGRAM_OF_STUDY_SUBMITTED",
-        "term": {
-          "semester": "FALL",
-          "year": 2014
-        }
-      }
-    ],
-    "notes": [
-      "Great student. A++ Would recommend.",
-      "Better than Ibrahim!"
-    ],
-    "tempEdit": false
-  },
-  {
-    "student": {
       "id": "merc",
       "firstName": "Christian",
       "lastName": "Merchant",
@@ -681,7 +513,176 @@
     ],
     "notes": [
       "Great student. A++ Would recommend.",
-      "Owes me 20 bucks."
+      "Owes me 20 bucks.",
+      null
+    ],
+    "tempEdit": false
+  },
+  {
+    "student": {
+      "id": "mbr",
+      "firstName": "Maximus",
+      "lastName": "Brandel",
+      "tempEditFlag": false
+    },
+    "department": "COMPUTER_SCIENCE",
+    "termBegan": {
+      "semester": "SPRING",
+      "year": 2010
+    },
+    "degreeSought": {
+      "name": "ME",
+      "graduation": {
+        "semester": "FALL",
+        "year": 2015
+      }
+    },
+    "previousDegrees": [
+      {
+        "name": "BS",
+        "graduation": {
+          "semester": "SPRING",
+          "year": 2014
+        }
+      }
+    ],
+    "advisors": [
+      {
+        "firstName": "Duncan",
+        "lastName": "Buell",
+        "department": "COMPUTER_SCIENCE",
+        "tempEditFlag": false
+      }
+    ],
+    "coursesTaken": [
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        },
+        "grade": "B",
+        "course": {
+          "name": "Advanced Naptime",
+          "id": "nap888",
+          "numCredits": "5"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2013
+        },
+        "grade": "A",
+        "course": {
+          "name": "Individual Study and Research",
+          "id": "csce797",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2013
+        },
+        "grade": "A",
+        "course": {
+          "name": "Computer Architecture",
+          "id": "csce513",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2014
+        },
+        "grade": "A",
+        "course": {
+          "name": "Compiler Construction",
+          "id": "csce531",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        },
+        "grade": "A",
+        "course": {
+          "name": "Theory of Computation",
+          "id": "csce551",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2015
+        },
+        "grade": "A",
+        "course": {
+          "name": "Analysis of Algorithms",
+          "id": "csce750",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2015
+        },
+        "grade": "A",
+        "course": {
+          "name": "Seminar in Advances in Computing",
+          "id": "csce791",
+          "numCredits": "1"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        },
+        "grade": "P",
+        "course": {
+          "name": "Directed Study and Research",
+          "id": "csce798",
+          "numCredits": "3"
+        }
+      },
+      {
+        "term": {
+          "semester": "FALL",
+          "year": 2015
+        },
+        "grade": "_",
+        "course": {
+          "name": "Software Engineering",
+          "id": "csce740",
+          "numCredits": "3"
+        }
+      }
+    ],
+    "milestonesSet": [
+      {
+        "milestone": "ACADEMIC_ADVISOR_APPOINTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      },
+      {
+        "milestone": "PROGRAM_OF_STUDY_SUBMITTED",
+        "term": {
+          "semester": "FALL",
+          "year": 2014
+        }
+      }
+    ],
+    "notes": [
+      "Great student. A++ Would recommend.",
+      "Better than Ibrahim!"
     ],
     "tempEdit": false
   }

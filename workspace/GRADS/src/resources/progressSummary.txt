@@ -211,10 +211,22 @@
               "id": "csce747",
               "numCredits": "3"
             }
+          },
+          {
+            "term": {
+              "semester": "Spring",
+              "year": 2015
+            },
+            "grade": "P",
+            "course": {
+              "name": "Computer Network Programming",
+              "id": "csce515",
+              "numCredits": "3"
+            }
           }
         ],
         "notes": [
-          "Must pass 22 more hours of graduate courses.",
+          "Must pass 19 more hours of graduate courses.",
           "Must pass 17 more hours of CSCE courses numbered above 700."
         ]
       }

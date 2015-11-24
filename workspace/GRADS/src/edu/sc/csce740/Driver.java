@@ -48,15 +48,16 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		grads.setUser("mhunt");
-		grads.generateProgressSummary("mhunt");
+		grads.setUser("mmatthews");
+		//grads.generateProgressSummary("mhunt");
+		
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
 		//System.out.println(grads.getStudentIDs());
 		//System.out.println(grads.getGPCIDs());
 		//System.out.println(grads.getTranscript("mhunt").getNotes().get(1));
 		
 		//Testing if degree reqs are being loaded
-		//grads.addNote("mhunt", "I'm a note stillllllll!!!", true);
+		grads.addNote("mbr", "Im a note stillllllll!!!", true);
 
 //		grads.getTranscript("mhunt").setLastName("Hunter");
 		//grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);

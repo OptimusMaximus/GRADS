@@ -318,20 +318,16 @@ public class GRADS implements GRADSIntf {
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
 		validateAccess(userId);
-		//TODO: work on this
-//		if (validateAccess(userId)){
-//			StudentRecord transcript;
-//			transcript = getTranscript(userId);
-//			transcript.addNote(note);
-//			
-//			if (permanent){
-//				updateTranscript(userId, transcript, true); 
-//			} else {
-//				updateTranscript(userId, transcript, false); 
-//			}
-//		} else {
-//			throw new Exception("Note cannot be added to the record of '" + userId + "' by: " + getUser());
-//		}
+
+		StudentRecord transcript;
+		transcript = getTranscript(userId);		
+		transcript.addNote(note);
+		
+		if (permanent){
+			updateTranscript(userId, transcript, true); 
+		} else {
+			updateTranscript(userId, transcript, false); 
+		}
 	}
 
 	/**
