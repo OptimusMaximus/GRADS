@@ -28,7 +28,7 @@ public abstract class DegreeRequirements {
 	private int degreeBasedCreditHours;
 	private int degreeBasedNonCSCEHours;
 	private String degreeBasedMaxCourse;
-    private int degreeBasedMaxHours;
+	private int degreeBasedMaxHours;
 	private List<String> degreeBasedExcludeCourseIDs;
 	private int degreeBasedCreditHoursWithValidMasterDegree;
 	private int thesisCreditHours;
