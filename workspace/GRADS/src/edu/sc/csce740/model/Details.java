@@ -4,7 +4,7 @@ import java.util.List;
 
 
 /**
- * Class to ...
+ * Class to store the details for a requirement check
  * @author Maximus Brandel
  * @author Ibrahim Elsayed
  * @author Christian Merchant
