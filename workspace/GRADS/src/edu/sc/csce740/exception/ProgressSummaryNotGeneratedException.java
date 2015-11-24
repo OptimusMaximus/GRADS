@@ -1,11 +1,11 @@
-/**
- * 
- */
 package edu.sc.csce740.exception;
 
 /**
- * @author brandemr
- *
+ * Exception class that is thrown if a progress summary fails to be generated
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-11-21
  */
 public class ProgressSummaryNotGeneratedException extends Exception {
 
