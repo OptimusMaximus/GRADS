@@ -45,12 +45,13 @@ public class RequirementCheck {
 	
 	
 	public RequirementCheck() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
 	/**
-	 * @return the passed
+	 * Method to get the string indicating whether a requirment is passed or not
+	 * @return the string indicating whether a requirment is passed or not
 	 */
 	public String getPassed() {
 		return passed;
@@ -58,7 +59,8 @@ public class RequirementCheck {
 
 
 	/**
-	 * @param passed the passed to set
+	 * Method to set the string indicating whether a requirment is passed or not
+	 * @param passed - the string to set 
 	 */
 	public void setPassed(String passed) {
 		this.passed = passed;
@@ -84,7 +86,8 @@ public class RequirementCheck {
 
 
 	/**
-	 * @return the details
+	 * Method to get the details of the requirment
+	 * @return the  details of the requirment
 	 */
 	public Details getDetails() {
 		return details;
@@ -92,12 +95,18 @@ public class RequirementCheck {
 
 
 	/**
-	 * @param details the details to set
+	 * Method to set the details of the requirment
+	 * @param details -  the details to set
 	 */
 	public void setDetails(Details details) {
 		this.details = details;
 	}
 
+	/**
+	 * Convenience method for importing flatfile from the hard disk into memory 
+	 * @param fileName the <code>String</code> name of the file to be retrieved
+	 * @return File being loaded
+	 */
 	private File getFile(String fileName) {
 		//Get file from resources folder
 		ClassLoader classLoader = getClass().getClassLoader();
@@ -105,6 +114,12 @@ public class RequirementCheck {
 		return file;
 	}
 	
+	/**
+	 * This method will generate the results used in the progress summary report. 
+	 * @param record, the StudentRecord of the student
+	 * @param allCourses, a List of Courses
+	 * @return List of RequirementChecks results
+	 */
 	public List<RequirementCheck> generateResults(StudentRecord record, List<Course> allCourses){
 		String degreeName = record.getDegreeSought().getDegreeName();
 		List<RequirementCheck> requirementCheckResults = new ArrayList<RequirementCheck>();
@@ -156,6 +171,12 @@ public class RequirementCheck {
 		return requirementCheckResults;
 	}
 	
+	/**
+	 * This method will generate the results for the GPA requirement 
+	 * @param record, the StudentRecord of the student
+	 * @param gpa, student's gpa
+	 * @return gpaRequirementCheckResults
+	 */
 	private RequirementCheck getGpaRequirementCheckResults(StudentRecord record, String gpa) {
 		RequirementCheck gpaRequirementCheckResults = new RequirementCheck();
 		gpaRequirementCheckResults.setName("GPA");
@@ -169,7 +190,15 @@ public class RequirementCheck {
 		gpaRequirementCheckResults.setDetails(gpaDetails);
 		return gpaRequirementCheckResults;
 	}
-
+	
+	/**
+	 * This method will generate the results for the Core Course requirement 
+	 * @param record, the StudentRecord of the student
+	 * @param coursesTaken, the list of courses taken 
+	 * @param coreCoursesRemaining, the list of core courses remaining
+	 * @param requirements, the degree requirements
+	 * @return coreCoursesRequirementCheckResults
+	 */
 	private RequirementCheck getCoreCoursesRequirementCheckResults(StudentRecord record, List<CourseTaken> coursesTaken, List<Course> coreCoursesRemaining, DegreeRequirements requirements) {
 		RequirementCheck coreCoursesRequirementCheckResults = new RequirementCheck();
 		coreCoursesRequirementCheckResults.setName("CORE_COURSES_" + requirements.getDegreeName().toUpperCase());
@@ -214,6 +243,14 @@ public class RequirementCheck {
 		return coreCoursesRequirementCheckResults;
 	}
 	
+	/**
+	 * This method will generate the results for the Additional Credits requirement 
+	 * @param record, the StudentRecord of the student
+	 * @param coursesTaken, the list of courses taken 
+	 * @param valid700LevelCoursesTaken, the list of 700 level courses remaining
+	 * @param requirements, the degree requirements
+	 * @return additionalCreditsRequirementCheckResults
+	 */
 	private RequirementCheck getAdditionalCreditsRequirementCheckResults(StudentRecord record, List<CourseTaken> coursesTaken, List<CourseTaken> valid700LevelCoursesTaken, DegreeRequirements requirements) {
 		RequirementCheck additionalCreditsRequirementCheckResults = new RequirementCheck();
 		additionalCreditsRequirementCheckResults.setName("ADDITIONAL_CREDITS_" + record.getDegreeSought().getDegreeName().toUpperCase());
@@ -330,6 +367,14 @@ public class RequirementCheck {
 		return additionalCreditsRequirementCheckResults;
 	}
 
+	/**
+	 * This method will generate the results for the Degree Based Credits requirement 
+	 * @param record, the StudentRecord of the student
+	 * @param coursesTaken, the list of courses taken 
+	 * @param valid700LevelCoursesTaken, the list of 700 level courses remaining
+	 * @param requirements, the degree requirements
+	 * @return degreeBasedCreditsRequirementCheckResults
+	 */
 	private RequirementCheck getDegreeBasedCreditsRequirementCheckResults(StudentRecord record, 
 			List<CourseTaken> coursesTaken, List<CourseTaken> valid700LevelCoursesTaken, DegreeRequirements requirements){
 		RequirementCheck degreeBasedCreditsRequirementCheckResults = new RequirementCheck();
@@ -467,6 +512,13 @@ public class RequirementCheck {
 		return degreeBasedCreditsRequirementCheckResults;
 	}
 	
+	/**
+	 * This method will generate the results for the Thesis Credits requirement 
+	 * @param record, the StudentRecord of the student
+	 * @param coursesTaken, the list of valid courses taken 
+	 * @param thesis, the list of thesis' required for the degree
+	 * @return thesisCreditsRequirementCheckResults
+	 */
 	private RequirementCheck getThesisCreditsRequirementCheckResults(StudentRecord record,
 			List<CourseTaken> validCoursesTaken, List<String> thesis) {
 		RequirementCheck thesisCreditsRequirementCheckResults = new RequirementCheck();
@@ -502,6 +554,12 @@ public class RequirementCheck {
 		return thesisCreditsRequirementCheckResults;
 	}
 	
+	/**
+	 * This method will generate the results for the Within Time requirement 
+	 * @param record, the StudentRecord of the student
+	 * @param requiredYears, the years the student is allowed for a requirement
+	 * @return withinTimeRequirementCheckResults
+	 */
 	private RequirementCheck getWithinTimeRequirementCheckResults(StudentRecord record, int requiredYears) {
 		RequirementCheck withinTimeRequirementCheckResults = new RequirementCheck();
 		withinTimeRequirementCheckResults.setName("TIME_LIMIT_" + record.getDegreeSought().getDegreeName().toUpperCase());
@@ -521,6 +579,12 @@ public class RequirementCheck {
 		return withinTimeRequirementCheckResults;
 	}
 
+	/**
+	 * This method will generate the results for the Milestones requirement 
+	 * @param record, the StudentRecord of the student
+	 * @param milestonesRemaining, the list of remaining milestones
+	 * @return milestonesRequirementCheckResults
+	 */
 	private RequirementCheck getMilestonesRequirementCheckResults(StudentRecord record, List<Milestone> milestonesRemaining) {
 		RequirementCheck milestonesRequirementCheckResults = new RequirementCheck();
 		milestonesRequirementCheckResults.setName("MILESTONES_" + record.getDegreeSought().getDegreeName().toUpperCase());
@@ -542,6 +606,11 @@ public class RequirementCheck {
 		return milestonesRequirementCheckResults;
 	}
 
+	/**
+	 * This method will get the degree requirements for a degree
+	 * @param degreeName, the degree being sought
+	 * @return degreeRequirements for the degree
+	 */
 	private DegreeRequirements getDegreeRequirements(String degreeName){
 		List<DegreeRequirements> degreeRequirements = null;
 		int index = -1;
@@ -591,6 +660,11 @@ public class RequirementCheck {
 		return degreeRequirements.get(index);
 	}
 	
+	/**
+	 * This method will calculate the gpa for the given student record 
+	 * @param record, the StudentRecord of the student
+	 * @return the calculated gpa
+	 */
 	private String calculateGPA(StudentRecord record){
 		int totalAttemptedHours = 0;
 		double qualityPoints = 0.0;
@@ -620,6 +694,11 @@ public class RequirementCheck {
 		return f.format(qualityPoints / totalAttemptedHours);
 	}
 	
+	/**
+	 * This method will calculate remaining milestones the student hasn't taken
+	 * @param record, the StudentRecord of the student
+	 * @return the list of remaining milestones the student hasn't taken
+	 */
 	private List<Milestone> getRemainingMilestones(StudentRecord record){
 		List<Milestone> milestonesRemaining = new ArrayList<Milestone>();
 		List<Milestone> milestonesCompleted = record.getMilestonesSet();
@@ -639,6 +718,13 @@ public class RequirementCheck {
 		return milestonesRemaining;
 	}
 	
+	/**
+	 * This method will calculate remaining milestones the student hasn't taken
+	 * @param semesterBegan, the semester the student began
+	 * @param yearBegan, the year the student began
+	 * @param requiredYears, the number of years the student is allowed for a requirement
+	 * @return true if within required time
+	 */
 	private boolean isWithinTime(String semesterBegan, int yearBegan, int requiredYears){
 		int currentSemester;
 		int semesterBeganCode = 0;
@@ -665,7 +751,6 @@ public class RequirementCheck {
 			semesterBeganCode = 3;
 		}
 		
-		//if (degreeSought.equals("PHD")){		
 		if((currentYear - yearBegan) < requiredYears){
 			return true;
 		} else if ((currentYear - yearBegan) == requiredYears){
@@ -677,21 +762,15 @@ public class RequirementCheck {
 		} else {
 			return false;
 		}
-//		} else {
-//			if((currentYear - yearBegan) < requiredYears){
-//				return true;
-//			} else if ((currentYear - yearBegan) == requiredYears){
-//				if(currentSemester >= semesterBeganCode){
-//					return true;
-//				} else{
-//					return false;
-//				}
-//			} else {
-//				return false;
-//			}
-//		}
+
 	}
 	
+	/**
+	 * This method will calculate remaining core courses the student hasn't taken
+	 * @param coursesCompleted, list of courses taken
+ 	 * @param requirements, the degree requirments instance
+	 * @return the list of remaining core courses the student hasn't taken
+	 */
 	private List<Course> getRemainingCourses(List<CourseTaken> coursesCompleted, DegreeRequirements requirements){
 		List<Course> coursesRemaining = new ArrayList<Course>();
 		List<Course> coreCourses = requirements.getCoreCourses();		
@@ -708,7 +787,13 @@ public class RequirementCheck {
 		return coursesRemaining;
 	}
 	
-	private List<CourseTaken> getCoreCourses(List<CourseTaken> coursesCompleted, DegreeRequirements requirements){
+	/**
+	 * This method will calculate degree's core courses the student hasn't taken
+	 * @param coursesCompleted, list of courses taken
+ 	 * @param requirements, the degree requirments instance
+	 * @return the list of a degree's core courses the student hasn't taken
+	 */
+	 private List<CourseTaken> getCoreCourses(List<CourseTaken> coursesCompleted, DegreeRequirements requirements){
 		List<Course> coreCourses = requirements.getCoreCourses();		
 		List<Course> coursesCompletedList = new ArrayList<Course>();		
 		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
@@ -726,8 +811,13 @@ public class RequirementCheck {
 		return coursesTaken;
 	}
 	
-	//Returns true if valid CSCE course
-	private boolean isValidCourse(CourseTaken courseTaken, List<Course> allCourses){
+	/**
+	 * This method determines if a course is in the allCourses "database"
+	 * @param courseTaken, list of courses taken
+ 	 * @param allCourses, the degree requirments instance
+	 * @return true if course is within allCourses
+	 */	
+	 private boolean isValidCourse(CourseTaken courseTaken, List<Course> allCourses){
 		for(int i = 0; i < allCourses.size(); i++){
 			if (courseTaken.getCourse().courseIsEqual(courseTaken.getCourse(), allCourses.get(i))){
 				return true;
