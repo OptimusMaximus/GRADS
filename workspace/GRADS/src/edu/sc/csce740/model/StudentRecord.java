@@ -67,6 +67,10 @@ public class StudentRecord {
 		return termBegan;
 	}
 	
+	/**
+	 * Method to set the term at which the stusdent started his degree
+	 * @param termBegan - the term at which the stusdent started his degree
+	 */
 	public void setTermBegan(Term termBegan) {
 		this.termBegan = termBegan;
 	}
@@ -79,6 +83,10 @@ public class StudentRecord {
 		return degreeSought;
 	}
 	
+	/**
+	 * Method to get the degree the student is pursuing
+	 * @param degreeSought - the degree the student is pursuing
+	 */
 	public void setDegreeSought(Degree degreeSought) {
 		this.degreeSought = degreeSought;
 	}
@@ -91,14 +99,26 @@ public class StudentRecord {
 		return certificateSought;
 	}
 	
-	public void setCertificateSought(Degree certificateSought) {
+	/**
+	 * Method to get the certificate the student is pursuing
+	 * @param certificateSought - the certificate the student is pursuing
+	 */
+	 public void setCertificateSought(Degree certificateSought) {
 		this.certificateSought = certificateSought;
 	}
 	
+	/**
+	 * Method to get a list of student's advisors
+	 * @return a list of student's advisors
+	 */
 	public List<User> getAdvisors() {
 		return advisors;
 	}
 
+	/**
+	 * Method to set a list of student's advisors
+	 * @param advisors - a list of student's advisors 
+	 */
 	public void setAdvisor(List<User> advisor) {
 		this.advisors = advisor;
 	}
@@ -111,9 +131,14 @@ public class StudentRecord {
 		return committee;
 	}
 	
+	/**
+	 * Method to set a list of student's committee members
+	 * @param committee - a list of student's committee members 
+	 */
 	public void setCommittee(List<User> committee) {
 		this.committee = committee;
 	}
+	
 	
 	public boolean getTempEdit() {
 		return tempEdit;
