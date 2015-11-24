@@ -130,9 +130,6 @@ public class RequirementCheck {
 		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
 		coursesTaken = removeCoursesWithNoGrade(record.getCoursesTaken());
 		
-//		List<CourseTaken> nonExpiredCoursesTaken = new ArrayList<CourseTaken>();
-//		nonExpiredCoursesTaken = nonExpiredCoursesTaken(coursesTaken, requirements);
-//		
 		List<CourseTaken> validCoursesTaken = new ArrayList<CourseTaken>();
 		validCoursesTaken = getValidCoursesTaken(coursesTaken, allCourses);		
 			
