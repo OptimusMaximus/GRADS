@@ -20,13 +20,15 @@ public class Details {
 	public List<String> notes;
 	
 	/**
-	 * @return the gpa
+	 * Method to get the gpa
+	 * @returns the gpa 
 	 */
 	public Double getGpa() {
 		return gpa;
 	}
 
 	/**
+	 * Method to set the gpa
 	 * @param gpa - the gpa to set
 	 */
 	public void setGpa(Double gpa) {
@@ -34,42 +36,48 @@ public class Details {
 	}
 
 	/**
-	 * @return a list of courses taken
+	 * Method to get a list of all taken courses
+	 * @return coursesTaken - list of all taken courses
 	 */
 	public List<CourseTaken> getCoursesTaken() {
 		return coursesTaken;
 	}
 
 	/**
-	 * @param coursesTaken - the list to set as a list of coursesTaken 
+	 * Method to add a course to the list of taken course
+	 * @param courseTaken - the course to be added to the list of taken course
 	 */
 	public void setCoursesTaken(List<CourseTaken> coursesTaken) {
 		this.coursesTaken = coursesTaken;
 	}
 
 	/**
-	 * @return - a list of milestones
+	 * Method to get a list of all milestones
+	 * @return milestonesSet - list of all milestones
 	 */
 	public List<Milestone> getMilestones() {
 		return milestones;
 	}
 
 	/**
-	 * @param milestones - the list of milestones to set
+	 * Method to add a milestone to the list of milestones
+	 * @param milestones - the mileston to set
 	 */
 	public void setMilestones(List<Milestone> milestones) {
 		this.milestones = milestones;
 	}
 
 	/**
-	 * @return the list of notes on a requirment
+	 * Method to get a list of all notes
+	 * @return notes - list of all notes
 	 */
 	public List<String> getNotes() {
 		return notes;
 	}
 
 	/**
-	 * @param notes - the list of notes to set
+	 * Method to add a note to the list of note
+	 * @param notes - the note to be added to the list of note
 	 */
 	public void setNotes(List<String> notes) {
 		this.notes = notes;
