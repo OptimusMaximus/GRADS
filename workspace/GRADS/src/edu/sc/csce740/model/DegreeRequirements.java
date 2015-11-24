@@ -23,10 +23,21 @@ public abstract class DegreeRequirements {
 	private boolean report;
 	private boolean exam;
 	private int additionalCreditHours;
+	private List<String> additionalCreditExcludeCourseIDs;
+	private List<Course> additionalCreditIncludeCourses;
 	private int degreeBasedCreditHours;
+	private int degreeBasedNonCSCEHours;
+	private String degreeBasedMaxCourse;
+    private int degreeBasedMaxHours;
+	private List<String> degreeBasedExcludeCourseIDs;
 	private int degreeBasedCreditHoursWithValidMasterDegree;
 	private int thesisCreditHours;
+	private List<String> thesisCourseIDs;
 	private String degreeName;
+	private int additionalCreditINFASMinHours;
+	private int additionalCreditINFASMaxNonCSCEHours;
+	private int additionalCreditINFASMaxIncludeMasterHours;
+	private int coursesInvalidYears;
 	
 	
 	/**
@@ -240,6 +251,138 @@ public abstract class DegreeRequirements {
 	 * @param internship the course object of the internship to set
 	 */
 	public abstract void setInternship(Course internship);
+	/**
+	 * @return the additionalCreditExcludeCourseIDs
+	 */
+	public List<String> getAdditionalCreditExcludeCourseIDs() {
+		return additionalCreditExcludeCourseIDs;
+	}
+	/**
+	 * @param additionalCreditExcludeCourseIDs the additionalCreditExcludeCourseIDs to set
+	 */
+	public void setAdditionalCreditExcludeCourseIDs(List<String> additionalCreditExcludeCourseIDs) {
+		this.additionalCreditExcludeCourseIDs = additionalCreditExcludeCourseIDs;
+	}
+	/**
+	 * @return the additionalCreditIncludeCourses
+	 */
+	public List<Course> getAdditionalCreditIncludeCourses() {
+		return additionalCreditIncludeCourses;
+	}
+	/**
+	 * @param additionalCreditIncludeCourses the additionalCreditIncludeCourses to set
+	 */
+	public void setAdditionalCreditIncludeCourses(List<Course> additionalCreditIncludeCourses) {
+		this.additionalCreditIncludeCourses = additionalCreditIncludeCourses;
+	}
+	/**
+	 * @return the degreeBasedNonCSCEHours
+	 */
+	public int getDegreeBasedNonCSCEHours() {
+		return degreeBasedNonCSCEHours;
+	}
+	/**
+	 * @param degreeBasedNonCSCEHours the degreeBasedNonCSCEHours to set
+	 */
+	public void setDegreeBasedNonCSCEHours(int degreeBasedNonCSCEHours) {
+		this.degreeBasedNonCSCEHours = degreeBasedNonCSCEHours;
+	}
+	/**
+	 * @return the degreeBasedMaxCourse
+	 */
+	public String getDegreeBasedMaxCourse() {
+		return degreeBasedMaxCourse;
+	}
+	/**
+	 * @param degreeBasedMaxCourse the degreeBasedMaxCourse to set
+	 */
+	public void setDegreeBasedMaxCourse(String degreeBasedMaxCourse) {
+		this.degreeBasedMaxCourse = degreeBasedMaxCourse;
+	}
+	/**
+	 * @return the degreeBasedMaxHours
+	 */
+	public int getDegreeBasedMaxHours() {
+		return degreeBasedMaxHours;
+	}
+	/**
+	 * @param degreeBasedMaxHours the degreeBasedMaxHours to set
+	 */
+	public void setDegreeBasedMaxHours(int degreeBasedMaxHours) {
+		this.degreeBasedMaxHours = degreeBasedMaxHours;
+	}
+	/**
+	 * @return the degreeBasedExcludeCourseIDs
+	 */
+	public List<String> getDegreeBasedExcludeCourseIDs() {
+		return degreeBasedExcludeCourseIDs;
+	}
+	/**
+	 * @param degreeBasedExcludeCourseIDs the degreeBasedExcludeCourseIDs to set
+	 */
+	public void setDegreeBasedExcludeCourseIDs(List<String> degreeBasedExcludeCourseIDs) {
+		this.degreeBasedExcludeCourseIDs = degreeBasedExcludeCourseIDs;
+	}
+	/**
+	 * @return the thesisCourseIDs
+	 */
+	public List<String> getThesisCourseIDs() {
+		return thesisCourseIDs;
+	}
+	/**
+	 * @param thesisCourseIDs the thesisCourseIDs to set
+	 */
+	public void setThesisCourseIDs(List<String> thesisCourseIDs) {
+		this.thesisCourseIDs = thesisCourseIDs;
+	}
+	/**
+	 * @return the additionalCreditINFASMinHours
+	 */
+	public int getAdditionalCreditINFASMinHours() {
+		return additionalCreditINFASMinHours;
+	}
+	/**
+	 * @param additionalCreditINFASMinHours the additionalCreditINFASMinHours to set
+	 */
+	public void setAdditionalCreditINFASMinHours(int additionalCreditINFASMinHours) {
+		this.additionalCreditINFASMinHours = additionalCreditINFASMinHours;
+	}
+	/**
+	 * @return the additionalCreditINFASMaxNonCSCEHours
+	 */
+	public int getAdditionalCreditINFASMaxNonCSCEHours() {
+		return additionalCreditINFASMaxNonCSCEHours;
+	}
+	/**
+	 * @param additionalCreditINFASMaxNonCSCEHours the additionalCreditINFASMaxNonCSCEHours to set
+	 */
+	public void setAdditionalCreditINFASMaxNonCSCEHours(int additionalCreditINFASMaxNonCSCEHours) {
+		this.additionalCreditINFASMaxNonCSCEHours = additionalCreditINFASMaxNonCSCEHours;
+	}
+	/**
+	 * @return the additionalCreditINFASMaxIncludeMasterHours
+	 */
+	public int getAdditionalCreditINFASMaxIncludeMasterHours() {
+		return additionalCreditINFASMaxIncludeMasterHours;
+	}
+	/**
+	 * @param additionalCreditINFASMaxIncludeMasterHours the additionalCreditINFASMaxIncludeMasterHours to set
+	 */
+	public void setAdditionalCreditINFASMaxIncludeMasterHours(int additionalCreditINFASMaxIncludeMasterHours) {
+		this.additionalCreditINFASMaxIncludeMasterHours = additionalCreditINFASMaxIncludeMasterHours;
+	}
+	/**
+	 * @return the coursesInvalidYears
+	 */
+	public int getCoursesInvalidYears() {
+		return coursesInvalidYears;
+	}
+	/**
+	 * @param coursesInvalidYears the coursesInvalidYears to set
+	 */
+	public void setCoursesInvalidYears(int coursesInvalidYears) {
+		this.coursesInvalidYears = coursesInvalidYears;
+	}
 	
 	
 }

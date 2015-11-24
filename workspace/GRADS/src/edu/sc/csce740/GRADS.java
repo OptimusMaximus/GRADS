@@ -4,11 +4,8 @@
 package edu.sc.csce740;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +13,10 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import edu.sc.csce740.model.Course;
 import edu.sc.csce740.model.CourseTaken;
-import edu.sc.csce740.model.Degree;
-import edu.sc.csce740.model.DegreeRequirements;
-import edu.sc.csce740.model.DoctorOfPhilosophy;
 import edu.sc.csce740.model.ProgressSummary;
 import edu.sc.csce740.model.StudentRecord;
 import edu.sc.csce740.model.User;
@@ -43,17 +35,9 @@ import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
  * 
  */
 
-/**
- * @author Maximus
- *
- */
-/**
- * @author Maximus
- *
- */
 public class GRADS implements GRADSIntf {
 	/**
-	 * the current session user for the GRADS system
+	 * The current session user for the GRADS system
 	 */
 	private String currentUser;
 	/**
@@ -76,7 +60,26 @@ public class GRADS implements GRADSIntf {
 	 * The role of the current session user
 	 */
 	private static String role;
+	
+	/**
+	 * The file location for the record
+	 */
+	private String recordFile;
 		
+	/**
+	 * @return the recordFile
+	 */
+	public String getRecordFile() {
+		return recordFile;
+	}
+
+	/**
+	 * @param recordFile the recordFile to set
+	 */
+	public void setRecordFile(String recordFile) {
+		this.recordFile = recordFile;
+	}
+
 	/**
 	 * Static method that can check the <code>role</code> of the current user. Used in <code>StudentRecord</code> and 
 	 * <code>User</code>to set the temporary edit flag for security
@@ -162,6 +165,7 @@ public class GRADS implements GRADSIntf {
 			allRecords = new Gson().fromJson(new FileReader(getFile(recordsFile)),
 				new TypeToken<List<StudentRecord>>() {
 				}.getType());
+			setRecordFile(recordsFile);
 		}  catch (Exception e){
 			throw new DataNotRetrievedException("Can not load records file");
 		}
@@ -173,17 +177,9 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#setUser(java.lang.String)
 	 */
 	public void setUser(String userId)  throws InvalidUserException {
-		// TODO Auto-generated method stub
 		validateSession(userId);
 		this.currentUser = userId;	
-		
-//		if (validateUser(userId)) {
-//			this.currentUser = userId;
-//		} else {
-//			throw new InvalidUserException("Invalid user");
-//		}
-		setRole(lookupUser(userId).getRole());
-		
+		setRole(lookupUser(userId).getRole());		
 	}
 
 	/*
@@ -192,7 +188,6 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#clearSession()
 	 */
 	public void clearSession() throws Exception {
-		// TODO Auto-generated method stub
 		this.currentUser = null;
 		this.allCourses = null;
 		this.allRecords = null;
@@ -206,7 +201,6 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getUser()
 	 */
 	public String getUser() {
-		// TODO Auto-generated method stub
 		return this.currentUser;
 	}
 
@@ -216,8 +210,7 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
 
-	public List<String> getCSCEStudentIDs() {
-		// TODO Auto-generated method stub
+	public List<String> getCSCEStudentIDs() throws InvalidUserException {
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("STUDENT".equals(allUsers.get(i).getRole())
@@ -234,8 +227,7 @@ public class GRADS implements GRADSIntf {
 	 * @see edu.sc.csce740.GRADSIntf#getStudentIDs()
 	 */
 
-	public List<String> getCSCEGPCIDs() {
-		// TODO Auto-generated method stub
+	public List<String> getCSCEGPCIDs() throws InvalidUserException {
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("GRADUATE_PROGRAM_COORDINATOR".equals(allUsers.get(i).getRole())
@@ -251,7 +243,7 @@ public class GRADS implements GRADSIntf {
 	 * 
 	 * @see edu.sc.csce740.GRADSIntf#getTranscript(java.lang.String)
 	 */
-	public StudentRecord getTranscript(String userId) throws Exception {
+	public StudentRecord getTranscript(String userId) throws InvalidUserException {
 		if (getCSCEGPCIDs().contains(getUser())
 			|| getUser().equals(userId)){
 			for (int i=0; i< allRecords.size(); i++){
@@ -259,12 +251,8 @@ public class GRADS implements GRADSIntf {
 					return allRecords.get(i);
 				}
 			}
-			//TODO 
-//			throw new invalidTranscriptException ("invalid transcript lookup");
-		}
-		
-		throw new Exception("Student record of: '" + userId + "' cannot be accessed by: " + getUser());
-//		return null;
+		}		
+		throw new InvalidUserException("Student record of: '" + userId + "' cannot be accessed by: " + getUser());
 	}
 
 	/*
@@ -277,57 +265,29 @@ public class GRADS implements GRADSIntf {
 			Boolean permanent) throws Exception {
 		
 		validateAccess(userId);
-		if (permanent && transcript.getTempEdit())
-		{
+		if (permanent && transcript.getTempEdit()){
 			throw new Exception ("Update Failed: Temporary edits found in attempted permanent update");
-		}
-		
-		else
-		{
+		} else {
 			int index = getRecordIndex(userId);
-			if (index == -1)
-			{
+			if (index == -1) {
 				System.out.println("Previous record not found. Adding new record to database...");
 				allRecords.add(transcript);
 				System.out.println("New record successfully added");
 				if (permanent){
 					String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
-					writeToFile("src/resources/students.txt", representation);	
-					loadRecords("resources/students.txt");
+					writeToFile("src/" + getRecordFile(), representation);	
+					loadRecords(getRecordFile());
 				}	
-			}
-			else	
+			} else	{
 				allRecords.remove(index);
 				allRecords.add(transcript);
 				if (permanent) {
 					String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
-					writeToFile("src/resources/students.txt", representation);	
-					loadRecords("resources/students.txt");
+					writeToFile("src/" + getRecordFile(), representation);	
+					loadRecords(getRecordFile());
 				}
+			}
 		} 
-		
-//		if (validateAccess(userId)){
-//			//StudentRecord originalRecord = getTranscript(userId);	
-//			int index = -1;
-//			//originalRecord = transcript;
-//			for (int i=0; i< allRecords.size(); i++){
-//				if (allRecords.get(i).getUser().getUserID().equals(userId)){
-//					index = i;
-//					break;
-//				}
-//			}
-//			allRecords.remove(index);
-//			allRecords.add(transcript);		
-//			
-//			if(permanent){
-//				String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
-//				writeToFile("src/resources/students.txt", representation);	
-//				loadRecords("resources/students.txt");
-//				
-//			} 
-//		} else {
-//			throw new Exception("Transcript could not be updated");
-//		}
 	}
 
 	/*
@@ -408,43 +368,20 @@ public class GRADS implements GRADSIntf {
 			if (!flag){
 				throw new CoursesInvalidException("Invalid course given " + courses.get(i).getCourse().getId());
 			}
-			System.out.println(record);
+			//System.out.println(record);
 			record.setCoursesTaken(courses.get(i));
 		}
 		updateTranscript(userId, record, false);
 		return generateProgressSummary(userId);
 	}
-
-//	private boolean validateUser(String id) {
-//		for (int i = 0; i < allUsers.size(); i++) {
-//			if (id.equals(allUsers.get(i).getUserID())
-//				&& "COMPUTER_SCIENCE".equals(allUsers.get(i).getDepartment())) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-//	
-//	public boolean validateAccess(String userID) throws Exception 
-//	{
-//		if (getCSCEGPCIDs().contains(getUser())){
-//			return true;
-//		} else if (getCSCEStudentIDs().contains(userID) && getUser().equals(userID)){
-//			return true;
-//		} else{
-//			return false;
-//		}
-//		
-//	}
-	
-	
 	
 	/**
 	 * Method to retrieve the user object from <code>allUsers</code> associated with the <code>userId</code>
 	 * @param userId the userId of the user to look up 
 	 * @return the user object associated with the <code>userId</code>
+	 * @throws InvalidUserException 
 	 */
-	private User lookupUser(String userId) {
+	private User lookupUser(String userId) throws InvalidUserException {
 		User user = null;
 		for (int i = 0; i < allUsers.size(); i++) 
 		{
@@ -454,6 +391,9 @@ public class GRADS implements GRADSIntf {
 				break;	
 			}
 		}
+		if (user == null){
+			throw new InvalidUserException("User not in database");
+		}
 		return user; 
 	}
 	
@@ -462,8 +402,9 @@ public class GRADS implements GRADSIntf {
 	 * Method to return the position of the user object associated with <code>userId</code>
 	 * @param userId the id of the user we wish to locate the position of within <code>allRecords</code>
 	 * @return the index position of the user object associated with <code>userId</code> in <code>allRecords</code>
+	 * @throws InvalidUserException 
 	 */
-	private int getRecordIndex(String userId) 
+	private int getRecordIndex(String userId) throws InvalidUserException 
 	{
 		int index = -1;
 		for (int i=0; i< allRecords.size(); i++)
@@ -484,17 +425,14 @@ public class GRADS implements GRADSIntf {
 	 */
 	private void validateSession(String userId) throws InvalidUserException {
 		User user = lookupUser(userId);
-		if (!(userId.equals(user.getUserID()))) 
-		{
+		if (!(userId.equals(user.getUserID()))) {
 			throw new InvalidUserException ("Session Initation Failed: Not in user database");
 		}
-		if(!("COMPUTER_SCIENCE".equals(user.getDepartment())))
-		{
+		if(!("COMPUTER_SCIENCE".equals(user.getDepartment()))){
 			throw new InvalidUserException ("Session Initation Failed: Department mismatch");
 		}
 		if (!(user.getRole().equals("STUDENT")) 
-		   && !(user.getRole().equals("GRADUATE_PROGRAM_COORDINATOR")))
-		{
+		   && !(user.getRole().equals("GRADUATE_PROGRAM_COORDINATOR"))){
 			throw new InvalidUserException ("Session Initiation Failed: Not qualified to access GRADS");
 		} 
 	}
@@ -507,18 +445,18 @@ public class GRADS implements GRADSIntf {
 	private void validateAccess(String userId) throws Exception {
 		User accessedUser = lookupUser(userId);
 		if (!(userId.equals(accessedUser.getUserID())) 
-		   || !("COMPUTER_SCIENCE".equals(accessedUser.getDepartment()))) 
-		{
+		   || !("COMPUTER_SCIENCE".equals(accessedUser.getDepartment()))){
 			throw new Exception ("No Access: Department mismatch");
 		}
 		if (!(lookupUser(getUser()).getRole().equals("GRADUATE_PROGRAM_COORDINATOR")) 
-		   && !(accessedUser.getRole().equals("STUDENT") && getUser().equals(userId)))
-		{
+		   && !(accessedUser.getRole().equals("STUDENT") && getUser().equals(userId))){
 			throw new Exception ("No Access: Unauthorized record access");
 		} 
 	}
 	
-	
+	/**
+	 * Class that excludes fields when printing out to GSON
+	 */
 	public class ExclStrat implements ExclusionStrategy {
 
         public boolean shouldSkipClass(Class<?> arg0) {

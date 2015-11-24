@@ -35,12 +35,25 @@
              "dissertation": false,
              "thesis": false,
              "report": false,
-             "exam": true,
+             "exam": false,
              "qualifyingExam": false,
-             "comprehensiveExam": false,
+             "comprehensiveExam": true,
              "additionalCreditHours": 11,
-	     "thesisCreditHours": 0,
+             "additionalCreditExcludeCourseIDs": [
+             						"csce797"
+             						],
+	     	  "thesisCreditHours": 0,
+	     	  "thesisCourseIDs": [
+	     	  						"csce799"
+	     	  						],
              "degreeBasedCreditHours": 30,
+             "degreeBasedNonCSCEHours": 6,
+             "degreeBasedMaxCourse": "csce798",
+             "degreeBasedMaxHours": 3,
+             "degreeBasedExcludeCourseIDs": [
+             							"csce797"
+             						], 
+             "coursesInvalidYears" : 6,          
 	     "milestones": [
                  {
                  "milestone": "ACADEMIC_ADVISOR_APPOINTED"                 
@@ -97,12 +110,92 @@
              "dissertation": false,
              "thesis": false,
              "report": true,
-             "exam": true,
+             "exam": false,
              "qualifyingExam": false,
-             "comprehensiveExam": false,
+             "comprehensiveExam": true,
              "additionalCreditHours": 15,
-	     "thesisCreditHours": 0,
-             "degreeBasedCreditHours": 0,
+             "additionalCreditExcludeCourseIDs": [
+             						 "csce797"
+             						],
+             "additionalCreditIncludeCourses":[
+             						{
+	             					  "name": "System Programming",
+	             					  "id": "csce510"
+             					 	},
+             					 	{
+	             					  "name": "System Performance Evaluation",
+	             					  "id": "csce512"
+             					 	},
+             					 	{
+	             					  "name": "Computer Network Programming",
+	             					  "id": "csce515"
+             					 	},
+             					 	{
+	             					  "name": "Computer Networks",
+	             					  "id": "csce516"
+             					 	},
+             					 	{
+	             					  "name": "Database System Design",
+	             					  "id": "csce520"
+             					 	},
+             					 	{
+	             					  "name": "Information Security Principles",
+	             					  "id": "csce522"
+             					 	},
+             					 	{
+	             					  "name": "Windows Programming",
+	             					  "id": "csce547"
+             					 	},
+             					 	{
+	             					  "name": "Physical Database Design",
+	             					  "id": "csce721"
+             					 	},
+             					 	{
+	             					  "name": "Advanced Database Design",
+	             					  "id": "csce723"
+             					 	},
+             					 	{
+	             					  "name": "Information Retrieval: Algorithms and Models",
+	             					  "id": "csce725"
+             					 	},
+             					 	{
+	             					  "name": "Object-Oriented Analysis and Design",
+	             					  "id": "csce744"
+             					 	},
+             					 	{
+	             					  "name": "Object-Oriented Programming Methods",
+	             					  "id": "csce745"
+             					 	},
+             					 	{
+	             					  "name": "Interactive Computer Systems",
+	             					  "id": "csce767"
+             					 	},
+             					 	{
+	             					  "name": "Multiagent Systems",
+	             					  "id": "csce782"
+             					 	},
+             					 	{
+	             					  "name": "Distributed Database Design",
+	             					  "id": "csce821"
+             					 	},
+             					 	{
+	             					  "name": "Data Mining and Warehousing",
+	             					  "id": "csce822"
+             					 	},
+             					 	{
+	             					  "name": "Cooperative Information Systems",
+	             					  "id": "csce826"
+             					 	},
+             					 	{
+	             					  "name": "Software Reliability and Safety",
+	             					  "id": "csce846"
+             					 	},
+             					 	{
+	             					  "name": "Project Management",
+	             					  "id": "mgsc872"
+             					 	}
+             					],  
+         "coursesInvalidYears" : 6,         
 	     "milestones": [
                  {
                  "milestone": "ACADEMIC_ADVISOR_APPOINTED"                 
@@ -167,8 +260,21 @@
              "qualifyingExam": false,
              "comprehensiveExam": false,
              "additionalCreditHours": 8,
-	     "thesisCreditHours": 6,
+             "additionalCreditExcludeCourseIDs": [
+             						 "csce797"
+             						],
+	     	  "thesisCreditHours": 6,
+	     	  "thesisCourseIDs": [
+	     	  						"csce799"
+	     	  						],
              "degreeBasedCreditHours": 24,
+             "degreeBasedNonCSCEHours": 6,
+             "degreeBasedMaxCourse": "csce798",
+             "degreeBasedMaxHours": 3,
+             "degreeBasedExcludeCourseIDs": [
+             							"csce797"
+             						],
+             "coursesInvalidYears" : 6,
              "milestones": [
 		{
                  "milestone": "ACADEMIC_ADVISOR_APPOINTED"                 
@@ -246,10 +352,22 @@
              "exam": false,
              "qualifyingExam": true,
              "comprehensiveExam": true,
-	     "additionalCreditHours": 20,
-	     "thesisCreditHours": 12,
+             "additionalCreditHours": 20,
+             "additionalCreditExcludeCourseIDs": [
+             						 "csce799",
+             						 "csce899"
+             						],
+	     	  "thesisCreditHours": 12,
+	     	  "thesisCourseIDs": [
+	     	  						"csce899"
+	     	  						],
              "degreeBasedCreditHours": 48,
              "degreeBasedCreditHoursWithValidMasterDegree": 24,
+             "degreeBasedExcludeCourseIDs": [
+             							"csce799",
+             							"csce899"
+             						],
+             "coursesInvalidYears" : 6,             
              "milestones": [
 		 		 {
 		 		 "milestone": "PROGRAM_OF_STUDY_SUBMITTED"                 
@@ -285,7 +403,7 @@
              
             },
             {
-	"degreeName": "CC",
+	"degreeName": "INFAS",
 	"coreCourses":[
                   {
                     "name": "Information Security Principles",
@@ -317,8 +435,13 @@
              "qualifyingExam": false,
              "comprehensiveExam": false,
              "additionalCreditHours": 18,
-	     "thesisCreditHours": 0,
-             "degreeBasedCreditHours": 0
+             "additionalCreditExcludeCourseIDs": [
+             						"csce799"
+     								],
+     		"additionalCreditINFASMinHours": 9,
+     		"additionalCreditINFASMaxNonCSCEHours": 6,
+     		"additionalCreditINFASMaxIncludeMasterHours": 9,
+     		"coursesInvalidYears" : 6
              
             }
 ]

@@ -134,60 +134,35 @@ public class Course {
 	}
 	public boolean isCoreCourse(String degreeName, Course course) {
 		List<DegreeRequirements> degreeRequirements = null;
-
+		int index = -1;
 		try{
 			switch(degreeName){
 			case "PHD": 
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
-						new TypeToken<List<DoctorOfPhilosophy>>() {}.getType());
-						for (int i = 0; i < degreeRequirements.get(3).getCoreCourses().size(); i++){
-							if (courseIsEqual(course, degreeRequirements.get(3).getCoreCourses().get(i))){
-								return true;
-							}
-						}
+						new TypeToken<List<DoctorOfPhilosophy>>() {}.getType());						
 						break;
 			case "MS":
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<MasterOfScience>>() {
 						}.getType());
-						for (int i = 0; i < degreeRequirements.get(2).getCoreCourses().size(); i++){
-							if (courseIsEqual(course, degreeRequirements.get(2).getCoreCourses().get(i))){
-								return true;
-							}
-						}
 						break;
 			case "MSE":	
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<MasterOfSoftwareEngineering>>() {
 						}.getType());
-						for (int i = 0; i < degreeRequirements.get(1).getCoreCourses().size(); i++){
-							if (courseIsEqual(course, degreeRequirements.get(1).getCoreCourses().get(i))){
-								return true;
-							}
-						}
 						break;
 			case "ME":
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<MasterOfEngineering>>() {
 						}.getType());
-						for (int i = 0; i < degreeRequirements.get(0).getCoreCourses().size(); i++){
-							if (courseIsEqual(course, degreeRequirements.get(0).getCoreCourses().get(i))){
-								return true;
-							}
-						}
 						break;
 			case "CC":
 						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
 						new TypeToken<List<SecurityCertificate>>() {
 						}.getType());
-						for (int i = 0; i < degreeRequirements.get(4).getCoreCourses().size(); i++){
-							if (courseIsEqual(course, degreeRequirements.get(4).getCoreCourses().get(i))){
-								return true;
-							}
-						}
 						break;
 			default:
-						return false; 
+						break; 
 			}
 			} catch (JsonIOException e) {
 				// TODO Auto-generated catch block
@@ -198,6 +173,17 @@ public class Course {
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+		}
+		
+		for(int i = 0; i < degreeRequirements.size(); i++){
+			if(degreeName.equals(degreeRequirements.get(i).getDegreeName())){
+				index = i;
+			}
+		}
+		for (int i = 0; i < degreeRequirements.get(index).getCoreCourses().size(); i++){
+			if (courseIsEqual(course, degreeRequirements.get(index).getCoreCourses().get(i))){
+				return true;
+			}
 		}
 		return false;
 	}

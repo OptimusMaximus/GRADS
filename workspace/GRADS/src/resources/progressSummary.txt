@@ -6,8 +6,8 @@
   },
   "department": "COMPUTER_SCIENCE",
   "termBegan": {
-    "semester": "FALL",
-    "year": 2012
+    "semester": "SPRING",
+    "year": 2008
   },
   "degreeSought": {
     "name": "PHD",
@@ -43,98 +43,9 @@
   "requirementCheckResults": [
     {
       "name": "CORE_COURSES_PHD",
-      "passed": "true",
-      "details": {
-        "coursesTaken": [
-          {
-            "term": {
-              "semester": "FALL",
-              "year": 2013
-            },
-            "grade": "A",
-            "course": {
-              "name": "Computer Architecture",
-              "id": "csce513",
-              "numCredits": "3"
-            }
-          },
-          {
-            "term": {
-              "semester": "SPRING",
-              "year": 2014
-            },
-            "grade": "A",
-            "course": {
-              "name": "Compiler Construction",
-              "id": "csce531",
-              "numCredits": "3"
-            }
-          },
-          {
-            "term": {
-              "semester": "FALL",
-              "year": 2014
-            },
-            "grade": "A",
-            "course": {
-              "name": "Theory of Computation",
-              "id": "csce551",
-              "numCredits": "3"
-            }
-          },
-          {
-            "term": {
-              "semester": "SPRING",
-              "year": 2015
-            },
-            "grade": "A",
-            "course": {
-              "name": "Analysis of Algorithms",
-              "id": "csce750",
-              "numCredits": "3"
-            }
-          },
-          {
-            "term": {
-              "semester": "SPRING",
-              "year": 2015
-            },
-            "grade": "A",
-            "course": {
-              "name": "Seminar in Advances in Computing",
-              "id": "csce791",
-              "numCredits": "1"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "ADDITIONAL_CREDITS_PHD",
-      "passed": "false",
-      "details": {
-        "notes": [
-          "Must pass 17 more hours of CSCE courses numbered above 700 that are not core courses."
-        ]
-      }
-    },
-    {
-      "name": "DEGREE_BASED_CREDITS_PHD",
       "passed": "false",
       "details": {
         "coursesTaken": [
-          {
-            "term": {
-              "semester": "FALL",
-              "year": 2013
-            },
-            "grade": "A",
-            "course": {
-              "name": "Computer Architecture",
-              "id": "csce513",
-              "numCredits": "3"
-            }
-          },
           {
             "term": {
               "semester": "SPRING",
@@ -185,8 +96,126 @@
           }
         ],
         "notes": [
-          "Must pass 35 more hours of graduate courses.",
-          "Must pass 20 more hours of CSCE courses numbered above 700."
+          "CSCE513 course is invalid since 6 years have passed.",
+          "Must pass CSCE513 Computer Architecture"
+        ]
+      }
+    },
+    {
+      "name": "ADDITIONAL_CREDITS_PHD",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "CSCE747 course is invalid since 6 years have passed.",
+          "Must pass 20 more hours of CSCE courses numbered above 700 that are not core courses."
+        ]
+      }
+    },
+    {
+      "name": "DEGREE_BASED_CREDITS_PHD",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2004
+            },
+            "grade": "B",
+            "course": {
+              "name": "Naptime",
+              "id": "nap734",
+              "numCredits": "5"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "B",
+            "course": {
+              "name": "Advanced Naptime",
+              "id": "nap888",
+              "numCredits": "5"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2006
+            },
+            "grade": "A",
+            "course": {
+              "name": "Computer Architecture",
+              "id": "csce513",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Compiler Construction",
+              "id": "csce531",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Theory of Computation",
+              "id": "csce551",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2015
+            },
+            "grade": "A",
+            "course": {
+              "name": "Analysis of Algorithms",
+              "id": "csce750",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2015
+            },
+            "grade": "A",
+            "course": {
+              "name": "Seminar in Advances in Computing",
+              "id": "csce791",
+              "numCredits": "1"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2005
+            },
+            "grade": "A",
+            "course": {
+              "name": "Software Testing and Quality Assurance",
+              "id": "csce747",
+              "numCredits": "3"
+            }
+          }
+        ],
+        "notes": [
+          "Must pass 22 more hours of graduate courses.",
+          "Must pass 17 more hours of CSCE courses numbered above 700."
         ]
       }
     },
@@ -230,7 +259,7 @@
       "name": "GPA",
       "passed": "true",
       "details": {
-        "gpa": 3.57
+        "gpa": 3.62
       }
     },
     {

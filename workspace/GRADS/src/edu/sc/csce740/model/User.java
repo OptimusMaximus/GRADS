@@ -4,6 +4,7 @@
 package edu.sc.csce740.model;
 
 import edu.sc.csce740.GRADS;
+import edu.sc.csce740.exception.InvalidUserException;
 
 /**
  * Class defining a user object for the GRADS system. 
@@ -44,7 +45,7 @@ public class User {
 	 * Method to get the string userId of the user
 	 * @return the userId as a string
 	 */
-	public String getUserID(){
+	public String getUserID() throws InvalidUserException{
 		return id;
 	}
 	

@@ -8,8 +8,22 @@
     },
     {
        "id": "mbr",
-       "firstName": "ttt",
-       "lastName": "Htttunt",
+       "firstName": "Maximus",
+       "lastName": "Brandel",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+       "id": "merc",
+       "firstName": "Christian",
+       "lastName": "Merchant",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+       "id": "elsa",
+       "firstName": "Ibrahim",
+       "lastName": "Elsayed",
         "role": "STUDENT",
         "department": "COMPUTER_SCIENCE"
     },
