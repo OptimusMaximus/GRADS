@@ -18,38 +18,17 @@ public class ProgressSummary {
 
 	
 	private User student;
-	/**
-	 * Instance variable containing the department of the user 
-	 */
 	private String department;
 	private Term termBegan;
-	/**
-	 * Instance variable containing the degree a student is pursuing
-	 */
 	private Degree degreeSought;
-	/**
-	 * Instance variable containing the student's list of advisors
-	 */
 	private List<User> advisors;
 	private List<User> committee;
 	private List<RequirementCheck> requirementCheckResults;
 	//private StudentRecord record;
 
-//	/**
-//	 * @return the record
-//	 */
-//	public StudentRecord getRecord() {
-//		return record;
-//	}
-//
-//	/**
-//	 * @param record the record to set
-//	 */
-//	public void setRecord(StudentRecord record) {
-//		this.record = record;
-//	}
 
 	/**
+	 * Method to get the user that the prgress summary is for
 	 * @return the student
 	 */
 	public User getStudent() {
@@ -57,6 +36,7 @@ public class ProgressSummary {
 	}
 
 	/**
+	 * Method to set the user that the prgress summary is for
 	 * @param student the student to set
 	 */
 	public void setStudent(User student) {
