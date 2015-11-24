@@ -48,7 +48,7 @@ public abstract class DegreeRequirements {
 	 */
 	private int additionalCreditHours;
 	/**
-	 * The courses to exclude for required for a degree(These courses don't count towards the degree requirement)
+	 * The course ids to exclude for required for a degree(These courses don't count towards the degree requirement)
 	 */
 	private List<String> additionalCreditExcludeCourseIDs;
 	/**
@@ -71,14 +71,32 @@ public abstract class DegreeRequirements {
 	 * The maximum number of hours allowed for a degree, associated with degreeBasedMaxCourse
 	 */
 	private int degreeBasedMaxHours;
+	/**
+	 * The course ids that must be excluded for degree based requirements
+	 */
 	private List<String> degreeBasedExcludeCourseIDs;
+	/**
+	 * The number of credit hours that are valid for degree based requirements with a valid master's degree
+	 */
 	private int degreeBasedCreditHoursWithValidMasterDegree;
+	/**
+	 * The number of thesis credit hours required
+	 */
 	private int thesisCreditHours;
+	/**
+	 * The course ids for the thesis courses required
+	 */
 	private List<String> thesisCourseIDs;
+	/**
+	 * The degree name of the requirement
+	 */
 	private String degreeName;
+	/**
+	 * The minimum number of hours allowed for additional credit requirement for INFAS certificate
+	 */
 	private int additionalCreditINFASMinHours;
 	/**
-	 * The maximum non-CSCE credit hours allowed for INFAS certificate
+	 * The maximum non-CSCE credit hours allowed for additional credit requirement for INFAS certificate
 	 */
 	private int additionalCreditINFASMaxNonCSCEHours;
 	/**
