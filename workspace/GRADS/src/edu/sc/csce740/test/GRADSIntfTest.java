@@ -14,6 +14,7 @@ import org.junit.Test;
 import edu.sc.csce740.GRADS;
 import edu.sc.csce740.GRADSIntf;
 import edu.sc.csce740.exception.InvalidUserException;
+import edu.sc.csce740.model.User;
 
 /**
  * @author Maximus
@@ -22,6 +23,7 @@ import edu.sc.csce740.exception.InvalidUserException;
 public class GRADSIntfTest {
 
 	public static GRADSIntf grads;
+	public static User user;
 
    
 	/**
@@ -30,6 +32,7 @@ public class GRADSIntfTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		grads = new GRADS();
+		user = new User();
 		
 		grads.loadUsers("resources/users.txt");
 		grads.loadRecords("resources/students.txt");
@@ -58,13 +61,25 @@ public class GRADSIntfTest {
 	public void tearDown() throws Exception {
 	}
 	
+	/**
+	 * Testing the setUser() method
+	 * Expect this test to match with the User instance userId value given
+	 * @throws Exception
+	 */
 	@Test
-	public void testSetUserPasses() throws Exception {	
+	public void testSetUserPasses() throws Exception {
 		String userId = "mbr";
+		user.setUserID(userId);
+
 		grads.setUser(userId);
-		assertEquals(userId, grads.getUser());
+		assertEquals(user.getUserID(), grads.getUser());
 	}
 	
+	/**
+	 * Testing the setUser() method
+	 * Expect this test to throw an InvalidUserException
+	 * @throws Exception
+	 */
 	@Test(expected = InvalidUserException.class)
 	public void testSetUserExceptionThrown() throws Exception {
 		String userId = "rambo";
