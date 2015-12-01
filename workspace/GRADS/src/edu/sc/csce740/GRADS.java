@@ -22,6 +22,7 @@ import edu.sc.csce740.exception.DataCanNotBeWrittenException;
 import edu.sc.csce740.exception.InvalidUserException;
 import edu.sc.csce740.exception.DataNotRetrievedException;
 import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
+import edu.sc.csce740.exception.TempEditException;
 
 /**
  * Class that implement a graduate tracking system "GRADS" 
@@ -290,7 +291,7 @@ public class GRADS implements GRADSIntf {
 		
 		validateAccess(userId);
 		if (permanent && transcript.getTempEdit()){
-			throw new Exception ("Update Failed: Temporary edits found in attempted permanent update");
+			throw new TempEditException ("Update Failed: Temporary edits found in attempted permanent update");
 		} else {
 			int index = getRecordIndex(userId);
 			if (index == -1) {
