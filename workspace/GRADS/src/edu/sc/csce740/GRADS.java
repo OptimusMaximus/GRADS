@@ -216,6 +216,9 @@ public class GRADS implements GRADSIntf {
 	 *             is the current user is not a GPC.
 	 */
 	public List<String> getStudentIDs() throws InvalidUserException {
+		if (role.equals("STUDENT")){	
+			throw new InvalidUserException("user must be a GPC");
+		}
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("STUDENT".equals(allUsers.get(i).getRole())
@@ -325,17 +328,27 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
+		
 		validateAccess(userId);
-
+		
+		if (role.equals("STUDENT")){
+			throw new InvalidUserException("user must be a GPC");
+		}
+		
 		StudentRecord transcript;
 		transcript = getTranscript(userId);		
 		transcript.addNote(note);
+		if ((!transcript.getNotes().get(transcript.getNotes().size()-1).equals(note))){
+			throw new DataCanNotBeWrittenException("Note wasn't added to the transcript");
+		}
 		
 		if (permanent){
 			updateTranscript(userId, transcript, true); 
 		} else {
 			updateTranscript(userId, transcript, false); 
 		}
+		
+		
 	}
 
 	/**
@@ -474,15 +487,15 @@ public class GRADS implements GRADSIntf {
 	 * @param userId the id of the user whose record the current session user is attempting to access
 	 * @throws Exception 
 	 */
-	private void validateAccess(String userId) throws Exception {
+	private void validateAccess(String userId) throws InvalidUserException {
 		User accessedUser = lookupUser(userId);
 		if (!(userId.equals(accessedUser.getUserID())) 
 		   || !("COMPUTER_SCIENCE".equals(accessedUser.getDepartment()))){
-			throw new Exception ("No Access: Department mismatch");
+			throw new InvalidUserException ("No Access: Department mismatch");
 		}
 		if (!(lookupUser(getUser()).getRole().equals("GRADUATE_PROGRAM_COORDINATOR")) 
 		   && !(accessedUser.getRole().equals("STUDENT") && getUser().equals(userId))){
-			throw new Exception ("No Access: Unauthorized record access");
+			throw new InvalidUserException ("No Access: Unauthorized record access");
 		} 
 	}
 	
