@@ -682,7 +682,8 @@
     ],
     "notes": [
       "Great student. A++ Would recommend.",
-      "Better than Ibrahim!"
+      "Better than Ibrahim!",
+      "Im a note stillllllll!!!"
     ],
     "tempEdit": false
   }

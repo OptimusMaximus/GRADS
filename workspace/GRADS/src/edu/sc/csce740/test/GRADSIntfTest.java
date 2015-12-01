@@ -31,12 +31,7 @@ public class GRADSIntfTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		grads = new GRADS();
-		user = new User();
 		
-		grads.loadUsers("resources/users.txt");
-		grads.loadRecords("resources/students.txt");
-		grads.loadCourses("resources/courses.txt");
 	}
 
 	/**
@@ -51,7 +46,10 @@ public class GRADSIntfTest {
 	 */
 	@Before
 	public void setUp() throws Exception {		
-		
+		grads = new GRADS();
+		grads.loadUsers("resources/users.txt");
+		grads.loadRecords("resources/students.txt");
+		grads.loadCourses("resources/courses.txt");
 	}
 
 	/**
@@ -68,6 +66,7 @@ public class GRADSIntfTest {
 	 */
 	@Test
 	public void testSetUserPasses() throws Exception {
+		user = new User();
 		String userId = "mbr";
 		user.setUserID(userId);
 
@@ -84,6 +83,26 @@ public class GRADSIntfTest {
 	public void testSetUserExceptionThrown() throws Exception {
 		String userId = "rambo";
 		grads.setUser(userId);
+	}
+	
+	@Test 
+	public void testClearSession()throws Exception {
+		grads.setUser("ggay");
+		grads.clearSession();
+		assertEquals(null, grads.getUser());
+	}
+	
+	@Test
+	public void testGetUserPasses()throws Exception {
+		String userId = "mbr";
+		grads.setUser(userId);
+		assertEquals(userId, grads.getUser());
+	}
+	
+	@Test
+	public void testGetUserFails()throws Exception {
+		user = new User();
+		assertEquals(null, grads.getUser());
 	}
 
 }
