@@ -206,6 +206,21 @@ public class GRADSIntfTest {
 		List<String> notes = grads.getTranscript("mbr").getNotes();
 	}
 	
+	@Test
+	public void testUpdateTranscriptPasses() throws Exception{
+		grads.setUser("mmatthews");
+		grads.getTranscript("mhunt").setLastName("Hunter");
+		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
+		grads.loadRecords("resources/students.txt");
+		assertEquals("Hunter" , grads.getTranscript("mhunt").getLastName());
+	}
 	
+	@Test(expected = InvalidUserException.class)
+	public void testUpdateTranscriptThrowException() throws Exception{
+		grads.setUser("mbr");
+		grads.getTranscript("mhunt").setLastName("Hunter");
+		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
+		grads.loadRecords("resources/students.txt");
+	}
 
 }
