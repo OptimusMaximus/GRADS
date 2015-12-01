@@ -162,6 +162,7 @@ public class User {
 	}
 	
 	/**
+	 * Method to check if a student is accessing a method that they cannot edit
 	 * @param role the role of the user currently using the system
 	 * @throws InvalidUserException exception thrown if user cannot access this method call
 	 */
@@ -173,6 +174,11 @@ public class User {
 		}
 	}
 	
+	/**
+	 * Method to set the temp edit flag if a student is editing a field over which they have
+	 * only temporary permissions
+	 * @param role the role of the user currently using the system
+	 */
 	private void tempEditCheck(String role)
 	{
 		if (role.equals("STUDENT"))

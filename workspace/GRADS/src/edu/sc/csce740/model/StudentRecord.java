@@ -31,10 +31,19 @@ public class StudentRecord {
 	private List<String> notes;
 	private boolean tempEdit = false;
 	
+	/**
+	 * Method to return the user object associated with the record
+	 * @return student the student object associated with this record
+	 */
 	public User getUser(){	
 		return student;
 	}
 	
+	/**
+	 * Method to set the user for this student record. Sets the temp edit flag in the record if the User object 
+	 * flag is set
+	 * @param user the user to set for this record
+	 */
 	public void setUser(User user)
 	{
 		if (user.getTempEditStatus() == true)
