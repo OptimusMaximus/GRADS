@@ -20,6 +20,7 @@ import org.junit.Test;
 import edu.sc.csce740.GRADS;
 import edu.sc.csce740.GRADSIntf;
 import edu.sc.csce740.exception.InvalidUserException;
+import edu.sc.csce740.exception.TempEditException;
 import edu.sc.csce740.model.Degree;
 import edu.sc.csce740.model.StudentRecord;
 import edu.sc.csce740.model.Term;
@@ -123,12 +124,9 @@ public class GRADSIntfTest {
 	 */
 	@Test
 	public void testSetUserPasses() throws Exception {
-		user = new User();
 		String userId = "mbr";
-		user.setUserID(userId);
-
 		grads.setUser(userId);
-		assertEquals(user.getUserID(), grads.getUser());
+		assertEquals("mbr", grads.getUser());
 	}
 	
 	/**
@@ -203,7 +201,7 @@ public class GRADSIntfTest {
 	public void testAddNoteExceptionThrown()throws Exception  {
 		grads.setUser("elsa");
 		grads.addNote("mbr", "test note", false);
-		List<String> notes = grads.getTranscript("mbr").getNotes();
+		grads.getTranscript("mbr").getNotes();
 	}
 	
 	@Test
@@ -222,5 +220,15 @@ public class GRADSIntfTest {
 		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
 		grads.loadRecords("resources/students.txt");
 	}
+	
+	@Test(expected = TempEditException.class)
+	public void testUpdateTranscriptThrowTempException() throws Exception{
+		grads.setUser("mbr");
+		StudentRecord transcript; 
+		transcript = grads.getTranscript("mbr");
+		transcript.setLastName("Momoku");
+		grads.updateTranscript("mbr", transcript, true);	
+	}
+	
 
 }

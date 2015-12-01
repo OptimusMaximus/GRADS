@@ -84,8 +84,14 @@ public class User {
 	/**
 	 * Method to set the userId associated with the user
 	 * @param userID the userId of the user
+	 * @throws InvalidUserException 
 	 */
-	public void setUserID(String userID) {
+	public void setUserID(String userID) throws InvalidUserException {
+		String role = GRADS.getRole();
+		if (role.equals("STUDENT") || role.equals("GRADUATE_PROGRAM_COORDINATOR"))
+		{
+			throw new InvalidUserException("Access Denied: Invalid Permissions");
+		}
 		this.id = userID;
 	}
 
@@ -94,10 +100,7 @@ public class User {
 	 * @param firstName the firstName of the user
 	 */
 	public void setFirstName(String firstName) {
-		if (GRADS.getRole().equals("STUDENT"))
-		{
-			setUserTempEdit(true);
-		}
+		tempEditCheck(GRADS.getRole());
 		this.firstName = firstName;
 	}
 
@@ -106,26 +109,27 @@ public class User {
 	 * @param lastName the last name of the user
 	 */
 	public void setLastName(String lastName) {
-		if (GRADS.getRole().equals("STUDENT"))
-		{
-			setUserTempEdit(true);
-		}
+		tempEditCheck(GRADS.getRole());
 		this.lastName = lastName;
 	}
 	
 	/**
 	 * Method to set the academic role associated with the user
 	 * @param role the role of the user, either STUDENT or GRADUATE_PROGRAM_COORDINATOR
+	 * @throws InvalidUserException 
 	 */
-	public void setRole(String role) {
+	public void setRole(String role) throws InvalidUserException {
+		validationCheck(GRADS.getRole());
 		this.role = role;
 	}
 
 	/**
 	 * Method to set the department associated with the user
 	 * @param department the 
+	 * @throws InvalidUserException if a student tries to access this field
 	 */
-	public void setDepartment(String department) {
+	public void setDepartment(String department) throws InvalidUserException {
+		validationCheck(GRADS.getRole());
 		this.department = department;
 	}	
 	
@@ -155,6 +159,26 @@ public class User {
 	private void setUserTempEdit(boolean flag)
 	{
 		tempEditFlag = flag; 
-	}	
+	}
+	
+	/**
+	 * @param role the role of the user currently using the system
+	 * @throws InvalidUserException exception thrown if user cannot access this method call
+	 */
+	private void validationCheck(String role) throws InvalidUserException
+	{
+		if (role.equals("STUDENT"))
+		{
+			throw new InvalidUserException("Access Denied: Access Permissions invalid");
+		}
+	}
+	
+	private void tempEditCheck(String role)
+	{
+		if (role.equals("STUDENT"))
+		{
+			setUserTempEdit(true);
+		}
+	}
 
 }

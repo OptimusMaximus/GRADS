@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 
 import edu.sc.csce740.GRADS;
+import edu.sc.csce740.exception.InvalidUserException;
 
 /**
  * Class defining a student record object for students at 
@@ -32,6 +33,15 @@ public class StudentRecord {
 	
 	public User getUser(){	
 		return student;
+	}
+	
+	public void setUser(User user)
+	{
+		if (user.getTempEditStatus() == true)
+		{
+			setTempEdit(true);
+		}
+		student = user; 
 	}
 	
 	/**
@@ -72,6 +82,7 @@ public class StudentRecord {
 	 * @param termBegan - the term at which the stusdent started his degree
 	 */
 	public void setTermBegan(Term termBegan) {
+		tempEditCheck(GRADS.getRole());
 		this.termBegan = termBegan;
 	}
 	
@@ -88,6 +99,7 @@ public class StudentRecord {
 	 * @param degreeSought - the degree the student is pursuing
 	 */
 	public void setDegreeSought(Degree degreeSought) {
+		tempEditCheck(GRADS.getRole());
 		this.degreeSought = degreeSought;
 	}
 	
@@ -102,8 +114,10 @@ public class StudentRecord {
 	/**
 	 * Method to get the certificate the student is pursuing
 	 * @param certificateSought - the certificate the student is pursuing
+	 * @throws InvalidUserException if a student attempts to access this field
 	 */
-	 public void setCertificateSought(Degree certificateSought) {
+	 public void setCertificateSought(Degree certificateSought) throws InvalidUserException {
+		 validationCheck(GRADS.getRole()); 
 		this.certificateSought = certificateSought;
 	}
 	
@@ -178,9 +192,7 @@ public class StudentRecord {
 	 * @param course - the course to be added to the list of taken course
 	 */
 	 public void setCoursesTaken(CourseTaken course){
-		if(GRADS.getRole().equals("STUDENT")){
-			setTempEdit(true);
-		}
+		tempEditCheck(GRADS.getRole());
 		coursesTaken.add(course);
 	}
 	
@@ -202,9 +214,11 @@ public class StudentRecord {
 	
 	/**
 	 * Method to add a milestone to the list of milestones
-	 * @param milestone - the mileston to be added to the list of milestones
+	 * @param milestone - the milestone to be added to the list of milestones
+	 * @throws InvalidUserException if a student attempts to access this field
 	 */
-	public void addMilestone(Milestone milestone){
+	public void addMilestone(Milestone milestone) throws InvalidUserException{
+		validationCheck(GRADS.getRole());
 		this.milestonesSet.add(milestone);
 	}
 	
@@ -219,8 +233,10 @@ public class StudentRecord {
 	/**
 	 * Method to add a note to the list of note
 	 * @param notes - the note to be added to the list of note
+	 * @throws InvalidUserException if a student attempts to access this field
 	 */
-	public void addNote(String note){
+	public void addNote(String note) throws InvalidUserException{
+		validationCheck(GRADS.getRole());
 		this.notes.add(note);
 	}
 	
@@ -229,10 +245,7 @@ public class StudentRecord {
 	 * @param firstName the firstName of the user
 	 */
 	public void setFirstName(String firstName){
-		if (GRADS.getRole().equals("STUDENT"))
-		{
-			setTempEdit(true);
-		}
+		tempEditCheck(GRADS.getRole());
 		this.student.setFirstName(firstName);
 	}
 	
@@ -241,11 +254,33 @@ public class StudentRecord {
 	 * @param lastName the last name of the user
 	 */
 	public void setLastName(String lastName){
-		if (GRADS.getRole().equals("STUDENT"))
-		{
-			setTempEdit(true);
-		}
+		tempEditCheck(GRADS.getRole());		
 		this.student.setLastName(lastName);
 	}
 	
+	/**
+	 * Method to set the temporary edit flag if a student edits a field for which they have only 
+	 * temporary editing permissions
+	 * @param role the role of the current system user
+	 */
+	private void tempEditCheck(String role)
+	{
+		if (role.equals("STUDENT"))
+		{
+			setTempEdit(true);
+		}
+	}
+	
+	/**
+	 * Method to check if a student is attempting to access an illegal field
+	 * @param role the role of the current system user
+	 * @throws InvalidUserException if the current system user role is that of a <code>STUDENT</code>
+	 */
+	private void validationCheck(String role) throws InvalidUserException
+	{
+		if (role.equals("STUDENT"))
+		{
+			throw new InvalidUserException("Access Denied: Access Permissions invalid");
+		}
+	}
 }
