@@ -18,6 +18,14 @@ public class Degree {
 	 */
 	private String name;
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setGraduation(Term graduation) {
+		this.graduation = graduation;
+	}
+
 	/**
 	 *Instance variable setting the anticipated graduation term object of the student from the degree 
 	 */
