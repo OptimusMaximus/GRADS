@@ -233,12 +233,12 @@ public class GRADSIntfTest {
 //		System.out.println(record.toString());
 //		System.out.println("-------");
 //		System.out.println(transcript.toString());
-		assertEquals(record.getFirstName(), transcript.getFirstName());
-		assertEquals(record.getLastName(), transcript.getLastName());
-		assertEquals(record.getNotes(),transcript.getNotes());
-		assertEquals(record.getMilestonesSet().get(0).getMilestone(), transcript.getLastName());
-		assertEquals(record.getLastName(), transcript.getLastName());
-		
+//		assertEquals(record.getFirstName(), transcript.getFirstName());
+//		assertEquals(record.getLastName(), transcript.getLastName());
+//		assertEquals(record.getNotes(),transcript.getNotes());
+//		assertEquals(record.getMilestonesSet().get(0).getMilestone(), transcript.getLastName());
+//		assertEquals(record.getLastName(), transcript.getLastName());
+		assertPropertiesEqual(record, transcript);
 	}
 	
 //	@Test(expected = InvalidUserException.class)
@@ -287,7 +287,7 @@ public class GRADSIntfTest {
 		grads.updateTranscript("mbr", transcript, true);	
 	}
 	
-	private void assertPropertiesEqual(StudentRecord oracle, StudentRecord test){
+	private void assertPropertiesEqual(StudentRecord oracle, StudentRecord test) throws InvalidUserException{
 		assertEquals(oracle.getFirstName(), test.getFirstName());
 		assertEquals(oracle.getLastName(), test.getLastName());
 		assertEquals(oracle.getNotes(),test.getNotes());
@@ -297,7 +297,44 @@ public class GRADSIntfTest {
 		}
 		assertEquals(oracle.getRole(), test.getRole());
 		
+		//Term
+		assertEquals(oracle.getTermBegan().getSemester(), test.getTermBegan().getSemester());
+		assertEquals(oracle.getTermBegan().getYear(), test.getTermBegan().getYear());
 		
+		//DegreeSought
+		assertEquals(oracle.getDegreeSought().getDegreeName(), test.getDegreeSought().getDegreeName());
+		assertEquals(oracle.getDegreeSought().getGraduation().getSemester(), test.getDegreeSought().getGraduation().getSemester());assertEquals(oracle.getDegreeSought().getGraduation().getSemester(), test.getDegreeSought().getGraduation().getSemester());
+		assertEquals(oracle.getDegreeSought().getGraduation().getYear(), test.getDegreeSought().getGraduation().getYear());
+		
+		//CertificateSought
+		if (test.getCertificateSought() != null && oracle.getCertificateSought() != null){
+			assertEquals(oracle.getCertificateSought().getDegreeName(), test.getCertificateSought().getDegreeName());
+			assertEquals(oracle.getCertificateSought().getGraduation().getSemester(), test.getCertificateSought().getGraduation().getSemester());assertEquals(oracle.getDegreeSought().getGraduation().getSemester(), test.getDegreeSought().getGraduation().getSemester());
+			assertEquals(oracle.getCertificateSought().getGraduation().getYear(), test.getCertificateSought().getGraduation().getYear());
+		}
+		//Advisors
+		for (int i = 0; i <oracle.getAdvisors().size(); i++){
+			assertEquals(oracle.getAdvisors().get(i).getUserID(), test.getAdvisors().get(i).getUserID());
+			assertEquals(oracle.getAdvisors().get(i).getDepartment(),test.getAdvisors().get(i).getDepartment());
+			assertEquals(oracle.getAdvisors().get(i).getRole(),test.getAdvisors().get(i).getRole());
+			assertEquals(oracle.getAdvisors().get(i).getFirstName(), test.getAdvisors().get(i).getFirstName());
+			assertEquals(oracle.getAdvisors().get(i).getLastName(), test.getAdvisors().get(i).getLastName());
+			
+		}
+		//Committee
+		for (int i = 0; i <oracle.getCommittee().size(); i++){
+			assertEquals(oracle.getCommittee().get(i).getUserID(), test.getCommittee().get(i).getUserID());
+			assertEquals(oracle.getCommittee().get(i).getDepartment(),test.getCommittee().get(i).getDepartment());
+			assertEquals(oracle.getCommittee().get(i).getRole(),test.getCommittee().get(i).getRole());
+			assertEquals(oracle.getCommittee().get(i).getFirstName(), test.getCommittee().get(i).getFirstName());
+			assertEquals(oracle.getCommittee().get(i).getLastName(), test.getCommittee().get(i).getLastName());
+			
+		}
+		
+		//Department
+		assertEquals(oracle.getDept(), test.getDept());
+		
+		//
 		
 	}
 	
