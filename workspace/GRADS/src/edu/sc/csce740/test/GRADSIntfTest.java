@@ -7,6 +7,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.fail;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +19,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import edu.sc.csce740.GRADS;
 import edu.sc.csce740.GRADSIntf;
+import edu.sc.csce740.exception.DataNotRetrievedException;
 import edu.sc.csce740.exception.InvalidUserException;
 import edu.sc.csce740.exception.TempEditException;
 import edu.sc.csce740.model.Degree;
@@ -34,8 +40,14 @@ public class GRADSIntfTest {
 
 	public static GRADSIntf grads;
 	public static User user;
-	public static StudentRecord record;
-
+	public static StudentRecord oracle;
+	
+	private File getFile(String fileName) 
+	{
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource(fileName).getFile());
+		return file;
+	}
    
 	/**
 	 * Method to set up an environment before class initialization
@@ -64,6 +76,7 @@ public class GRADSIntfTest {
 		grads.loadUsers("resources/users.txt");
 		grads.loadRecords("resources/students.txt");
 		grads.loadCourses("resources/courses.txt");
+		
 		
 //		record = new StudentRecord();
 //		record.setFirstName("Michelle");
@@ -198,6 +211,33 @@ public class GRADSIntfTest {
 	
 	@Test
 	public void testGetTranscriptPasses() throws Exception{
+		grads.setUser("mhunt");
+		ArrayList<StudentRecord> transOracle = new ArrayList<StudentRecord>();
+		StudentRecord  record= new StudentRecord();
+		StudentRecord transcript = new StudentRecord();
+		try{
+			transOracle = new Gson().fromJson(new FileReader(getFile("resources/students.txt")),
+				new TypeToken<List<StudentRecord>>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		
+		for (int i = 0; i < transOracle.size(); i++)
+		{
+			if (transOracle.get(i).getUser().getUserID().equals("mhunt")){
+				record = transOracle.get(i);
+			}
+		}
+		transcript = grads.getTranscript("mhunt");
+//		System.out.println(record.toString());
+//		System.out.println("-------");
+//		System.out.println(transcript.toString());
+		assertEquals(record.getFirstName(), transcript.getFirstName());
+		assertEquals(record.getLastName(), transcript.getLastName());
+		assertEquals(record.getNotes(),transcript.getNotes());
+		assertEquals(record.getMilestonesSet().get(0).getMilestone(), transcript.getLastName());
+		assertEquals(record.getLastName(), transcript.getLastName());
 		
 	}
 	
@@ -245,6 +285,20 @@ public class GRADSIntfTest {
 		transcript = grads.getTranscript("mbr");
 		transcript.setLastName("Momoku");
 		grads.updateTranscript("mbr", transcript, true);	
+	}
+	
+	private void assertPropertiesEqual(StudentRecord oracle, StudentRecord test){
+		assertEquals(oracle.getFirstName(), test.getFirstName());
+		assertEquals(oracle.getLastName(), test.getLastName());
+		assertEquals(oracle.getNotes(),test.getNotes());
+		assertEquals(oracle.getMilestonesSet().size(), test.getMilestonesSet().size());
+		for (int i = 0; i <oracle.getMilestonesSet().size(); i++){
+			assertEquals(oracle.getMilestonesSet().get(i).getMilestone(), test.getMilestonesSet().get(i).getMilestone());
+		}
+		assertEquals(oracle.getRole(), test.getRole());
+		
+		
+		
 	}
 	
 
