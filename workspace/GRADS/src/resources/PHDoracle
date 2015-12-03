@@ -451,6 +451,36 @@
       "Owes me 20 bucks."
     ],
     "tempEdit": false
-  } 
+  },
+   {
+    "student": {
+      "id": "peaches",
+      "firstName": "Michelle",
+      "lastName": "Peaches",
+      "tempEditFlag": false
+    },
+    "department": "COMPUTER_SCIENCE",
+    "termBegan": {
+      "semester": "SPRING",
+      "year": 2008
+    },
+    "degreeSought": {
+      "name": "PHD",
+      "graduation": {
+        "semester": "SPRING",
+        "year": 2018
+      }
+    },
+    "previousDegrees": [
+      {
+        "name": "BS",
+        "graduation": {
+          "semester": "SPRING",
+          "year": 2008
+        }
+      }
+    ],
+    "tempEdit": false
+  }
     
   ]
