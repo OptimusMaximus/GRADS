@@ -49,11 +49,8 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		grads.setUser("mbr");
-		StudentRecord transcript;
-		transcript = grads.getTranscript("mbr");
-		transcript.setLastName("Hunter");
-		grads.updateTranscript("mbr", transcript, false);
+		//grads.setUser("mbr");
+		//grads.generateProgressSummary("mbr");
 		//grads.generateProgressSummary("mhunt");
 		
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());

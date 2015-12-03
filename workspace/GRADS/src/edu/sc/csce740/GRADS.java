@@ -217,6 +217,7 @@ public class GRADS implements GRADSIntf {
 	 *             is the current user is not a GPC.
 	 */
 	public List<String> getStudentIDs() throws InvalidUserException {
+		userNullCheck(getUser());
 		if (role.equals("STUDENT")){	
 			throw new InvalidUserException("user must be a GPC");
 		}
@@ -236,6 +237,7 @@ public class GRADS implements GRADSIntf {
 	 *         belonging to the current user
 	 */
 	public List<String> getCSCEGPCIDs() throws InvalidUserException {
+		userNullCheck(getUser());
 		List<String> studentIDs = new ArrayList<String>();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if ("GRADUATE_PROGRAM_COORDINATOR".equals(allUsers.get(i).getRole())
@@ -261,6 +263,7 @@ public class GRADS implements GRADSIntf {
 	 *             HEADER.
 	 */
 	public StudentRecord getTranscript(String userId) throws InvalidUserException {
+		userNullCheck(getUser());
 		if (getCSCEGPCIDs().contains(getUser())
 			|| getUser().equals(userId)){
 	
@@ -288,7 +291,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void updateTranscript(String userId, StudentRecord transcript,
 			Boolean permanent) throws Exception {
-		
+		userNullCheck(getUser());
 		validateAccess(userId);
 		if (permanent && transcript.getTempEdit()){
 			throw new TempEditException ("Update Failed: Temporary edits found in attempted permanent update");
@@ -329,7 +332,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void addNote(String userId, String note, Boolean permanent)
 			throws Exception {
-		
+		userNullCheck(getUser());
 		validateAccess(userId);
 		
 		if (role.equals("STUDENT")){
@@ -355,6 +358,7 @@ public class GRADS implements GRADSIntf {
 	/**
 	 * Generates progress summary
 	 * @param userId - the student to generate the record for.
+	 * @throws InvalidUserException if the current user is logged out
 	 * @returns the student's progress summary in a data class matching the I/O
 	 *          file.
 	 * @throws Exception
@@ -362,7 +366,8 @@ public class GRADS implements GRADSIntf {
 	 *             CLASS HEADER.
 	 */
 	public ProgressSummary generateProgressSummary(String userId)
-			throws ProgressSummaryNotGeneratedException {
+			throws ProgressSummaryNotGeneratedException, InvalidUserException {
+		userNullCheck(getUser());
 		try{
 			StudentRecord record = getTranscript(userId);
 			
@@ -398,6 +403,7 @@ public class GRADS implements GRADSIntf {
 	 */
 	public ProgressSummary simulateCourses(String userId,
 			List<CourseTaken> courses) throws CoursesInvalidException, Exception {
+		userNullCheck(getUser());
 		Course course = null;
 		boolean flag = false; 
 		StudentRecord record = getTranscript(userId);
@@ -498,6 +504,14 @@ public class GRADS implements GRADSIntf {
 		   && !(accessedUser.getRole().equals("STUDENT") && getUser().equals(userId))){
 			throw new InvalidUserException ("No Access: Unauthorized record access");
 		} 
+	}
+	
+	private void userNullCheck(String sessUser) throws InvalidUserException
+	{
+		if (sessUser == null)
+		{
+			throw new InvalidUserException ("Access Denied: User is logged out"); 
+		}
 	}
 	
 	/**

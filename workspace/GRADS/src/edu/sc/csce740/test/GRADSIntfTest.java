@@ -38,6 +38,7 @@ public class GRADSIntfTest {
 
    
 	/**
+	 * Method to set up an environment before class initialization
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
@@ -46,6 +47,7 @@ public class GRADSIntfTest {
 	}
 
 	/**
+	 * Method to tear down after testing of GRADSIntf class is closed
 	 * @throws java.lang.Exception
 	 */
 	@AfterClass
@@ -53,7 +55,8 @@ public class GRADSIntfTest {
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * Method to set up the environment for testing prior to each test
+	 * @throws java.lang.Exception in the event that a database can't be loaded
 	 */
 	@Before
 	public void setUp() throws Exception {		
@@ -110,7 +113,8 @@ public class GRADSIntfTest {
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * Method to clear the environment after each test
+	 * @throws java.lang.Exception if clearing session is unsuccessful
 	 */
 	@After
 	public void tearDown() throws Exception {
@@ -120,7 +124,7 @@ public class GRADSIntfTest {
 	/**
 	 * Testing the setUser() method
 	 * Expect this test to match with the User instance userId value given
-	 * @throws Exception
+	 * @throws Exception if setUser fails
 	 */
 	@Test
 	public void testSetUserPasses() throws Exception {
@@ -131,8 +135,9 @@ public class GRADSIntfTest {
 	
 	/**
 	 * Testing the setUser() method
-	 * Expect this test to throw an InvalidUserException
-	 * @throws Exception
+	 * Expect this test to throw an InvalidUserException when attempt to set user that is not in 
+	 * database 
+	 * @throws Exception if setUser fails
 	 */
 	@Test(expected = InvalidUserException.class)
 	public void testSetUserExceptionThrown() throws Exception {
@@ -140,20 +145,32 @@ public class GRADSIntfTest {
 		grads.setUser(userId);
 	}
 	
-	@Test 
+	/**
+	 * Method to test if clearSession works correctly  
+	 * @throws Exception when method called after clear session
+	 */
+	@Test (expected = InvalidUserException.class)
 	public void testClearSession()throws Exception {
 		grads.setUser("ggay");
 		grads.clearSession();
-		assertEquals(null, grads.getUser());
+		grads.generateProgressSummary("ggay");
 	}
 	
-	@Test
+	/**
+	 * Method to test getUser passes 
+	 * @throws Exception if setUser fails 
+	 */
+	@Test 
 	public void testGetUserPasses()throws Exception {
 		String userId = "mbr";
 		grads.setUser(userId);
 		assertEquals(userId, grads.getUser());
 	}
 	
+	/**
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetUserFails()throws Exception {
 		assertEquals(null, grads.getUser());
