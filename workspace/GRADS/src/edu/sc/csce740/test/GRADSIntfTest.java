@@ -184,14 +184,17 @@ public class GRADSIntfTest {
 	}
 	
 	/**
-	 * 
-	 * @throws Exception
+	 * Method to make check getUser with null user
 	 */
 	@Test
 	public void testGetUserFails()throws Exception {
 		assertEquals(null, grads.getUser());
 	}
 	
+	/**
+	 * Method to check if getStudentIDs works with properly authorized user
+	 * @throws Exception if setUser fails
+	 */
 	@Test
 	public void testGetStudentsIDsPasses() throws Exception{
 		grads.setUser("mmatthews");
@@ -205,6 +208,10 @@ public class GRADSIntfTest {
 		assertArrayEquals(students.toArray(), studentsExpected.toArray());
 	}
 	
+	/**
+	 * Method to test getStduentIDs when an invalid user attempts to access them
+	 * @throws Exception expected thrown exception when user accessing is mismatch with permissions
+	 */
 	@Test(expected = InvalidUserException.class)
 	public void testGetStudentsIDsExceptionThrown()throws Exception  {
 		grads.setUser("mbr");
@@ -212,6 +219,10 @@ public class GRADSIntfTest {
 		
 	}
 	
+	/**
+	 * Method to check getTranscript is syntactically the same as the flatfile record
+	 * @throws Exception if setUser fails, Gson fails to load the record, or getTranscript fails
+	 */
 	@Test
 	public void testGetTranscriptPasses() throws Exception{
 		grads.setUser("mhunt");
@@ -236,6 +247,10 @@ public class GRADSIntfTest {
 		assertPropertiesEqual(record, transcript);
 	}
 	
+	/**
+	 * Method to check if a user tries to access a transcript that they do not have permissions to access
+	 * @throws Exception when unauthorized user tries to access a transcript which they cannot access
+	 */
 	@Test(expected = InvalidUserException.class)
 	public void testGetTranscriptPassesExceptionThrown()throws Exception  {
 		grads.setUser("mbr");
@@ -243,6 +258,11 @@ public class GRADSIntfTest {
 			
 	}
 	
+	/**
+	 * Method to test simulateCourses by checking that an arraylist of courses was actually added to the
+	 * in-memory record associated with the userId 
+	 * @throws Exception if setUser fails
+	 */
 	@Test
 	public void simulateCoursesPasses() throws Exception{
 		grads.setUser("mhunt");
@@ -271,6 +291,11 @@ public class GRADSIntfTest {
 		}
 		assertEquals(true, isThere);		
 	}
+	
+	/**
+	 * Method to throw an exception when a user tries to add an invalid course to their in-memory record
+	 * @throws Exception if setUser fails or an invalid course add is attempted
+	 */
 	@Test(expected = CoursesInvalidException.class)
 	public void simulateCoursesThrowsException() throws Exception{
 		grads.setUser("mhunt");
@@ -293,6 +318,10 @@ public class GRADSIntfTest {
 		
 	}
 	
+	/**
+	 * Method to test addNote to the end of an arraylist of notes in the StudentRecord object
+	 * @throws Exception if setUser fails
+	 */
 	@Test
 	public void testAddNotePasses() throws Exception{
 		grads.setUser("mmatthews");
@@ -301,6 +330,10 @@ public class GRADSIntfTest {
 		assertEquals("test note" , notes.get(notes.size()-1));
 	}
 	
+	/**
+	 * Method to check exception handling for addNote by another student to a StudentRecord
+	 * @throws Exception if an unauthorized user attempts to add a note for which they have no access privileges
+	 */
 	@Test(expected = InvalidUserException.class)
 	public void testAddNoteExceptionThrown()throws Exception  {
 		grads.setUser("elsa");
@@ -308,6 +341,23 @@ public class GRADSIntfTest {
 		grads.getTranscript("mbr").getNotes();
 	}
 	
+	/**
+	 * Method to check exception handling when a student tries to add a note to their own record
+	 * @throws Exception thrown if setUser is unsuccessful or when the student attempts to add a note to 
+	 * their record
+	 */
+	@Test(expected = InvalidUserException.class)
+	public void testAddNoteStudentExceptionThrown()throws Exception  {
+		grads.setUser("mbr");
+		grads.addNote("mbr", "test note", false);
+		grads.getTranscript("mbr").getNotes();
+	}
+	
+	/**
+	 * Method to check that updatingTranscript operates correctly. Checks that the modified transcript
+	 * has been successfully added to the in-memory data structure
+	 * @throws Exception if setUser fails
+	 */
 	@Test
 	public void testUpdateTranscriptPasses() throws Exception{
 		grads.setUser("mmatthews");
@@ -317,6 +367,11 @@ public class GRADSIntfTest {
 		assertEquals("Hunter" , grads.getTranscript("mhunt").getLastName());
 	}
 	
+	
+	/**
+	 * Method to test exception handling for updateTranscript function. 
+	 * @throws Exception thrown if setUser fails or when the 
+	 */
 	@Test(expected = InvalidUserException.class)
 	public void testUpdateTranscriptThrowException() throws Exception{
 		grads.setUser("mbr");
@@ -325,6 +380,12 @@ public class GRADSIntfTest {
 		grads.loadRecords("resources/students.txt");
 	}
 	
+	/**
+	 * Method to test updateTranscript exception handling if a student with only temporary 
+	 * permissions attempts to permanently modify their student record
+	 * @throws Exception if setUser fails or when permanent update is attempted containing transcript with
+	 * temporary modification permissions
+	 */
 	@Test(expected = TempEditException.class)
 	public void testUpdateTranscriptThrowTempException() throws Exception{
 		grads.setUser("mbr");
@@ -334,14 +395,27 @@ public class GRADSIntfTest {
 		grads.updateTranscript("mbr", transcript, true);	
 	}
 	
+	/**
+	 * Helper method to compare that two records are equivalent in all of their attributes
+	 * @param oracle the StudentRecord oracle against which the test is being compared
+	 * @param test the record to test against the test oracle
+	 * @throws InvalidUserException if call <code>getUserID</code> in class <code>User</code> fails
+	 */
 	private void assertPropertiesEqual(StudentRecord oracle, StudentRecord test) throws InvalidUserException{
+		//First and Last Name
 		assertEquals(oracle.getFirstName(), test.getFirstName());
 		assertEquals(oracle.getLastName(), test.getLastName());
+		
+		//Notes
 		assertEquals(oracle.getNotes(),test.getNotes());
+		
+		//Milestones
 		assertEquals(oracle.getMilestonesSet().size(), test.getMilestonesSet().size());
 		for (int i = 0; i <oracle.getMilestonesSet().size(); i++){
 			assertEquals(oracle.getMilestonesSet().get(i).getMilestone(), test.getMilestonesSet().get(i).getMilestone());
 		}
+		
+		//Role
 		assertEquals(oracle.getRole(), test.getRole());
 		
 		//Term
@@ -360,6 +434,7 @@ public class GRADSIntfTest {
 			assertEquals(oracle.getCertificateSought().getGraduation().getYear(), test.getCertificateSought().getGraduation().getYear());
 		}
 		//Advisors
+		assertEquals(oracle.getAdvisors().size(), test.getAdvisors().size());
 		for (int i = 0; i <oracle.getAdvisors().size(); i++){
 			assertEquals(oracle.getAdvisors().get(i).getUserID(), test.getAdvisors().get(i).getUserID());
 			assertEquals(oracle.getAdvisors().get(i).getDepartment(),test.getAdvisors().get(i).getDepartment());
@@ -369,6 +444,7 @@ public class GRADSIntfTest {
 			
 		}
 		//Committee
+		assertEquals(oracle.getCommittee().size(), test.getCommittee().size());
 		for (int i = 0; i <oracle.getCommittee().size(); i++){
 			assertEquals(oracle.getCommittee().get(i).getUserID(), test.getCommittee().get(i).getUserID());
 			assertEquals(oracle.getCommittee().get(i).getDepartment(),test.getCommittee().get(i).getDepartment());
@@ -393,6 +469,7 @@ public class GRADSIntfTest {
 		}
 		
 		//CoursesTaken
+		assertEquals(oracle.getCoursesTaken().size(), test.getCoursesTaken().size());
 		Course course = new Course();
 		for (int i = 0; i < oracle.getCoursesTaken().size(); i++)
 		{
