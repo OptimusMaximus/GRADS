@@ -1,8 +1,8 @@
 [{
     "student": {
-      "id": "mhunt",
-      "firstName": "Michelle",
-      "lastName": "Hunter",
+      "id": "mbr",
+      "firstName": "Maximus",
+      "lastName": "Brandel",
       "tempEditFlag": false
     },
     "department": "COMPUTER_SCIENCE",
@@ -405,9 +405,9 @@
   },
    {
     "student": {
-      "id": "peaches",
-      "firstName": "Michelle",
-      "lastName": "Peaches",
+      "id": "clark",
+      "firstName": "Eric",
+      "lastName": "Clark",
       "tempEditFlag": false
     },
     "department": "COMPUTER_SCIENCE",

@@ -49,8 +49,8 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//grads.setUser("mbr");
-		//grads.generateProgressSummary("mbr");
+		grads.setUser("brand");
+		grads.generateProgressSummary("brand");
 		//grads.generateProgressSummary("mhunt");
 		
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());

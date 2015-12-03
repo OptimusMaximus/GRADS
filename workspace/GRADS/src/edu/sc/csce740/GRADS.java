@@ -381,8 +381,8 @@ public class GRADS implements GRADSIntf {
 			progressSummary.setCommittee(record.getCommittee());
 			progressSummary.getResults(record, allCourses);
 			
-//			String representation = new GsonBuilder().setExclusionStrategies(new ExclStrat()).setPrettyPrinting().create().toJson(progressSummary);
-//			writeToFile("src/resources/progressSummary.txt", representation);
+			String representation = new GsonBuilder().setExclusionStrategies(new ExclStrat()).setPrettyPrinting().create().toJson(progressSummary);
+			writeToFile("src/resources/progressSummary.txt", representation);
 			
 			return progressSummary;
 		} catch (Exception e){

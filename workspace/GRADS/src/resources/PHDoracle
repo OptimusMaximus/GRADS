@@ -88,7 +88,7 @@
       {
         "term": {
           "semester": "FALL",
-          "year": 2006
+          "year": 2014
         },
         "grade": "A",
         "course": {
@@ -316,7 +316,7 @@
       {
         "term": {
           "semester": "FALL",
-          "year": 2005
+          "year": 2015
         },
         "grade": "A",
         "course": {
@@ -454,9 +454,9 @@
   },
    {
     "student": {
-      "id": "peaches",
-      "firstName": "Michelle",
-      "lastName": "Peaches",
+      "id": "ggay",
+      "firstName": "Greg",
+      "lastName": "Gay",
       "tempEditFlag": false
     },
     "department": "COMPUTER_SCIENCE",

@@ -7,6 +7,34 @@
         "department": "COMPUTER_SCIENCE"
     },
     {
+       "id": "drig",
+      "firstName": "Leslie",
+      "lastName": "Driggers",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+       "id": "clark",
+      "firstName": "Eric",
+      "lastName": "Clark",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+       "id": "doe",
+      "firstName": "John",
+      "lastName": "Doe",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+       "id": "shir",
+      "firstName": "Russell",
+      "lastName": "Shirley",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
        "id": "mbr",
        "firstName": "Maximus",
        "lastName": "Brandel",
@@ -31,6 +59,13 @@
         "id": "ggay",
         "firstName": "Gregory",
         "lastName": "Gay",
+        "role": "STUDENT",
+        "department": "COMPUTER_SCIENCE"
+    },
+    {
+        "id": "brand",
+        "firstName": "Michelle",
+        "lastName": "Brandel",
         "role": "STUDENT",
         "department": "COMPUTER_SCIENCE"
     },

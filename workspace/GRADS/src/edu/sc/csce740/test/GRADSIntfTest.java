@@ -28,6 +28,7 @@ import edu.sc.csce740.exception.DataNotRetrievedException;
 import edu.sc.csce740.exception.InvalidUserException;
 import edu.sc.csce740.exception.TempEditException;
 import edu.sc.csce740.model.Degree;
+import edu.sc.csce740.model.ProgressSummary;
 import edu.sc.csce740.model.StudentRecord;
 import edu.sc.csce740.model.Term;
 import edu.sc.csce740.model.User;
@@ -41,6 +42,7 @@ public class GRADSIntfTest {
 	public static GRADSIntf grads;
 	public static User user;
 	public static StudentRecord oracle;
+	public static ProgressSummary summary;
 	
 	private File getFile(String fileName) 
 	{
@@ -132,6 +134,9 @@ public class GRADSIntfTest {
 	@After
 	public void tearDown() throws Exception {
 		grads.clearSession();
+		user = null;
+		oracle = null;
+		summary = null;
 	}
 	
 	/**
@@ -286,6 +291,44 @@ public class GRADSIntfTest {
 		transcript.setLastName("Momoku");
 		grads.updateTranscript("mbr", transcript, true);	
 	}
+	
+	@Test
+	public void testGenerateProgressSummaryPHDPasses() throws Exception{
+		summary = new ProgressSummary();
+		
+		
+		grads.setUser("mhunt");
+		grads.generateProgressSummary("mhunt");
+		
+	}
+	
+//	@Test
+//	public void testGenerateProgressSummaryMSPasses() throws Exception{
+//		grads.setUser("brand");
+//		
+//		
+//	}
+//	
+//	@Test
+//	public void testGenerateProgressSummaryMSEPasses() throws Exception{
+//		grads.setUser("merc");
+//		
+//		
+//	}
+//	
+//	@Test
+//	public void testGenerateProgressSummaryMEPasses() throws Exception{
+//		grads.setUser("mbr");
+//		
+//		
+//	}
+//	
+//	@Test
+//	public void testGenerateProgressSummaryINFASPasses() throws Exception{
+//		grads.setUser("elsa");
+//		
+//		
+//	}
 	
 	private void assertPropertiesEqual(StudentRecord oracle, StudentRecord test) throws InvalidUserException{
 		assertEquals(oracle.getFirstName(), test.getFirstName());
