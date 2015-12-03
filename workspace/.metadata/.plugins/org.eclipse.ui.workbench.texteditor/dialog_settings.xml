@@ -3,7 +3,7 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="310" key="DIALOG_WIDTH"/>
 		<item value="196" key="DIALOG_Y_ORIGIN"/>
-		<item value="436" key="DIALOG_HEIGHT"/>
+		<item value="464" key="DIALOG_HEIGHT"/>
 		<item value="740" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
@@ -15,14 +15,17 @@
 		<item value="false" key="wholeword"/>
 		<item value="" key="selection"/>
 		<list key="findhistory">
+			<item value="simu"/>
+			<item value="brand"/>
+			<item value="phd"/>
+			<item value="michelle"/>
+			<item value="hunter"/>
 			<item value="212"/>
 			<item value="valid"/>
 			<item value="began"/>
-			<item value="termBegan"/>
-			<item value="grade"/>
-			<item value="course&quot;"/>
 		</list>
 		<list key="replacehistory">
+			<item value="MS"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
