@@ -51,6 +51,9 @@ public class StudentRecord {
 			setTempEdit(true);
 		}
 		student = user; 
+		this.setFirstName(user.getFirstName());
+		this.setLastName(user.getLastName());
+		this.department = user.getDepartment();
 	}
 	
 	/**

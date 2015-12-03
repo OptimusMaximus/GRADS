@@ -24,9 +24,12 @@ import com.google.gson.reflect.TypeToken;
 
 import edu.sc.csce740.GRADS;
 import edu.sc.csce740.GRADSIntf;
+import edu.sc.csce740.exception.CoursesInvalidException;
 import edu.sc.csce740.exception.DataNotRetrievedException;
 import edu.sc.csce740.exception.InvalidUserException;
 import edu.sc.csce740.exception.TempEditException;
+import edu.sc.csce740.model.Course;
+import edu.sc.csce740.model.CourseTaken;
 import edu.sc.csce740.model.Degree;
 import edu.sc.csce740.model.StudentRecord;
 import edu.sc.csce740.model.Term;
@@ -230,21 +233,65 @@ public class GRADSIntfTest {
 			}
 		}
 		transcript = grads.getTranscript("mhunt");
-//		System.out.println(record.toString());
-//		System.out.println("-------");
-//		System.out.println(transcript.toString());
-//		assertEquals(record.getFirstName(), transcript.getFirstName());
-//		assertEquals(record.getLastName(), transcript.getLastName());
-//		assertEquals(record.getNotes(),transcript.getNotes());
-//		assertEquals(record.getMilestonesSet().get(0).getMilestone(), transcript.getLastName());
-//		assertEquals(record.getLastName(), transcript.getLastName());
 		assertPropertiesEqual(record, transcript);
 	}
 	
-//	@Test(expected = InvalidUserException.class)
-//	public void testGetTranscriptPassesExceptionThrown()throws Exception  {
-//			
-//	}
+	@Test(expected = InvalidUserException.class)
+	public void testGetTranscriptPassesExceptionThrown()throws Exception  {
+		grads.setUser("mbr");
+		grads.getTranscript("mhunt");
+			
+	}
+	
+	@Test
+	public void simulateCoursesPasses() throws Exception{
+		grads.setUser("mhunt");
+		List<CourseTaken> courses = new ArrayList<CourseTaken>();
+		CourseTaken courseTaken = new CourseTaken();
+		Course course = new Course();
+		Term term = new Term();
+		
+		term.setSemester("SPRING");
+		term.setYear(2008); 
+		course.setId("csce883");
+		course.setName("Machine Learning");
+		course.setNumCredits("3");
+		courseTaken.setCourse(course);
+		courseTaken.setGrade("A");
+		courseTaken.setTerm(term);
+		courses.add(courseTaken);
+		grads.simulateCourses("mhunt",courses);
+		
+		List<CourseTaken> coursesInTranscript =grads.getTranscript("mhunt").getCoursesTaken();
+		boolean isThere = false; 
+		for (int i = 0; i <coursesInTranscript.size(); i ++){
+			if (course.courseIsEqual(coursesInTranscript.get(i).getCourse(), course)){
+				isThere = true;
+			}
+		}
+		assertEquals(true, isThere);		
+	}
+	@Test(expected = CoursesInvalidException.class)
+	public void simulateCoursesThrowsException() throws Exception{
+		grads.setUser("mhunt");
+		List<CourseTaken> courses = new ArrayList<CourseTaken>();
+		CourseTaken courseTaken = new CourseTaken();
+		Course course = new Course();
+		Term term = new Term();
+		
+		term.setSemester("SPRING");
+		term.setYear(2008); 
+		course.setId("csce8883");
+		course.setName("Machine Learning");
+		course.setNumCredits("3");
+		courseTaken.setCourse(course);
+		courseTaken.setGrade("A");
+		courseTaken.setTerm(term);
+		courses.add(courseTaken);
+		grads.simulateCourses("mhunt",courses);
+		
+		
+	}
 	
 	@Test
 	public void testAddNotePasses() throws Exception{
@@ -307,7 +354,7 @@ public class GRADSIntfTest {
 		assertEquals(oracle.getDegreeSought().getGraduation().getYear(), test.getDegreeSought().getGraduation().getYear());
 		
 		//CertificateSought
-		if (test.getCertificateSought() != null && oracle.getCertificateSought() != null){
+		if (test.getCertificateSought() != null){
 			assertEquals(oracle.getCertificateSought().getDegreeName(), test.getCertificateSought().getDegreeName());
 			assertEquals(oracle.getCertificateSought().getGraduation().getSemester(), test.getCertificateSought().getGraduation().getSemester());assertEquals(oracle.getDegreeSought().getGraduation().getSemester(), test.getDegreeSought().getGraduation().getSemester());
 			assertEquals(oracle.getCertificateSought().getGraduation().getYear(), test.getCertificateSought().getGraduation().getYear());
@@ -334,8 +381,26 @@ public class GRADSIntfTest {
 		//Department
 		assertEquals(oracle.getDept(), test.getDept());
 		
-		//
+		//Previous Degrees 
+		if (test.getPreviousDegrees() != null){
+			for (int i = 0; i < oracle.getPreviousDegrees().size(); i++)
+			{	
+				assertEquals(oracle.getPreviousDegrees().get(i).getDegreeName(),test.getPreviousDegrees().get(i).getDegreeName());
+				assertEquals(oracle.getPreviousDegrees().get(i).getGraduation().getSemester(),test.getPreviousDegrees().get(i).getGraduation().getSemester());
+				assertEquals(oracle.getPreviousDegrees().get(i).getGraduation().getYear(),test.getPreviousDegrees().get(i).getGraduation().getYear());	
+				
+			}
+		}
 		
+		//CoursesTaken
+		Course course = new Course();
+		for (int i = 0; i < oracle.getCoursesTaken().size(); i++)
+		{
+			assertEquals(oracle.getCoursesTaken().get(i).getGrade(),test.getCoursesTaken().get(i).getGrade());
+			assertEquals(oracle.getCoursesTaken().get(i).getTerm().getSemester(),test.getCoursesTaken().get(i).getTerm().getSemester());
+			assertEquals(oracle.getCoursesTaken().get(i).getTerm().getYear(),test.getCoursesTaken().get(i).getTerm().getYear());
+			assertEquals(true, course.courseIsEqual(test.getCoursesTaken().get(i).getCourse(), oracle.getCoursesTaken().get(i).getCourse()));
+		}
 	}
 	
 
