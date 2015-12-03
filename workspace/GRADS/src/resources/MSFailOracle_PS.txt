@@ -1,0 +1,108 @@
+{
+  "student": {
+    "id": "drig",
+    "firstName": "Leslie",
+    "lastName": "Driggers"
+  },
+  "department": "COMPUTER_SCIENCE",
+  "termBegan": {
+    "semester": "SPRING",
+    "year": 2008
+  },
+  "degreeSought": {
+    "name": "MS",
+    "graduation": {
+      "semester": "SPRING",
+      "year": 2018
+    }
+  },
+  "requirementCheckResults": [
+    {
+      "name": "CORE_COURSES_MS",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [],
+        "notes": [
+          "Must pass CSCE513 Computer Architecture",
+          "Must pass CSCE531 Compiler Construction",
+          "Must pass CSCE750 Analysis of Algorithms",
+          "Must pass CSCE791 Seminar in Advances in Computing"
+        ]
+      }
+    },
+    {
+      "name": "ADDITIONAL_CREDITS_MS",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Must pass 8 more hours of CSCE courses numbered above 700 that are not core courses."
+        ]
+      }
+    },
+    {
+      "name": "DEGREE_BASED_CREDITS_MS",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2004
+            },
+            "grade": "F",
+            "course": {
+              "name": "Naptime",
+              "id": "nap734",
+              "numCredits": "5"
+            }
+          }
+        ],
+        "notes": [
+          "Must pass 19 more hours of graduate courses."
+        ]
+      }
+    },
+    {
+      "name": "THESIS_CREDITS_MS",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Must pass 6 more hours of thesis courses."
+        ]
+      }
+    },
+    {
+      "name": "TIME_LIMIT_MS",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "The time limit of 6 years has been exceeded"
+        ]
+      }
+    },
+    {
+      "name": "GPA",
+      "passed": "false",
+      "details": {
+        "gpa": 0.0
+      }
+    },
+    {
+      "name": "MILESTONES_MS",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Missing milestone ACADEMIC_ADVISOR_APPOINTED",
+          "Missing milestone PROGRAM_OF_STUDY_SUBMITTED",
+          "Missing milestone THESIS_ADVISOR_SELECTED",
+          "Missing milestone THESIS_COMMITTEE_FORMED",
+          "Missing milestone THESIS_PROPOSAL_SCHEDULED",
+          "Missing milestone THESIS_PROPOSAL_APPROVED",
+          "Missing milestone THESIS_SUBMITTED",
+          "Missing milestone THESIS_DEFENSE_SCHEDULED",
+          "Missing milestone THESIS_DEFENSE_PASSED"
+        ]
+      }
+    }
+  ]
+}

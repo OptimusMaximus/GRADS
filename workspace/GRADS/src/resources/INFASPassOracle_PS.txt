@@ -1,0 +1,115 @@
+{
+  "student": {
+    "id": "elsa",
+    "firstName": "Ibrahim",
+    "lastName": "Elsayed"
+  },
+  "department": "COMPUTER_SCIENCE",
+  "termBegan": {
+    "semester": "SPRING",
+    "year": 2012
+  },
+  "degreeSought": {
+    "name": "INFAS",
+    "graduation": {
+      "semester": "SPRING",
+      "year": 2018
+    }
+  },
+  "advisors": [
+    {
+      "firstName": "Duncan",
+      "lastName": "Buell",
+      "department": "COMPUTER_SCIENCE"
+    }
+  ],
+  "committee": [
+    {
+      "firstName": "Manton",
+      "lastName": "Matthews",
+      "department": "COMPUTER_SCIENCE"
+    },
+    {
+      "firstName": "Duncan",
+      "lastName": "Buell",
+      "department": "COMPUTER_SCIENCE"
+    },
+    {
+      "firstName": "Jason",
+      "lastName": "Bakos",
+      "department": "COMPUTER_SCIENCE"
+    },
+    {
+      "firstName": "Richard",
+      "lastName": "McGehee",
+      "department": "MATHEMATICS"
+    }
+  ],
+  "requirementCheckResults": [
+    {
+      "name": "CORE_COURSES_INFAS",
+      "passed": "true",
+      "details": {
+        "coursesTaken": [
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Information Security Principles",
+              "id": "csce522",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Network Systems Security",
+              "id": "csce715",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Information Warfare",
+              "id": "csce727",
+              "numCredits": "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ADDITIONAL_CREDITS_INFAS",
+      "passed": "true",
+      "details": {
+        "notes": [
+          "Students may count a maximum of 6 hours in nonCSCE courses.",
+          "Additional credit hours taken is: 38, Additional credit hours needed is: 18"
+        ]
+      }
+    },
+    {
+      "name": "TIME_LIMIT_INFAS",
+      "passed": "true"
+    },
+    {
+      "name": "GPA",
+      "passed": "true",
+      "details": {
+        "gpa": 3.86
+      }
+    }
+  ]
+}

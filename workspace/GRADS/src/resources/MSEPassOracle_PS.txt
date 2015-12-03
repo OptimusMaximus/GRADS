@@ -1,0 +1,183 @@
+{
+  "student": {
+    "id": "merc",
+    "firstName": "Christian",
+    "lastName": "Merchant"
+  },
+  "department": "COMPUTER_SCIENCE",
+  "termBegan": {
+    "semester": "SPRING",
+    "year": 2012
+  },
+  "degreeSought": {
+    "name": "MSE",
+    "graduation": {
+      "semester": "SPRING",
+      "year": 2018
+    }
+  },
+  "advisors": [
+    {
+      "firstName": "Duncan",
+      "lastName": "Buell",
+      "department": "COMPUTER_SCIENCE"
+    }
+  ],
+  "committee": [
+    {
+      "firstName": "Manton",
+      "lastName": "Matthews",
+      "department": "COMPUTER_SCIENCE"
+    },
+    {
+      "firstName": "Duncan",
+      "lastName": "Buell",
+      "department": "COMPUTER_SCIENCE"
+    },
+    {
+      "firstName": "Jason",
+      "lastName": "Bakos",
+      "department": "COMPUTER_SCIENCE"
+    },
+    {
+      "firstName": "Richard",
+      "lastName": "McGehee",
+      "department": "MATHEMATICS"
+    }
+  ],
+  "requirementCheckResults": [
+    {
+      "name": "CORE_COURSES_MSE",
+      "passed": "true",
+      "details": {
+        "coursesTaken": [
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Software Architectures",
+              "id": "csce742",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Software Process",
+              "id": "csce741",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            },
+            "grade": "A",
+            "course": {
+              "name": "Software Requirements",
+              "id": "csce743",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2005
+            },
+            "grade": "A",
+            "course": {
+              "name": "Software Testing and Quality Assurance",
+              "id": "csce747",
+              "numCredits": "3"
+            }
+          },
+          {
+            "term": {
+              "semester": "FALL",
+              "year": 2015
+            },
+            "grade": "A",
+            "course": {
+              "name": "Software Engineering",
+              "id": "csce740",
+              "numCredits": "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ADDITIONAL_CREDITS_MSE",
+      "passed": "true",
+      "details": {
+        "notes": [
+          "Students must pass CSCE793 Internship in Software Engineering",
+          "Additional credit hours taken is: 15, Additional credit hours needed is: 15"
+        ]
+      }
+    },
+    {
+      "name": "TIME_LIMIT_MSE",
+      "passed": "true"
+    },
+    {
+      "name": "GPA",
+      "passed": "true",
+      "details": {
+        "gpa": 3.86
+      }
+    },
+    {
+      "name": "MILESTONES_MSE",
+      "passed": "true",
+      "details": {
+        "milestones": [
+          {
+            "milestone": "PROGRAM_OF_STUDY_SUBMITTED",
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            }
+          },
+          {
+            "milestone": "ACADEMIC_ADVISOR_APPOINTED",
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            }
+          },
+          {
+            "milestone": "COMPREHENSIVE_EXAM_PASSED",
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            }
+          },
+          {
+            "milestone": "REPORT_SUBMITTED",
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            }
+          },
+          {
+            "milestone": "REPORT_APPROVED",
+            "term": {
+              "semester": "FALL",
+              "year": 2014
+            }
+          }
+        ],
+        "notes": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "student": {
+    "id": "ggay",
+    "firstName": "Greg",
+    "lastName": "Gay"
+  },
+  "department": "COMPUTER_SCIENCE",
+  "termBegan": {
+    "semester": "SPRING",
+    "year": 2004
+  },
+  "degreeSought": {
+    "name": "PHD",
+    "graduation": {
+      "semester": "SPRING",
+      "year": 2018
+    }
+  },
+  "requirementCheckResults": [
+    {
+      "name": "CORE_COURSES_PHD",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [],
+        "notes": [
+          "Must pass CSCE513 Computer Architecture",
+          "Must pass CSCE531 Compiler Construction",
+          "Must pass CSCE551 Theory of Computation",
+          "Must pass CSCE750 Analysis of Algorithms",
+          "Must pass CSCE791 Seminar in Advances in Computing"
+        ]
+      }
+    },
+    {
+      "name": "ADDITIONAL_CREDITS_PHD",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Must pass 20 more hours of CSCE courses numbered above 700 that are not core courses."
+        ]
+      }
+    },
+    {
+      "name": "DEGREE_BASED_CREDITS_PHD",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2004
+            },
+            "grade": "F",
+            "course": {
+              "name": "Naptime",
+              "id": "nap734",
+              "numCredits": "5"
+            }
+          }
+        ],
+        "notes": [
+          "Must pass 43 more hours of graduate courses.",
+          "Must pass 24 more hours of CSCE courses numbered above 700."
+        ]
+      }
+    },
+    {
+      "name": "THESIS_CREDITS_PHD",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Must pass 12 more hours of thesis courses."
+        ]
+      }
+    },
+    {
+      "name": "TIME_LIMIT_PHD",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "The time limit of 8 years has been exceeded"
+        ]
+      }
+    },
+    {
+      "name": "GPA",
+      "passed": "false",
+      "details": {
+        "gpa": 0.0
+      }
+    },
+    {
+      "name": "MILESTONES_PHD",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Missing milestone PROGRAM_OF_STUDY_SUBMITTED",
+          "Missing milestone QUALIFYING_EXAM_PASSED",
+          "Missing milestone DISSERTATION_ADVISOR_SELECTED",
+          "Missing milestone DISSERTATION_COMMITTEE_FORMED",
+          "Missing milestone DISSERTATION_PROPOSAL_SCHEDULED",
+          "Missing milestone DISSERTATION_PROPOSAL_APPROVED",
+          "Missing milestone DISSERTATION_SUBMITTED",
+          "Missing milestone DISSERTATION_DEFENSE_SCHEDULED",
+          "Missing milestone DISSERTATION_DEFENSE_PASSED",
+          "Missing milestone COMPREHENSIVE_EXAM_PASSED"
+        ]
+      }
+    }
+  ]
+}

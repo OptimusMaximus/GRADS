@@ -8,7 +8,7 @@
     "department": "COMPUTER_SCIENCE",
     "termBegan": {
       "semester": "SPRING",
-      "year": 2008
+      "year": 2012
     },
     "degreeSought": {
       "name": "PHD",
@@ -64,7 +64,7 @@
       {
         "term": {
           "semester": "SPRING",
-          "year": 2004
+          "year": 2012
         },
         "grade": "B",
         "course": {
@@ -88,7 +88,7 @@
       {
         "term": {
           "semester": "FALL",
-          "year": 2006
+          "year": 2014
         },
         "grade": "A",
         "course": {
@@ -316,7 +316,7 @@
       {
         "term": {
           "semester": "FALL",
-          "year": 2005
+          "year": 2014
         },
         "grade": "A",
         "course": {
@@ -361,6 +361,18 @@
           "numCredits": "3"
         }
       },
+      {
+            "term": {
+              "semester": "FALL",
+              "year": 2015
+            },
+            "grade": "A",
+            "course": {
+              "name": "Computer Vision",
+              "id": "csce867",
+              "numCredits": "3"
+            }
+          },
       {
         "term": {
           "semester": "FALL",
@@ -454,15 +466,15 @@
   },
    {
     "student": {
-      "id": "peaches",
-      "firstName": "Michelle",
-      "lastName": "Peaches",
+      "id": "ggay",
+      "firstName": "Greg",
+      "lastName": "Gay",
       "tempEditFlag": false
     },
     "department": "COMPUTER_SCIENCE",
     "termBegan": {
       "semester": "SPRING",
-      "year": 2008
+      "year": 2004
     },
     "degreeSought": {
       "name": "PHD",
@@ -480,6 +492,20 @@
         }
       }
     ],
+    "coursesTaken": [
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2004
+        },
+        "grade": "F",
+        "course": {
+          "name": "Naptime",
+          "id": "nap734",
+          "numCredits": "5"
+        }
+      }
+      ],
     "tempEdit": false
   }
     

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GRADSIntfTest" project="GRADS" tests="28" started="28" failures="0" errors="1" ignored="0">
+  <testsuite name="edu.sc.csce740.test.GRADSIntfTest" time="0.607">
+    <testcase name="testGetStudentsIDsPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.088"/>
+    <testcase name="testGetStudentsIDsExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.016"/>
+    <testcase name="testSetUserExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.013"/>
+    <testcase name="testClearSession" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.012"/>
+    <testcase name="testGetUserPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.01"/>
+    <testcase name="testGenerateProgressSummaryMEFails" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.055"/>
+    <testcase name="simulateCoursesPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.074"/>
+    <testcase name="testSetUserPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.004"/>
+    <testcase name="testGenerateProgressSummaryMSFails" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.029"/>
+    <testcase name="testUpdateTranscriptPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.028"/>
+    <testcase name="testGenerateProgressSummaryMSEPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.021"/>
+    <testcase name="testAddNoteStudentExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.006"/>
+    <testcase name="testGenerateProgressSummaryPHDFails" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.018"/>
+    <testcase name="testGenerateProgressSummaryPHDPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.045"/>
+    <testcase name="testGenerateProgressSummaryMSEFails" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.014"/>
+    <testcase name="testGetTranscriptPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.008"/>
+    <testcase name="testUpdateTranscriptThrowException" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.004"/>
+    <testcase name="testAddNoteExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testAddNotePasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testGenerateProgressSummaryMSPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.041"/>
+    <testcase name="testGetTranscriptPassesExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testGetUserFails" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testGenerateProgressSummaryMEPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.037"/>
+    <testcase name="testGenerateProgressSummaryThrowException" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.016">
+      <error>java.lang.Exception: Unexpected exception, expected&lt;edu.sc.csce740.exception.InvalidUserException&gt; but was&lt;edu.sc.csce740.exception.ProgressSummaryNotGeneratedException&gt;
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+Caused by: edu.sc.csce740.exception.ProgressSummaryNotGeneratedException: Can not generate progress summary
+	at edu.sc.csce740.GRADS.generateProgressSummary(GRADS.java:389)
+	at edu.sc.csce740.test.GRADSIntfTest.testGenerateProgressSummaryThrowException(GRADSIntfTest.java:573)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:19)
+	... 19 more
+
+</error>
+    </testcase>
+    <testcase name="testUpdateTranscriptThrowTempException" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="simulateCoursesThrowsException" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.004"/>
+    <testcase name="testGenerateProgressSummaryINFASPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.039"/>
+    <testcase name="testGenerateProgressSummaryINFASFails" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.01"/>
+  </testsuite>
+</testrun>

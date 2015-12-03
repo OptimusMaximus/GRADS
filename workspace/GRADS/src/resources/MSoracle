@@ -1,14 +1,14 @@
 [{
     "student": {
-      "id": "mhunt",
+      "id": "brand",
       "firstName": "Michelle",
-      "lastName": "Hunter",
+      "lastName": "Brandel",
       "tempEditFlag": false
     },
     "department": "COMPUTER_SCIENCE",
     "termBegan": {
       "semester": "SPRING",
-      "year": 2008
+      "year": 2012
     },
     "degreeSought": {
       "name": "MS",
@@ -447,9 +447,9 @@
   },
    {
     "student": {
-      "id": "peaches",
-      "firstName": "Michelle",
-      "lastName": "Peaches",
+      "id": "drig",
+      "firstName": "Leslie",
+      "lastName": "Driggers",
       "tempEditFlag": false
     },
     "department": "COMPUTER_SCIENCE",
@@ -473,6 +473,20 @@
         }
       }
     ],
+    "coursesTaken": [
+      {
+        "term": {
+          "semester": "SPRING",
+          "year": 2004
+        },
+        "grade": "F",
+        "course": {
+          "name": "Naptime",
+          "id": "nap734",
+          "numCredits": "5"
+        }
+      }
+      ],
     "tempEdit": false
   }
     

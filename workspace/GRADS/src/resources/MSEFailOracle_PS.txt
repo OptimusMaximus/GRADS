@@ -1,0 +1,74 @@
+{
+  "student": {
+    "id": "shir",
+    "firstName": "Russell",
+    "lastName": "Shirley"
+  },
+  "department": "COMPUTER_SCIENCE",
+  "termBegan": {
+    "semester": "SPRING",
+    "year": 2008
+  },
+  "degreeSought": {
+    "name": "MSE",
+    "graduation": {
+      "semester": "SPRING",
+      "year": 2018
+    }
+  },
+  "requirementCheckResults": [
+    {
+      "name": "CORE_COURSES_MSE",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [],
+        "notes": [
+          "Must pass CSCE740 Software Engineering",
+          "Must pass CSCE741 Software Process",
+          "Must pass CSCE742 Software Architecture",
+          "Must pass CSCE743 Software Requirements",
+          "Must pass CSCE747 Software Testing"
+        ]
+      }
+    },
+    {
+      "name": "ADDITIONAL_CREDITS_MSE",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Students must pass CSCE793 Internship in Software Engineering",
+          "Must pass 15 more hours of CSCE courses numbered above 700 that are not core courses."
+        ]
+      }
+    },
+    {
+      "name": "TIME_LIMIT_MSE",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "The time limit of 6 years has been exceeded"
+        ]
+      }
+    },
+    {
+      "name": "GPA",
+      "passed": "false",
+      "details": {
+        "gpa": 0.0
+      }
+    },
+    {
+      "name": "MILESTONES_MSE",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Missing milestone ACADEMIC_ADVISOR_APPOINTED",
+          "Missing milestone PROGRAM_OF_STUDY_SUBMITTED",
+          "Missing milestone COMPREHENSIVE_EXAM_PASSED",
+          "Missing milestone REPORT_SUBMITTED",
+          "Missing milestone REPORT_APPROVED"
+        ]
+      }
+    }
+  ]
+}

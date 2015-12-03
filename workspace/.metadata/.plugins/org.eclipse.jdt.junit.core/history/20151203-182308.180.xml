@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GRADSIntfTest" project="GRADS" tests="22" started="22" failures="0" errors="0" ignored="0">
+  <testsuite name="edu.sc.csce740.test.GRADSIntfTest" time="0.524">
+    <testcase name="testGetStudentsIDsPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.08"/>
+    <testcase name="testGetStudentsIDsExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.017"/>
+    <testcase name="testSetUserExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.014"/>
+    <testcase name="testClearSession" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.01"/>
+    <testcase name="testGetUserPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.011"/>
+    <testcase name="simulateCoursesPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.114"/>
+    <testcase name="testSetUserPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.006"/>
+    <testcase name="testUpdateTranscriptPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.032"/>
+    <testcase name="testGenerateProgressSummaryMSEPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.021"/>
+    <testcase name="testAddNoteStudentExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.004"/>
+    <testcase name="testGenerateProgressSummaryPHDPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.048"/>
+    <testcase name="testGetTranscriptPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.008"/>
+    <testcase name="testUpdateTranscriptThrowException" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testAddNoteExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.004"/>
+    <testcase name="testAddNotePasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.004"/>
+    <testcase name="testGenerateProgressSummaryMSPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.045"/>
+    <testcase name="testGetTranscriptPassesExceptionThrown" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testGetUserFails" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testGenerateProgressSummaryMEPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.042"/>
+    <testcase name="testUpdateTranscriptThrowTempException" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.008"/>
+    <testcase name="simulateCoursesThrowsException" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.003"/>
+    <testcase name="testGenerateProgressSummaryINFASPasses" classname="edu.sc.csce740.test.GRADSIntfTest" time="0.044"/>
+  </testsuite>
+</testrun>

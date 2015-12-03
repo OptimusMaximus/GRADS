@@ -1,0 +1,93 @@
+{
+  "student": {
+    "id": "clark",
+    "firstName": "Eric",
+    "lastName": "Clark"
+  },
+  "department": "COMPUTER_SCIENCE",
+  "termBegan": {
+    "semester": "SPRING",
+    "year": 2008
+  },
+  "degreeSought": {
+    "name": "ME",
+    "graduation": {
+      "semester": "SPRING",
+      "year": 2018
+    }
+  },
+  "requirementCheckResults": [
+    {
+      "name": "CORE_COURSES_ME",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [],
+        "notes": [
+          "Must pass CSCE513 Computer Architecture",
+          "Must pass CSCE531 Compiler Construction",
+          "Must pass CSCE750 Analysis of Algorithms",
+          "Must pass CSCE791 Seminar in Advances in Computing"
+        ]
+      }
+    },
+    {
+      "name": "ADDITIONAL_CREDITS_ME",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Must pass 11 more hours of CSCE courses numbered above 700 that are not core courses."
+        ]
+      }
+    },
+    {
+      "name": "DEGREE_BASED_CREDITS_ME",
+      "passed": "false",
+      "details": {
+        "coursesTaken": [
+          {
+            "term": {
+              "semester": "SPRING",
+              "year": 2004
+            },
+            "grade": "F",
+            "course": {
+              "name": "Naptime",
+              "id": "nap734",
+              "numCredits": "5"
+            }
+          }
+        ],
+        "notes": [
+          "Must pass 25 more hours of graduate courses."
+        ]
+      }
+    },
+    {
+      "name": "TIME_LIMIT_ME",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "The time limit of 6 years has been exceeded"
+        ]
+      }
+    },
+    {
+      "name": "GPA",
+      "passed": "false",
+      "details": {
+        "gpa": 0.0
+      }
+    },
+    {
+      "name": "MILESTONES_ME",
+      "passed": "false",
+      "details": {
+        "notes": [
+          "Missing milestone ACADEMIC_ADVISOR_APPOINTED",
+          "Missing milestone PROGRAM_OF_STUDY_SUBMITTED",
+          "Missing milestone COMPREHENSIVE_EXAM_PASSED"
+        ]
+      }
+    }
+  ]
+}

@@ -139,4 +139,8 @@ public class ProgressSummary {
 		requirementCheckResults = r.generateResults(record, allCourses);
 		return requirementCheckResults;
 	}
+	public List<RequirementCheck> getRequirementCheckResults()
+	{
+		return requirementCheckResults; 
+	}
 }

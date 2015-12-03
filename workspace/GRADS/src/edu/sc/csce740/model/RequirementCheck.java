@@ -127,7 +127,7 @@ public class RequirementCheck {
 		
 		DegreeRequirements requirements = getDegreeRequirements(degreeName);
 		
-		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();
+		List<CourseTaken> coursesTaken = new ArrayList<CourseTaken>();	
 		coursesTaken = removeCoursesWithNoGrade(record.getCoursesTaken());
 		
 		List<CourseTaken> validCoursesTaken = new ArrayList<CourseTaken>();
@@ -261,6 +261,7 @@ public class RequirementCheck {
 		//Check to see if there are any expired courses for PHD, if so then take them out of list
 		List<CourseTaken> expiredCoursesTaken = expiredCoursesTaken(valid700LevelCoursesTaken, requirements);
 		List<CourseTaken> updatedCoursesTaken = new ArrayList<CourseTaken>();
+		
 		if(requirements.getDegreeName().toUpperCase().equals("PHD")){
 			if (expiredCoursesTaken.size() > 0){
 				for(int i = 0; i < expiredCoursesTaken.size(); i++){
@@ -274,8 +275,9 @@ public class RequirementCheck {
 					additionalCreditsRequirementCheckResults.setDetails(additionalCreditDetails);
 
 				}
+				valid700LevelCoursesTaken = updatedCoursesTaken;
 			}
-			valid700LevelCoursesTaken = updatedCoursesTaken;
+			
 		} 
 		
 		
@@ -585,6 +587,7 @@ public class RequirementCheck {
 	private RequirementCheck getMilestonesRequirementCheckResults(StudentRecord record, List<Milestone> milestonesRemaining) {
 		RequirementCheck milestonesRequirementCheckResults = new RequirementCheck();
 		milestonesRequirementCheckResults.setName("MILESTONES_" + record.getDegreeSought().getDegreeName().toUpperCase());
+		
 		if (0 == milestonesRemaining.size()){
 			milestonesRequirementCheckResults.setPassed("true");
 		} else {
@@ -702,10 +705,13 @@ public class RequirementCheck {
 		List<String> milestonesCompletedNames = new ArrayList<String>();
 		String degreeName = record.getDegreeSought().getDegreeName();
 		List<Milestone> allDegreeMilestones = getDegreeRequirements(degreeName).getMilestones();
-		
-		for(int i = 0; i < milestonesCompleted.size(); i++){
-			milestonesCompletedNames.add(milestonesCompleted.get(i).getMilestone());
+
+		if (null != milestonesCompleted){
+			for(int i = 0; i < milestonesCompleted.size(); i++){
+				milestonesCompletedNames.add(milestonesCompleted.get(i).getMilestone());
+			}
 		}
+		
 		for(int i = 0; i < allDegreeMilestones.size(); i++){
 			if (!milestonesCompletedNames.contains(allDegreeMilestones.get(i).getMilestone())){
 				milestonesRemaining.add(allDegreeMilestones.get(i));

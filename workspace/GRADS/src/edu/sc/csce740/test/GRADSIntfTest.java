@@ -10,7 +10,9 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hamcrest.CoreMatchers.*;
 import org.junit.After;
@@ -27,10 +29,12 @@ import edu.sc.csce740.GRADSIntf;
 import edu.sc.csce740.exception.CoursesInvalidException;
 import edu.sc.csce740.exception.DataNotRetrievedException;
 import edu.sc.csce740.exception.InvalidUserException;
+import edu.sc.csce740.exception.ProgressSummaryNotGeneratedException;
 import edu.sc.csce740.exception.TempEditException;
 import edu.sc.csce740.model.Course;
 import edu.sc.csce740.model.CourseTaken;
 import edu.sc.csce740.model.Degree;
+import edu.sc.csce740.model.ProgressSummary;
 import edu.sc.csce740.model.StudentRecord;
 import edu.sc.csce740.model.Term;
 import edu.sc.csce740.model.User;
@@ -44,6 +48,7 @@ public class GRADSIntfTest {
 	public static GRADSIntf grads;
 	public static User user;
 	public static StudentRecord oracle;
+	public static ProgressSummary oracleSummary;
 	
 	private File getFile(String fileName) 
 	{
@@ -135,6 +140,9 @@ public class GRADSIntfTest {
 	@After
 	public void tearDown() throws Exception {
 		grads.clearSession();
+		user = null;
+		oracle = null;
+		oracleSummary = null;
 	}
 	
 	/**
@@ -205,7 +213,14 @@ public class GRADSIntfTest {
 		studentsExpected.add("merc");
 		studentsExpected.add("elsa");
 		studentsExpected.add("ggay");
-		assertArrayEquals(students.toArray(), studentsExpected.toArray());
+		studentsExpected.add("brand");
+		studentsExpected.add("drig");
+		studentsExpected.add("doe");
+		studentsExpected.add("clark");
+		studentsExpected.add("shir");
+		Set<String> studentsSet = new HashSet<String>(students);
+		Set<String> studentsExpectedSet = new HashSet<String>(studentsExpected);
+		assertEquals(studentsSet, studentsExpectedSet);
 	}
 	
 	/**
@@ -395,6 +410,210 @@ public class GRADSIntfTest {
 		grads.updateTranscript("mbr", transcript, true);	
 	}
 	
+
+	
+
+	/**
+	 * Method to check if generated progress summary is correct
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryMEPasses() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/MEPassOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("mbr");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("mbr"));
+	}
+	
+	/**
+	 * Method to check if generated progress summary is correct
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryMSEPasses() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/MSEPassOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("merc");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("merc"));
+	}
+	
+	/**
+	  Method to check if generated progress summary is correct
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryMSPasses() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/MSPassOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("brand");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("brand"));
+	}
+	
+	/**
+	 * Method to check if generated progress summary is correct
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryINFASPasses() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/INFASPassOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("elsa");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("elsa"));
+	}
+	
+	/**
+	 * Method to check if generated progress summary is correct
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryPHDPasses() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/PHDPassOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("mhunt");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("mhunt"));
+	}
+	
+	/**
+	 * Method to check progress summary for a student who fails all areas
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryMEFails() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/MEFailOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("clark");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("clark"));
+	}
+	
+	/**
+	 * Method to check progress summary for a student who fails all areas
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryMSEFails() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/MSEFailOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("shir");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("shir"));
+	}
+	
+	/**
+	 * Method to check progress summary for a student who fails all areas
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryMSFails() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/MSFailOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("drig");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("drig"));
+	}
+	
+	/**
+	 * Method to check progress summary for a student who fails all areas
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryINFASFails() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/INFASFailOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("doe");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("doe"));
+	}
+	
+	/**
+	 * Method to check progress summary for a student who fails all areas
+	 * @throws Exception if setUser is unsuccessful
+	 */
+	@Test
+	public void testGenerateProgressSummaryPHDFails() throws Exception{
+		oracleSummary = new ProgressSummary();
+		
+		try{
+			oracleSummary = new Gson().fromJson(new FileReader(getFile("resources/PHDFailOracle_PS.txt")),
+				new TypeToken<ProgressSummary>() {
+				}.getType());
+		}  catch (Exception e){
+			throw new DataNotRetrievedException("Can not load records file");
+		}
+		grads.setUser("ggay");
+		assertRequirementsPassed(oracleSummary, grads.generateProgressSummary("ggay"));
+	}
+	
+	/**
+	 * Method to check exception handling when student tries to access another student's progress summary
+	 * @throws Exception if setUser fails or when access of progress summary
+	 */
+	@Test (expected = ProgressSummaryNotGeneratedException.class)
+	public void testGenerateProgressSummaryThrowException() throws Exception{
+		grads.setUser("ggay");
+		grads.generateProgressSummary("elsa");
+		
+	}
+	
 	/**
 	 * Helper method to compare that two records are equivalent in all of their attributes
 	 * @param oracle the StudentRecord oracle against which the test is being compared
@@ -480,5 +699,16 @@ public class GRADSIntfTest {
 		}
 	}
 	
+	/**
+	 * Helper method to compare two progress summaries. Checks if sections were passed or failed
+	 * @param oracle the oracle for the tested progress summary
+	 * @param test the progress summary to test against the test oracle
+	 */
+	private void assertRequirementsPassed(ProgressSummary oracle, ProgressSummary test) {
+		assertEquals(oracle.getRequirementCheckResults().size(),test.getRequirementCheckResults().size());
+		for (int i =0; i <oracle.getRequirementCheckResults().size(); i++){
+			assertEquals(oracle.getRequirementCheckResults().get(0).getPassed(),test.getRequirementCheckResults().get(0).getPassed());
+		}	
+	}
 
 }
