@@ -36,7 +36,11 @@ import edu.sc.csce740.model.Term;
 import edu.sc.csce740.model.User;
 
 /**
- * @author Maximus
+ * JUnit test class to test GRADSIntf
+ * @author Maximus Brandel
+ * @author Ibrahim Elsayed
+ * @author Christian Merchant
+ * @version 1.00 2015-12-07
  *
  */
 public class GRADSIntfTest {
