@@ -62,20 +62,58 @@ public class GRADS implements GRADSIntf {
 	/**
 	 * The file location for the record
 	 */
-	private String recordFile;
+	private File recordFile;
+	
+	/**
+	 * The file location for the users
+	 */
+	private File usersFile;
+	
+	/**
+	 * The file location for the list of CSCE courses
+	 */
+	private File coursesFile;
 		
 	/**
 	 * @return the recordFile
 	 */
-	public String getRecordFile() {
+	public File getRecordFile() {
 		return recordFile;
 	}
 
 	/**
 	 * @param recordFile the recordFile to set
 	 */
-	public void setRecordFile(String recordFile) {
+	private void setRecordFile(File recordFile) {
 		this.recordFile = recordFile;
+	}
+
+	/**
+	 * @return the usersFile
+	 */
+	public File getUsersFile() {
+		return usersFile;
+	}
+
+	/**
+	 * @param usersFile the usersFile to set
+	 */
+	private void setUsersFile(File usersFile) {
+		this.usersFile = usersFile;
+	}
+
+	/**
+	 * @return the coursesFile
+	 */
+	public File getCoursesFile() {
+		return coursesFile;
+	}
+
+	/**
+	 * @param coursesFile the coursesFile to set
+	 */
+	private void setCoursesFile(File coursesFile) {
+		this.coursesFile = coursesFile;
 	}
 
 	/**
@@ -132,9 +170,11 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void loadUsers(String usersFile) throws DataNotRetrievedException {
 		try{
-			allUsers = new Gson().fromJson(new FileReader(getFile(usersFile)),
+			File f = getFile(usersFile);
+			allUsers = new Gson().fromJson(new FileReader(f),
 				new TypeToken<List<User>>() {
 				}.getType());
+			setUsersFile(f);
 		} catch (Exception e){
 			throw new DataNotRetrievedException("Can not load user file");
 		}
@@ -149,9 +189,11 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void loadCourses(String coursesFile) throws DataNotRetrievedException  {
 		try{
-			allCourses = new Gson().fromJson(new FileReader(getFile(coursesFile)),
+			File f = getFile(coursesFile);
+			allCourses = new Gson().fromJson(new FileReader(f),
 				new TypeToken<List<Course>>() {
 				}.getType());
+			setCoursesFile(f);
 		} catch (Exception e){
 			throw new DataNotRetrievedException("Can not load courses file");
 		}
@@ -165,10 +207,11 @@ public class GRADS implements GRADSIntf {
 	 */
 	public void loadRecords(String recordsFile) throws DataNotRetrievedException  {
 		try{
-			allRecords = new Gson().fromJson(new FileReader(getFile(recordsFile)),
+			File f = getFile(recordsFile);
+			allRecords = new Gson().fromJson(new FileReader(f),
 				new TypeToken<List<StudentRecord>>() {
 				}.getType());
-			setRecordFile(recordsFile);
+			setRecordFile(f);
 		}  catch (Exception e){
 			throw new DataNotRetrievedException("Can not load records file");
 		}
@@ -303,16 +346,28 @@ public class GRADS implements GRADSIntf {
 				System.out.println("New record successfully added");
 				if (permanent){
 					String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
-					writeToFile("src/" + getRecordFile(), representation);	
-					loadRecords(getRecordFile());
+					//TODO: Figure out how to update students.txt with just one write call
+					//Right now it requires to update the file in bin/resources and src/resources
+					//for the right data to show up
+					String file = getRecordFile().toString();
+					writeToFile(file, representation);	
+					file = getRecordFile().toString().replaceAll("bin", "src");
+					writeToFile(file, representation);
+					loadRecords("resources/students.txt");
 				}	
 			} else	{
 				allRecords.remove(index);
 				allRecords.add(transcript);
 				if (permanent) {
 					String representation = new GsonBuilder().setPrettyPrinting().create().toJson(allRecords);
-					writeToFile("src/" + getRecordFile(), representation);	
-					loadRecords(getRecordFile());
+					//TODO: Figure out how to update students.txt with just one write call
+					//Right now it requires to update the file in bin/resources and src/resources
+					//for the right data to show up
+					String file = getRecordFile().toString();
+					writeToFile(file, representation);	
+					file = getRecordFile().toString().replaceAll("bin", "src");
+					writeToFile(file, representation);
+					loadRecords("resources/students.txt");
 				}
 			}
 		} 
@@ -381,8 +436,8 @@ public class GRADS implements GRADSIntf {
 			progressSummary.setCommittee(record.getCommittee());
 			progressSummary.getResults(record, allCourses);
 			
-			String representation = new GsonBuilder().setExclusionStrategies(new ExclStrat()).setPrettyPrinting().create().toJson(progressSummary);
-			writeToFile("src/resources/progressSummary.txt", representation);
+//			String representation = new GsonBuilder().setExclusionStrategies(new ExclStrat()).setPrettyPrinting().create().toJson(progressSummary);
+//			writeToFile("src/resources/progressSummary.txt", representation);
 			
 			return progressSummary;
 		} catch (Exception e){

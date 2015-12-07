@@ -16,8 +16,6 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-import edu.sc.csce740.exception.CoursesInvalidException;
-
 
 /**
  * Class checking and calculating requirements for the <code>ProgressSummary</code>
@@ -43,11 +41,24 @@ public class RequirementCheck {
 	 */
 	public Details details;
 	
+	/**
+	 * Variable to store the degree requirments location
+	 */
+	private File requirementsFile;
 	
-	public RequirementCheck() {
-		
+	/**
+	 * @return the requirementsFile
+	 */
+	public File getRequirementsFile() {
+		return requirementsFile;
 	}
 
+	/**
+	 * @param requirementsFile the requirementsFile to set
+	 */
+	private void setRequirementsFile(File requirementsFile) {
+		this.requirementsFile = requirementsFile;
+	}
 
 	/**
 	 * Method to get the string indicating whether a requirment is passed or not
@@ -615,35 +626,37 @@ public class RequirementCheck {
 		List<DegreeRequirements> degreeRequirements = null;
 		int index = -1;
 		try{
+			File f = getFile("resources/degreeRequirements.txt");
 			switch(degreeName){
 			case "PHD": 
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
+						degreeRequirements = new Gson().fromJson(new FileReader(f),
 						new TypeToken<List<DoctorOfPhilosophy>>() {}.getType());
 						break;
 			case "MS":
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
+						degreeRequirements = new Gson().fromJson(new FileReader(f),
 						new TypeToken<List<MasterOfScience>>() {
 						}.getType());
 						break;
 			case "MSE":	
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
+						degreeRequirements = new Gson().fromJson(new FileReader(f),
 						new TypeToken<List<MasterOfSoftwareEngineering>>() {
 						}.getType());
 						break;
 			case "ME":
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
+						degreeRequirements = new Gson().fromJson(new FileReader(f),
 						new TypeToken<List<MasterOfEngineering>>() {
 						}.getType());
 						break;
 			case "INFAS":
-						degreeRequirements = new Gson().fromJson(new FileReader(getFile("resources/degreeRequirements.txt")),
+						degreeRequirements = new Gson().fromJson(new FileReader(f),
 						new TypeToken<List<SecurityCertificate>>() {
 						}.getType());
 						break;
 			default:
 						return null;
 						
-			}			
+			}	
+			setRequirementsFile(f);
 		} catch (JsonIOException e) {
 			e.printStackTrace();
 		} catch (JsonSyntaxException e) {

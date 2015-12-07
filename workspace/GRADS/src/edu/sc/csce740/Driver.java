@@ -3,15 +3,6 @@
  */
 package edu.sc.csce740;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.gson.GsonBuilder;
-
-import edu.sc.csce740.model.Course;
-import edu.sc.csce740.model.CourseTaken;
-import edu.sc.csce740.model.StudentRecord;
-import edu.sc.csce740.model.Term;
 
 /**
  * @author brandemr
@@ -49,8 +40,8 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		grads.setUser("elsa");
-		grads.generateProgressSummary("elsa");
+		grads.setUser("mmatthews");
+		//grads.generateProgressSummary("mhunt");
 		//grads.generateProgressSummary("mhunt");
 		
 		//System.out.println(grads.getTranscript("mhunt").getCoursesTaken().get(0).getCourse().getName());
@@ -61,9 +52,10 @@ public class Driver {
 		//Testing if degree reqs are being loaded
 		//grads.addNote("mbr", "Im a note stillllllll!!!", true);
 
-//		grads.getTranscript("mhunt").setLastName("Hunter");
-		//grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
-//		System.out.println(grads.getTranscript("mhunt").getLastName());
+		grads.getTranscript("mhunt").setLastName("Hunter");
+		
+		grads.updateTranscript("mhunt", grads.getTranscript("mhunt"), true);
+		System.out.println(grads.getTranscript("mhunt").getLastName());
 		//grads.validateAccess("mhunt");
 		
 //		List<CourseTaken> courses = new ArrayList<CourseTaken>();

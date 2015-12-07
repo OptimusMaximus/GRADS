@@ -4,9 +4,6 @@
 package edu.sc.csce740.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -14,7 +11,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.hamcrest.CoreMatchers.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -84,53 +80,6 @@ public class GRADSIntfTest {
 		grads.loadUsers("resources/users.txt");
 		grads.loadRecords("resources/students.txt");
 		grads.loadCourses("resources/courses.txt");
-		
-		
-//		record = new StudentRecord();
-//		record.setFirstName("Michelle");
-//		record.setLastName("Hunt");
-//		
-//		List<User> advisors = new ArrayList<User>();
-//		User advisor = new User();
-//		advisor.setFirstName("Duncan");
-//		advisor.setLastName("Buell");
-//		advisor.setDepartment("COMPUTER_SCIENCE");
-//		advisors.add(advisor);
-//		
-//		List<User> committee = new ArrayList<User>();
-//		User  committeMember = new User();
-//		committeMember.setFirstName("Manton");
-//		committeMember.setLastName("Matthews");
-//		committeMember.setDepartment("COMPUTER_SCIENCE");
-//		committee.add(committeMember);
-//		
-//		User  committeMember2 = new User();
-//		committeMember2.setFirstName("Jason");
-//		committeMember2.setLastName("Bakos");
-//		committeMember2.setDepartment("COMPUTER_SCIENCE");
-//		committee.add(committeMember2);
-//		
-//		User  committeMember3 = new User();
-//		committeMember3.setFirstName("Richard");
-//		committeMember3.setLastName("McGehee");
-//		committeMember3.setDepartment("MATHEMATICS");
-//		committee.add(committeMember3);
-//		
-//		Term termBegan = new Term();
-//		termBegan.setSemester("SPRING");
-//		termBegan.setYear(2008);
-//		
-//		Degree degreeSought = new Degree();
-//		degreeSought.setName("PHD");
-//		Term graduation = new Term();
-//		graduation.setSemester("SPRING");
-//		graduation.setYear(2018);
-//		degreeSought.setGraduation(graduation);
-//		
-//		record.setCommittee(committee);
-//		record.setCommittee(advisors);
-//		record.setTermBegan(termBegan);
-//		record.setDegreeSought(degreeSought);
 	}
 
 	/**
@@ -269,8 +218,7 @@ public class GRADSIntfTest {
 	@Test(expected = InvalidUserException.class)
 	public void testGetTranscriptPassesExceptionThrown()throws Exception  {
 		grads.setUser("mbr");
-		grads.getTranscript("mhunt");
-			
+		grads.getTranscript("mhunt");			
 	}
 	
 	/**
@@ -328,8 +276,7 @@ public class GRADSIntfTest {
 		courseTaken.setGrade("A");
 		courseTaken.setTerm(term);
 		courses.add(courseTaken);
-		grads.simulateCourses("mhunt",courses);
-		
+		grads.simulateCourses("mhunt",courses);	
 		
 	}
 	

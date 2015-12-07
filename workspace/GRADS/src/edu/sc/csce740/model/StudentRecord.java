@@ -2,8 +2,6 @@ package edu.sc.csce740.model;
 
 import java.util.List;
 
-import com.google.gson.annotations.Expose;
-
 import edu.sc.csce740.GRADS;
 import edu.sc.csce740.exception.InvalidUserException;
 
